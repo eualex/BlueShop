@@ -3,5 +3,5 @@ import colors from '../../styles/colors';
 
 export const Container = styled.div`
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
 `;

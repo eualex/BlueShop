@@ -1,23 +1,15 @@
 import React from 'react';
-import { FaShoppingCart } from 'react-icons/fa';
 
 import { Container } from './styles';
+
+import Nav from '../Nav';
+import Logo from '../Logo';
 
 const Header: React.FC = () => {
   return (
     <Container>
-      <div>
-        <h1>
-          <span><FaShoppingCart /></span>
-          BlueShop
-        </h1>
-        
-        <span>
-          <a href="#">login</a>
-          <a href="#">cadastro</a>
-        </span>
-      </div>
-
+        <Logo /> 
+        <Nav />
     </Container>
   );
 };
