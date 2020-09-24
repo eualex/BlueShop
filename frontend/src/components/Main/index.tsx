@@ -1,6 +1,6 @@
 import React from "react";
 
-import Ilustration from '../../img/ilustration.svg'
+import Ilustration from '../../img/onlineShopping.svg';
 
 import { Container, ContainerMain, Button, Image, ContainerItens } from "./styles";
 
