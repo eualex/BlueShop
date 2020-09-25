@@ -8,12 +8,16 @@ interface BigProductProps {
   image: string;
   title: string;
   price: number;
-  reverse: string | any;
+  reverse?: string;
 }
 
-const BigProduct: React.FC<BigProductProps> = ({ image, title, price, reverse}) => {
+const BigProduct: React.FC<BigProductProps> = ({
+  image,
+  title,
+  price,
+  reverse = "row",
+}) => {
   return (
-
     <Container reverse={reverse}>
       <img src={image} alt="produto" />
       <div>

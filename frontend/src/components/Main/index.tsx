@@ -13,13 +13,13 @@ import {
   ContainerHeader,
   Image,
   ContainerMain,
-  ContainerNike
+  ContainerNike,
 } from "./styles";
 
 import { Button } from "../../styles/components";
+import Footer from "../Footer";
 
 const Main: React.FC = () => {
-  const imagesProduct = [ImgProduct1, ImgProduct3];
 
   return (
     <Container>
@@ -41,19 +41,33 @@ const Main: React.FC = () => {
         <h1>New Products</h1>
 
         <div>
-          <BigProduct image={ImgProduct2} title="The Best is back" price={100} reverse="row"/>
+          <BigProduct
+            image={ImgProduct2}
+            title="The Best is back"
+            price={100}
+          />
         </div>
-        
+
         <ContainerNike>
-          <hr/>
+          <hr />
           <h1>Nike Session</h1>
-          
-          <BigProduct image={ImgProduct1} title="The most beautiful of Nike" price={100} reverse="row-reverse"/>
-          <hr/>
-          <BigProduct image={ImgProduct3} title="The second most beautiful of Nike" price={100} reverse="row"/>
+
+          <BigProduct
+            image={ImgProduct1}
+            title="The most beautiful of Nike"
+            price={199.99}
+            reverse="row-reverse"
+          />
+          <hr />
+          <BigProduct
+            image={ImgProduct3}
+            title="The second most beautiful of Nike"
+            price={149.99}
+          />
         </ContainerNike>
-        
       </ContainerMain>
+
+      <Footer />
     </Container>
   );
 };
