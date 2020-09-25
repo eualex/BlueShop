@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import colors from "./colors";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -12,6 +13,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
+
+    /* background: ${colors.background}; */
   }
 `;
 

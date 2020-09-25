@@ -1,10 +1,26 @@
 import React from "react";
 
-import Ilustration from '../../img/onlineShopping.svg';
+import Ilustration from "../../img/onlineShopping.svg";
 
-import { Container, ContainerHeader, Button, Image, ContainerItens } from "./styles";
+import ImgProduct1 from "../../img/product1.png";
+import ImgProduct2 from "../../img/product2.png";
+import ImgProduct3 from "../../img/product3.png";
+
+import BigProduct from "../BigProduct";
+
+import {
+  Container,
+  ContainerHeader,
+  Image,
+  ContainerMain,
+  ContainerNike
+} from "./styles";
+
+import { Button } from "../../styles/components";
 
 const Main: React.FC = () => {
+  const imagesProduct = [ImgProduct1, ImgProduct3];
+
   return (
     <Container>
       <ContainerHeader>
@@ -17,12 +33,27 @@ const Main: React.FC = () => {
           </span>
         </div>
 
-        <Image src={Ilustration}/>
+        <Image src={Ilustration} />
       </ContainerHeader>
 
-      {/* <ContainerItens>
-        <h1>New Arrivals</h1>
-      </ContainerItens> */}
+      <ContainerMain>
+        <hr />
+        <h1>New Products</h1>
+
+        <div>
+          <BigProduct image={ImgProduct2} title="The Best is back" price={100} reverse="row"/>
+        </div>
+        
+        <ContainerNike>
+          <hr/>
+          <h1>Nike Session</h1>
+          
+          <BigProduct image={ImgProduct1} title="The most beautiful of Nike" price={100} reverse="row-reverse"/>
+          <hr/>
+          <BigProduct image={ImgProduct3} title="The second most beautiful of Nike" price={100} reverse="row"/>
+        </ContainerNike>
+        
+      </ContainerMain>
     </Container>
   );
 };

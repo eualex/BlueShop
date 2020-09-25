@@ -15,7 +15,7 @@ export const ContainerHeader = styled.div`
   display: flex;
   justify-content: space-between;
   
-  margin-top: 100px;
+  margin-top: 140px;
   div {
     color: #111;
 
@@ -43,30 +43,27 @@ export const ContainerHeader = styled.div`
   }
 `;
 
-export const Button = styled.button`
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  border: 1px solid;
-  background-color: ${colors.blue};
-  margin: 30px 0px 0px;
-  padding: 12px 30px;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: all 150ms linear 0s;
-  
-  &:hover {
-    background-color: transparent;
-    color: ${colors.text};
-
-    transition: 0.3s ease-in;
-  }
-`;
-
 export const Image = styled.img`
   width: 400px;
 `;
 
-export const ContainerItens = styled.div`
+export const ContainerMain = styled.div`
+  font-family: 'Poppins';
+
+  text-align: center;
+  margin-top: 120px;
+
+  hr {
+    opacity: 0.5;
+  }
+
+  h1 {
+    margin-top: 15px;
+  }
+`;
+
+export const ContainerNike = styled.div`
+  hr {
+    margin-top: 50px;
+  }
 `;

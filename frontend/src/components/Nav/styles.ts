@@ -31,7 +31,7 @@ export const Container = styled.div`
 
 export const ContainerNav = styled.div`
   width: 300px;
-
+  
   ul {
     display: flex;
     justify-content: space-between;
