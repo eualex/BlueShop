@@ -7,7 +7,7 @@ export const Container = styled.div`
   margin: auto;
 `;
 
-export const ContainerMain = styled.div`
+export const ContainerHeader = styled.div`
   width: 100%;
   max-width: 980px;
   margin: auto;
@@ -18,6 +18,11 @@ export const ContainerMain = styled.div`
   margin-top: 100px;
   div {
     color: #111;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     h1 {
       font-size: 56px;  
     }

@@ -42,7 +42,8 @@ export const ContainerNav = styled.div`
       font-weight: bold;
       font-size: 12px;
 
-      color: ${colors.text};
+      /* color: ${colors.text}; */
+      color: #565656;
 
       &:hover {
         color: ${colors.blue};
