@@ -7,6 +7,8 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
 
+  
+
   padding: 25px;
   h3 {
     color: #fff;
