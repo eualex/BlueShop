@@ -3,21 +3,22 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 
 export const Container = styled.div`
-  width: 980px;
-  margin: auto;
+  /* width: 980px;
+  margin: auto; */
 `;
 
 export const ContainerHeader = styled.div`
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+
   max-width: 980px;
   margin: auto;
 
   display: flex;
   justify-content: space-between;
   
-  margin-top: 140px;
   div {
-    color: #111;
+    color: ${colors.text};
 
     display: flex;
     flex-direction: column;
@@ -32,10 +33,6 @@ export const ContainerHeader = styled.div`
     }
 
     span {
-      /* width: 150px; */
-      /* display: flex;
-      justify-content: space-between; */
-
       button {
         margin-right: 4px;
       }
@@ -51,7 +48,6 @@ export const ContainerMain = styled.div`
   font-family: 'Poppins';
 
   text-align: center;
-  margin-top: 120px;
 
   hr {
     opacity: 0.5;

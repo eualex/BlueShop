@@ -9,8 +9,11 @@ export const Container = styled.div<ProductContainerProps>`
   display: flex;
   flex-direction: ${props => props.reverse};
   
-  margin-top: 100px;
+  width: 100%;
+  max-width: 980px;
+  margin: auto;
 
+  margin-top: 100px;
   img {
     width: 400px;
     height: 380px;

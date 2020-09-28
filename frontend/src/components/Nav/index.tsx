@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, ContainerNav, IconShop } from './styles';
+import { Container, ContainerNav } from './styles';
 
 const Nav: React.FC = () => {
   return (
@@ -22,7 +22,6 @@ const Nav: React.FC = () => {
       </ContainerNav>
     
       <span>
-        <IconShop />
         {/* <IconSearch /> */}
         <a href="#">Login</a>
       </span>

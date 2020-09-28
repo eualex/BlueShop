@@ -2,18 +2,58 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   bottom: 0;
+  background-color: #343A44;
+  
+  display: flex;
+  justify-content: space-between;
+
+  padding: 25px;
+  h3 {
+    color: #fff;
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight:bold;
+  }
+
+  span {
+    color: #7e7e7e;
+    margin: 3px 0px;
+    font-size: 12px;
+  }
 `;
 
-export const ContainerPrimary = styled.div``;
+export const ContainerPrimary = styled.div`
+  display: flex;
+  justify-content: space-between;
 
-export const ContainerSecondary = styled.div``;
+  width: 50%;
+`;
 
-export const ContainerInfo = styled.div``;
+export const ContainerSecondary = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-export const ContainerHelp = styled.div``;
+export const ContainerInfo = styled.div`
+  h3 {
+    margin-top: 6px;
+  }
+`;
 
-export const ContainerAbout = styled.div``;
+export const ContainerHelp = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-export const ContainerSocialMedia = styled.div``;
+export const ContainerAbout = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-export const ContainerBuyForm = styled.div``;
+export const ContainerSocialMedia = styled.div`
+  h3 {
+    font-size: 14px;
+  }
+`;
+
+// export const ContainerBuyForm = styled.div``;
