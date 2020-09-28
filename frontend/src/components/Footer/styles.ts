@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 export const Container = styled.div`
   bottom: 0;
-  background-color: #343A44;
+  background-color: #eee;
   
   display: flex;
   justify-content: space-between;
@@ -11,7 +12,7 @@ export const Container = styled.div`
 
   padding: 25px;
   h3 {
-    color: #fff;
+    color: colors.text;
     font-family: 'Poppins';
     font-size: 12px;
     font-weight:bold;
