@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import colors from "./colors";
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
@@ -24,6 +24,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-size: 1.6rem;
   }
-`;
 
-export { GlobalStyle };
+  @media (max-width: 768px) {
+    html {
+      font-size: 50%;
+    }
+  }
+`;

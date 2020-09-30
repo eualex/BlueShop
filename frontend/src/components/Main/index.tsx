@@ -25,17 +25,19 @@ const Main: React.FC = () => {
     <Container>
       <ContainerHeader>
         <div>
-          <h1>Fabric of the city</h1>
-          <h2>Sale up to 50% off</h2>
+          <div>
+            <h1>Fabric of the city</h1>
+            <h2>Sale up to 50% off</h2>
 
-          <span>
-            <Button>Shop</Button>
-          </span>
+            <span>
+              <Button>Shop</Button>
+            </span>
+          </div>
+
+          <Image src={Ilustration} />
         </div>
-
-        <Image src={Ilustration} />
       </ContainerHeader>
-
+{/* 
       <ContainerMain>
         <hr />
         <h1>New Products</h1>
@@ -67,7 +69,7 @@ const Main: React.FC = () => {
         </ContainerNike>
       </ContainerMain>
 
-      <Footer />
+      <Footer /> */}
     </Container>
   );
 };

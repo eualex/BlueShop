@@ -6,9 +6,7 @@ export const Container = styled.div`
   h1 {
     font-family: 'Lobster', cursive;
     color: ${colors.blue};
-    
     width: 150px;
-    padding: 15px 0;
 
     display: flex;
     span {

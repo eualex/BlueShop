@@ -8,20 +8,18 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
 
-  
-
   padding: 25px;
   h3 {
-    color: colors.text;
+    color: ${colors.text};
     font-family: 'Poppins';
-    font-size: 12px;
+    font-size: 1.2rem;
     font-weight:bold;
   }
 
   span {
     color: #7e7e7e;
     margin: 3px 0px;
-    font-size: 12px;
+    font-size: 1.2rem;
   }
 `;
 
@@ -55,7 +53,7 @@ export const ContainerAbout = styled.div`
 
 export const ContainerSocialMedia = styled.div`
   h3 {
-    font-size: 14px;
+    font-size: 1.4rem
   }
 `;
 
