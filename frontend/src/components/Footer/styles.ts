@@ -1,19 +1,19 @@
-import styled from 'styled-components';
-import colors from '../../styles/colors';
+import styled from "styled-components";
+import colors from "../../styles/colors";
 
 export const Container = styled.div`
   bottom: 0;
   background-color: #eee;
-  
+
   display: flex;
   justify-content: space-between;
 
   padding: 25px;
   h3 {
     color: ${colors.text};
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-size: 1.2rem;
-    font-weight:bold;
+    font-weight: bold;
   }
 
   span {
@@ -28,6 +28,10 @@ export const ContainerPrimary = styled.div`
   justify-content: space-between;
 
   width: 50%;
+
+  @media (max-width: 576px) {
+    width: 72%;
+  }
 `;
 
 export const ContainerSecondary = styled.div`
@@ -53,7 +57,13 @@ export const ContainerAbout = styled.div`
 
 export const ContainerSocialMedia = styled.div`
   h3 {
-    font-size: 1.4rem
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 576px) {
+    h3 {
+      margin-left: 7px;
+    }
   }
 `;
 

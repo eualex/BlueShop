@@ -69,7 +69,7 @@ const Main: React.FC = () => {
         </ContainerNike>
       </ContainerMain>
 
-      {/* <Footer /> */}
+      <Footer />
     </Container>
   );
 };
