@@ -1,6 +1,4 @@
-import styled from 'styled-components';
-
-// import colors from '../../styles/colors';
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 90%;
@@ -8,11 +6,8 @@ export const Container = styled.div`
   max-width: 980px;
 
   height: 5vh;
-  /* padding: 5px 0; */
-  
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 `;
-

@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Container } from './styles';
 
-import Nav from '../Nav';
-import Logo from '../Logo';
+import Nav from './Nav';
+import Logo from './Logo';
 
 const Header: React.FC = () => {
   return (
