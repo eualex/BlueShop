@@ -10,9 +10,9 @@ const Burguer: React.FC = () => {
   return (
     <>
       <ContainerBurguer open={open} onClick={() => setOpen(!open)} >
-        <div className="one"></div>
-        <div className="two"></div>
-        <div className="three"></div>
+        <div />
+        <div />
+        <div />
       </ContainerBurguer>
       <RightNav open={open} />
     </>
