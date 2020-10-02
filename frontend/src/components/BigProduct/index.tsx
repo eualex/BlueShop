@@ -27,8 +27,10 @@ const BigProduct: React.FC<BigProductProps> = ({
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s
         </p>
-        <span>${price}</span>
-        <Button>Buy</Button>
+        <span>
+          <h3>${price}</h3>
+          <Button>Buy</Button>
+        </span>
       </div>
     </Container>
   );

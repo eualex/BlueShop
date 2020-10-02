@@ -37,7 +37,7 @@ const Main: React.FC = () => {
           <Image src={Ilustration} />
         </div>
       </ContainerHeader>
-{/* 
+
       <ContainerMain>
         <hr />
         <h1>New Products</h1>
@@ -69,7 +69,7 @@ const Main: React.FC = () => {
         </ContainerNike>
       </ContainerMain>
 
-      <Footer /> */}
+      {/* <Footer /> */}
     </Container>
   );
 };

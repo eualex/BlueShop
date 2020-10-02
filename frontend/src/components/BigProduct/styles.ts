@@ -38,9 +38,39 @@ export const Container = styled.div<ProductContainerProps>`
       color: ${colors.lowText}
     }
 
-    span {
+    span h3{
       font-weight: bold;
-      margin: 10px 18px 0 0;
+      margin-top: 10px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 310px;
+      height: 290px;
+    }
+    
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    div p {
+      width: 85%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    img {
+      width: 340px;
+      height: 320px;
     }
   }
 `;
