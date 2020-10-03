@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import colors from '../../styles/colors';
+import styled from 'styled-components';
 
 interface ProductContainerProps {
   reverse: string;
@@ -31,16 +30,23 @@ export const Container = styled.div<ProductContainerProps>`
   div {
     h1 {
       text-transform: uppercase;
-      color: ${colors.text}
+      color: ${props => props.theme.colors.textPrimary};
     }
 
     p {
-      color: ${colors.lowText}
+      color: ${props => props.theme.colors.textSecondary};
     }
 
     span h3{
       font-weight: bold;
       margin-top: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    img {
+      width: 310px;
+      height: 290px;
     }
   }
 
@@ -64,13 +70,6 @@ export const Container = styled.div<ProductContainerProps>`
     
     div p {
       width: 85%;
-    }
-  }
-
-  @media (max-width: 768px) {
-    img {
-      width: 340px;
-      height: 320px;
     }
   }
 `;

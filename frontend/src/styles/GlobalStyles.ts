@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import colors from "./colors";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -9,12 +8,14 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
+    overflow-X: hidden;
+    width: 100vw;
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
 
-    /* background: ${colors.background}; */
+    background: ${props => props.theme.colors.background};
   }
 
   html {
@@ -25,9 +26,24 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 1.6rem;
   }
 
+  @media (max-width: 425px) {
+    body {
+      width: 100vw;
+
+      overflow-X: hidden;
+    }
+  }
+
   @media (max-width: 768px) {
     html {
       font-size: 50%;
+    }
+
+    body {
+      overflow-X: hidden;
+
+      width: 100vw;
+      height: 100vh;
     }
   }
 `;

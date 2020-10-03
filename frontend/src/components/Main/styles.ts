@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import colors from '../../styles/colors';
-
 export const Container = styled.div`
   /* width: 980px;
   margin: auto; */
@@ -21,7 +19,7 @@ export const ContainerHeader = styled.div`
     max-width: 980px;
 
     div {
-      color: ${colors.text};
+      color: ${props => props.theme.colors.textPrimary};
 
       display: flex;
       flex-direction: column;

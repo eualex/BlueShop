@@ -1,23 +1,23 @@
 import styled from "styled-components";
-import colors from "../../styles/colors";
 
 export const Container = styled.div`
+  width: 100vw;
   bottom: 0;
-  background-color: #eee;
+  background-color: ${props => props.theme.colors.backgroundSecondary};
 
   display: flex;
   justify-content: space-between;
 
   padding: 25px;
   h3 {
-    color: ${colors.text};
+    color: ${props => props.theme.colors.textPrimary};
     font-family: "Poppins";
     font-size: 1.2rem;
     font-weight: bold;
   }
 
   span {
-    color: #7e7e7e;
+    color: ${props => props.theme.colors.textQuartenary};
     margin: 3px 0px;
     font-size: 1.2rem;
   }
@@ -66,5 +66,3 @@ export const ContainerSocialMedia = styled.div`
     }
   }
 `;
-
-// export const ContainerBuyForm = styled.div``;

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import colors from '../../../../styles/colors';
-
 interface Props {
   open: boolean;
 }
@@ -15,7 +13,7 @@ export const ContainerBurguer = styled.div<Props>`
   div {
     z-index: 2;
 
-    background-color: ${ ({ open }) => open ? '#fff' : colors.blue };
+    background-color: ${ ({ open, theme }) => open ? theme.colors.textTerceary : theme.colors.primary };
 
     width: 30px;
     height: 3px;
@@ -43,6 +41,6 @@ export const ContainerBurguer = styled.div<Props>`
     flex-direction: column;
     justify-content: space-around;
 
-    margin-top: 10px;
+    margin-top: 5px;
   }
 `;

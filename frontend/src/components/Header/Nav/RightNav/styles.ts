@@ -28,11 +28,10 @@ export const ContainerNav = styled.div<Props>`
       font-weight: bold;
       font-size: 1.2rem;
 
-      /* color: ${colors.text}; */
-      color: #565656;
+      color: ${props => props.theme.colors.textSecondary};
 
       &:hover {
-        color: ${colors.blue};
+        color: ${props => props.theme.colors.primary};
         transition: 0.3s ease-in;
       }
     }
@@ -49,10 +48,10 @@ export const ContainerNav = styled.div<Props>`
     a {
       text-decoration: none;
       font-weight: bold;
-      color: ${colors.blue};
+      color: ${props => props.theme.colors.primary};
 
       &:hover {
-        color: ${colors.text};
+        color: ${props => props.theme.colors.textPrimary};
         transition: 0.3s ease-in;
       }
     }
@@ -60,7 +59,7 @@ export const ContainerNav = styled.div<Props>`
 
   @media (max-width: 768px) {
     overflow: hidden;
-    background-color: ${colors.blue};
+    background-color: ${props => props.theme.colors.primary};
 
     position: fixed;
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
@@ -82,6 +81,8 @@ export const ContainerNav = styled.div<Props>`
 
       width: 100%;
 
+      margin-right: 13px;
+
       li {
         height: 60%;
         margin-bottom: 35px;
@@ -89,23 +90,25 @@ export const ContainerNav = styled.div<Props>`
 
       li a {
         font-size: 3rem;
-        color: #fff;
+        color: ${props => props.theme.colors.textTerceary};
 
         &:hover {
-          color: ${colors.text};
+          color: ${props => props.theme.colors.textPrimary};
           transition: none;
         }
       }
     }
 
     span {
+      margin-right: 13px;
+
       a {
         font-size: 3rem;
         color: #fff;
 
         &:hover {
           transition: none;
-          color: ${colors.text};
+          color: ${props => props.theme.colors.textPrimary};
         }
       }
     }
