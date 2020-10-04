@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import colors from '../../../../styles/colors';
-
 interface Props {
   open: boolean;
 }
@@ -39,7 +37,7 @@ export const ContainerNav = styled.div<Props>`
 
   /* Login */
   span {
-    width: 95px;
+    width: 130px;
 
     display: flex;
     align-items: center;
@@ -104,7 +102,7 @@ export const ContainerNav = styled.div<Props>`
 
       a {
         font-size: 3rem;
-        color: #fff;
+        color: ${props => props.theme.colors.textTerceary};
 
         &:hover {
           transition: none;

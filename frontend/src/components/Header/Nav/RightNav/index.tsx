@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useCallback, useContext } from "react";
+import { ThemeContext } from 'styled-components';
 
+import Switch from 'react-switch';
 import { ContainerNav } from "./styles";
 
+import { useTheme } from '../../../../contexts/theme'
+import dark from "../../../../styles/themes/dark";
+import light from "../../../../styles/themes/light";
+ 
 interface Props {
   open: boolean;
 }
 
 const RightNav: React.FC<Props> = ({ open }) => {
+  const { colors } = useContext(ThemeContext);
+  const { theme, setTheme } = useTheme();
+
+  const toggleTheme = useCallback(() => {
+    setTheme(theme.title === 'light' ? dark : light);
+  }, []);
+
+  console.log(theme.title);
+
   return (
     <ContainerNav open={open}>
       <ul>
@@ -26,6 +41,22 @@ const RightNav: React.FC<Props> = ({ open }) => {
 
       <span>
         <a href="#">Login</a>
+        <Switch 
+          onChange={toggleTheme}
+          checked={true}
+          checkedIcon={false}
+          uncheckedIcon={false}
+
+          height={10}
+          width={40}
+
+          handleDiameter={20}
+          offHandleColor={colors.textPrimary}
+          onHandleColor={colors.textPrimary}
+
+          onColor={colors.primary}
+          offColor={colors.textQuartenary}
+        />
       </span>
     </ContainerNav>
   );

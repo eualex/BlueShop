@@ -1,13 +1,12 @@
 import styled from 'styled-components';
-import colors from './colors';
 
 export const Button = styled.button`
   display: inline-block;
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: ${props => props.theme.colors.textTerceary};
   border: 1px solid;
-  background-color: ${colors.blue};
+  background-color: ${props => props.theme.colors.primary};
   margin: 30px 0px 0px;
   padding: 12px 30px;
   text-decoration: none;
@@ -16,7 +15,7 @@ export const Button = styled.button`
   
   &:hover {
     background-color: transparent;
-    color: ${colors.text};
+    color: ${props => props.theme.colors.textPrimary};
 
     transition: 0.3s ease-in;
   }
