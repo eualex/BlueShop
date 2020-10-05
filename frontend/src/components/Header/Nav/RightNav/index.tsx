@@ -18,7 +18,6 @@ const RightNav: React.FC<Props> = ({ open }) => {
 
   const toggleTheme = useCallback(() => {
     setTheme(theme.title === 'light' ? dark : light);
-    // console.log(theme.title);
   }, [theme]);
 
 

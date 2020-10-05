@@ -90,8 +90,8 @@ export const Image = styled.img`
 
 export const ContainerMain = styled.div`
   font-family: 'Poppins';
-
   text-align: center;
+  color: ${props => props.theme.colors.textPrimary};
 
   hr {
     margin-bottom: 32px;

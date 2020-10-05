@@ -4,11 +4,11 @@ export default {
   colors: {
     primary: '#3670ff',
     
-    background: '#444',
-    backgroundSecondary: '#eee',
+    background: '#181a1b',
+    backgroundSecondary: '#363a3d',
 
-    textPrimary: '#333',
-    textSecondary: '#565656',
+    textPrimary: '#e8e6e3',
+    textSecondary: '#7e7e7e',
     textTerceary: '#fff',
     textQuartenary: '#7e7e7e',
   }

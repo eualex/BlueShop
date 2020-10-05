@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import Switch from 'react-switch';
+
 interface Props {
   open: boolean;
 }
@@ -99,10 +101,15 @@ export const ContainerNav = styled.div<Props>`
 
     span {
       margin-right: 13px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
       a {
         font-size: 3rem;
         color: ${props => props.theme.colors.textTerceary};
+
+        margin-bottom: 13px;
 
         &:hover {
           transition: none;
@@ -113,3 +120,6 @@ export const ContainerNav = styled.div<Props>`
   }
 `;
 
+export const StyledSwitch = styled(Switch)`
+  background: red;
+`;

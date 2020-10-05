@@ -1,33 +1,13 @@
 import React, { createContext, useState, useContext } from 'react';
 
-import { ThemeProvider as ThemeProviderStyled } from 'styled-components';
+import { ThemeProvider as ThemeProviderStyled, DefaultTheme } from 'styled-components';
 
-// import dark from '../styles/themes/dark';
 import light from '../styles/themes/light';
-
-interface ThemeType {
-  title: string;
-
-  colors: {
-    primary: string;
-    background: string;
-    backgroundSecondary: string;
-
-    textPrimary: string;
-    textSecondary: string;
-    textTerceary: string;
-    textQuartenary: string;
-  }
-}
-
-// interface PropsThemesType {
-//   light: ThemeType;
-//   dark: ThemeType;
-// }
+import usePersistedState from '../utils/usePersistedState';
 
 interface PropsThemeContext {
-  theme: ThemeType;
-  setTheme: React.Dispatch<React.SetStateAction<ThemeType>>;  
+  theme: DefaultTheme;
+  setTheme: React.Dispatch<React.SetStateAction<DefaultTheme>>;  
 }
 
 const DEFAULT_VALUE = {
@@ -38,7 +18,7 @@ const DEFAULT_VALUE = {
 const ThemeContext = createContext<PropsThemeContext>( DEFAULT_VALUE );
 
 const ThemeProvider: React.FC = ({ children }) => {
-  const [theme, setTheme] = useState(DEFAULT_VALUE.theme);
+  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', DEFAULT_VALUE.theme);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
