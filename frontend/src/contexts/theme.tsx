@@ -1,5 +1,7 @@
 import React, { createContext, useState, useContext } from 'react';
 
+import { ThemeProvider as ThemeProviderStyled } from 'styled-components';
+
 // import dark from '../styles/themes/dark';
 import light from '../styles/themes/light';
 
@@ -40,7 +42,9 @@ const ThemeProvider: React.FC = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
+      <ThemeProviderStyled theme={theme}>
+        {children}
+      </ThemeProviderStyled>
     </ThemeContext.Provider>
   );
 }

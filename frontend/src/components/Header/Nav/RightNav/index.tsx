@@ -13,14 +13,14 @@ interface Props {
 }
 
 const RightNav: React.FC<Props> = ({ open }) => {
-  const { colors } = useContext(ThemeContext);
+  const { colors, title } = useContext(ThemeContext);
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = useCallback(() => {
     setTheme(theme.title === 'light' ? dark : light);
-  }, []);
+    // console.log(theme.title);
+  }, [theme]);
 
-  console.log(theme.title);
 
   return (
     <ContainerNav open={open}>
@@ -43,7 +43,7 @@ const RightNav: React.FC<Props> = ({ open }) => {
         <a href="#">Login</a>
         <Switch 
           onChange={toggleTheme}
-          checked={true}
+          checked={title === 'dark'}
           checkedIcon={false}
           uncheckedIcon={false}
 
