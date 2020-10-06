@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 
 import { ContainerBurguer } from './styles';
 
+import { useOpen } from '../../../../contexts/burguerOpen';
+
 import RightNav from '../RightNav';
 
 const Burguer: React.FC = () => {
-  const [open, setOpen] = useState(false);
+  const { open, setOpen } = useOpen();
   
   return (
     <>

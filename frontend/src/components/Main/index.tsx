@@ -8,6 +8,8 @@ import ImgProduct3 from "../../img/product3.png";
 
 import BigProduct from "../BigProduct";
 
+import { useOpen } from '../../contexts/burguerOpen';
+
 import {
   Container,
   ContainerHeader,
@@ -21,8 +23,10 @@ import Footer from "../Footer";
 
 const Main: React.FC = () => {
 
+  const { open } = useOpen();
+
   return (
-    <Container>
+    <Container open={open}>
       <ContainerHeader>
         <div>
           <div>

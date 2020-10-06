@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+interface Props {
+  open: boolean;
+}
+
+export const Container = styled.div<Props>`
   /* width: 980px;
   margin: auto; */
 `;
