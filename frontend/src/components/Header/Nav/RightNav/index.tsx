@@ -4,7 +4,8 @@ import { ThemeContext } from 'styled-components';
 import Switch from 'react-switch';
 import { ContainerNav } from "./styles";
 
-import { useTheme } from '../../../../contexts/theme'
+import { useOpen } from '../../../../contexts/burguerOpen';
+import { useTheme } from '../../../../contexts/theme';
 import dark from "../../../../styles/themes/dark";
 import light from "../../../../styles/themes/light";
  
@@ -46,11 +47,11 @@ const RightNav: React.FC<Props> = ({ open }) => {
           checkedIcon={false}
           uncheckedIcon={false}
 
-          height={10}
-          width={40}
+          height={open ? 20 : 10}
+          width={open ? 50 : 40}
 
-          handleDiameter={20}
-          offHandleColor={colors.textPrimary}
+          handleDiameter={open ? 40 : 20}
+          offHandleColor={open ? colors.textTerceary : colors.primary}
           onHandleColor={colors.textPrimary}
 
           onColor={colors.primary}

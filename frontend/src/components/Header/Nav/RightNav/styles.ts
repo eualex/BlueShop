@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import Switch from 'react-switch';
+import Switch from "react-switch";
 
 interface Props {
   open: boolean;
@@ -13,14 +13,14 @@ export const ContainerNav = styled.div<Props>`
 
   width: 100%;
   height: 100%;
-  
+
   ul {
     width: 45%;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
     list-style: none;
 
     > li a {
@@ -28,10 +28,10 @@ export const ContainerNav = styled.div<Props>`
       font-weight: bold;
       font-size: 1.2rem;
 
-      color: ${props => props.theme.colors.textSecondary};
+      color: ${(props) => props.theme.colors.textSecondary};
 
       &:hover {
-        color: ${props => props.theme.colors.primary};
+        color: ${(props) => props.theme.colors.primary};
         transition: 0.3s ease-in;
       }
     }
@@ -48,10 +48,10 @@ export const ContainerNav = styled.div<Props>`
     a {
       text-decoration: none;
       font-weight: bold;
-      color: ${props => props.theme.colors.primary};
+      color: ${(props) => props.theme.colors.primary};
 
       &:hover {
-        color: ${props => props.theme.colors.textPrimary};
+        color: ${(props) => props.theme.colors.textPrimary};
         transition: 0.3s ease-in;
       }
     }
@@ -59,17 +59,20 @@ export const ContainerNav = styled.div<Props>`
 
   @media (max-width: 768px) {
     overflow: hidden;
-    background-color: ${props => props.theme.colors.primary};
+    background-color: ${(props) =>
+      props.theme.title === "dark"
+        ? props.theme.colors.backgroundTerceary
+        : props.theme.colors.primary};
 
     position: fixed;
-    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
+    transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
     top: 0;
     right: 0;
     height: 100vh;
     width: 300px;
 
     transition: transform 0.3s ease-in-out;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -90,10 +93,13 @@ export const ContainerNav = styled.div<Props>`
 
       li a {
         font-size: 3rem;
-        color: ${props => props.theme.colors.textTerceary};
+        color: ${(props) =>
+          props.theme.title === "dark"
+            ? props.theme.colors.primary
+            : props.theme.colors.textTerceary};
 
         &:hover {
-          color: ${props => props.theme.colors.textPrimary};
+          color: ${(props) => props.theme.colors.textPrimary};
           transition: none;
         }
       }
@@ -107,13 +113,16 @@ export const ContainerNav = styled.div<Props>`
 
       a {
         font-size: 3rem;
-        color: ${props => props.theme.colors.textTerceary};
+        color: ${(props) =>
+          props.theme.title === "dark"
+            ? props.theme.colors.primary
+            : props.theme.colors.textTerceary};
 
         margin-bottom: 13px;
 
         &:hover {
           transition: none;
-          color: ${props => props.theme.colors.textPrimary};
+          color: ${(props) => props.theme.colors.textPrimary};
         }
       }
     }

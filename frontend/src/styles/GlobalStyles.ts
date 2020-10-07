@@ -1,10 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-interface Props {
-  open: boolean;
-}
-
-export const GlobalStyle = createGlobalStyle<Props>`
+export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
@@ -12,8 +8,6 @@ export const GlobalStyle = createGlobalStyle<Props>`
     box-sizing: border-box;
   }
   body {
-    overflow: ${open => !open ? 'auto' : 'hidden'};
-
     overflow-X: hidden;
     width: 100vw;
     height: 100vh;
