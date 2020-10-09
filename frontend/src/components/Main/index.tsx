@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 import Ilustration from "../../img/onlineShopping.svg";
-
 import ImgProduct1 from "../../img/product1.png";
 import ImgProduct2 from "../../img/product2.png";
 import ImgProduct3 from "../../img/product3.png";
@@ -22,14 +24,17 @@ import Button from "../Button";
 import Footer from "../Footer";
 
 const Main: React.FC = () => {
-
   const { open } = useOpen();
+
+  useEffect(() => {
+    Aos.init({ duration: 1800 });
+  }, [])
 
   return (
     <Container open={open}>
       <ContainerHeader>
         <div>
-          <div>
+          <div data-aos="fade-right">
             <h1>Fabric of the city</h1>
             <h2>Sale up to 50% off</h2>
 
@@ -38,7 +43,7 @@ const Main: React.FC = () => {
             </span>
           </div>
 
-          <Image src={Ilustration} />
+          <Image data-aos="fade-left" src={Ilustration} />
         </div>
       </ContainerHeader>
 
