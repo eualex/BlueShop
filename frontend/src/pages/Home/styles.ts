@@ -5,7 +5,9 @@ interface Props {
 }
 
 export const Container = styled.div<Props>`
+  width: 100vw;
   height: 100vh;
-  overflow: ${({ open }) => open ? 'hidden' : 'auto'};
-  overflow-x: hidden;
+
+  /* overflow: ${({ open }) => open ? 'hidden' : 'auto'};
+  overflow-x: hidden; */
 `;

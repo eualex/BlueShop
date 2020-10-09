@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    overflow-X: hidden;
+    overflow-x: hidden;
     width: 100vw;
     height: 100vh;
     font-family: 'Poppins', sans-serif;
@@ -30,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
       width: 100vw;
 
-      overflow-X: hidden;
+      overflow-x: hidden;
     }
   }
 
@@ -40,7 +40,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-      overflow-X: hidden;
+      overflow-x: hidden;
 
       width: 100vw;
       height: 100vh;

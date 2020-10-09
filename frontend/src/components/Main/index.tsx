@@ -21,7 +21,6 @@ import {
 } from "./styles";
 
 import Button from "../Button";
-import Footer from "../Footer";
 
 const Main: React.FC = () => {
   const { open } = useOpen();
@@ -46,12 +45,18 @@ const Main: React.FC = () => {
           <Image data-aos="fade-left" src={Ilustration} />
         </div>
       </ContainerHeader>
-
+      
       <ContainerMain>
+        
         <hr />
         <h1>New Products</h1>
 
         <div className="container-product">
+          <div data-aos="fade-right">
+            <h1>
+              Teste
+            </h1>
+          </div>
           <BigProduct
             image={ImgProduct2}
             title="The Best is back"
@@ -59,6 +64,7 @@ const Main: React.FC = () => {
           />
         </div>
 
+       
         <ContainerNike>
           <hr />
           <h1>Nike Session</h1>
@@ -83,8 +89,6 @@ const Main: React.FC = () => {
           </div>
         </ContainerNike>
       </ContainerMain>
-
-      <Footer />
     </Container>
   );
 };

@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import Main from '../../components/Main';
 
 import { useOpen } from '../../contexts/burguerOpen';
+import Footer from '../../components/Footer';
 
 const Home: React.FC = () => {
   const { open } = useOpen();
@@ -13,7 +14,12 @@ const Home: React.FC = () => {
   return (
     <Container open={open}>
       <Header />
-      <Main />
+      { open === false && 
+        <>
+          <Main />
+          <Footer />
+        </>
+      }
     </Container>
   );
 };

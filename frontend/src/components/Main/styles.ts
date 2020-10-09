@@ -5,8 +5,14 @@ interface Props {
 }
 
 export const Container = styled.div<Props>`
+
+  overflow: ${({ open }) => open ? 'hidden' : 'auto'};
+  overflow-x: hidden;
+
+  width: 100vw;
+
   .container-product {
-    width: 100%;
+    width: 90%;
     max-width: 980px;
     margin: auto;
   }

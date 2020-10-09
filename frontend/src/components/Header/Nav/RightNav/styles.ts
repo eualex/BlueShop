@@ -14,7 +14,7 @@ export const ContainerNav = styled.div<Props>`
   z-index: 15;
 
   width: 100%;
-  height: 100%;
+  height: ${({ open }) => open ? '110vh' : '100%'};
 
   ul {
     width: 45%;
@@ -61,6 +61,7 @@ export const ContainerNav = styled.div<Props>`
 
   @media (max-width: 768px) {
     overflow: hidden;
+
     background-color: ${(props) =>
       props.theme.title === "dark"
         ? props.theme.colors.backgroundTerceary
@@ -70,8 +71,6 @@ export const ContainerNav = styled.div<Props>`
     transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
     top: 0;
     right: 0;
-    height: 100vh;
-    width: 100vw;
 
     transition: transform 0.3s ease-in-out;
 
@@ -129,6 +128,3 @@ export const ContainerNav = styled.div<Props>`
   }
 `;
 
-export const StyledSwitch = styled(Switch)`
-  background: red;
-`;
