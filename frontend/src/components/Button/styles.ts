@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+export const ContainerButton = styled.button`
   display: inline-block;
   font-size: 16px;
   font-weight: 600;

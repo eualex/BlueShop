@@ -18,7 +18,7 @@ import {
   ContainerNike,
 } from "./styles";
 
-import { Button } from "../../styles/components";
+import Button from "../Button";
 import Footer from "../Footer";
 
 const Main: React.FC = () => {

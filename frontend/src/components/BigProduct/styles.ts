@@ -45,8 +45,8 @@ export const Container = styled.div<ProductContainerProps>`
 
   @media (max-width: 768px) {
     img {
-      width: 310px;
-      height: 290px;
+      width: 280px;
+      height: 260px;
     }
   }
 
@@ -57,8 +57,8 @@ export const Container = styled.div<ProductContainerProps>`
     justify-content: center;
 
     img {
-      width: 310px;
-      height: 290px;
+      width: 270px;
+      height: 250px;
     }
     
     div {

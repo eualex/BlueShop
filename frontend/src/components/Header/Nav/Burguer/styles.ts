@@ -11,7 +11,7 @@ export const ContainerBurguer = styled.div<Props>`
   display: none;
 
   div {
-    z-index: 2;
+    z-index: 20;
 
     background-color: ${ ({ open, theme }) => open ? theme.colors.textTerceary : theme.colors.primary };
 

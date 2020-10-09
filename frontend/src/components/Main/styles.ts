@@ -51,7 +51,7 @@ export const ContainerHeader = styled.div`
 
         h1 { 
           text-align: center;
-          font-size: 4.3rem;
+          font-size: 4rem;
         }
       }
     }
@@ -79,17 +79,11 @@ export const ContainerHeader = styled.div`
       }
     }
   }
-
-  @media (max-width: 700px) {
-    
-  }
 `;
 
 export const Image = styled.img`
   width: 100%;
   max-width: 400px;
-
-  
 `;
 
 export const ContainerMain = styled.div`

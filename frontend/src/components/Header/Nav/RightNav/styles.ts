@@ -11,6 +11,8 @@ export const ContainerNav = styled.div<Props>`
   align-items: center;
   justify-content: space-between;
 
+  z-index: 15;
+
   width: 100%;
   height: 100%;
 
@@ -69,7 +71,7 @@ export const ContainerNav = styled.div<Props>`
     top: 0;
     right: 0;
     height: 100vh;
-    width: 300px;
+    width: 100vw;
 
     transition: transform 0.3s ease-in-out;
 
@@ -83,8 +85,6 @@ export const ContainerNav = styled.div<Props>`
       justify-content: space-between;
 
       width: 100%;
-
-      margin-right: 13px;
 
       li {
         height: 60%;
@@ -106,10 +106,10 @@ export const ContainerNav = styled.div<Props>`
     }
 
     span {
-      margin-right: 13px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
+      height: 15%;
 
       a {
         font-size: 3rem;
