@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     overflow-X: hidden;
     width: 100vw;
     height: 100vh;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
 

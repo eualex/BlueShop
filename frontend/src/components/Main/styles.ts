@@ -5,8 +5,11 @@ interface Props {
 }
 
 export const Container = styled.div<Props>`
-  /* width: 980px;
-  margin: auto; */
+  .container-product {
+    width: 100%;
+    max-width: 980px;
+    margin: auto;
+  }
 `;
 
 export const ContainerHeader = styled.div`
@@ -79,10 +82,6 @@ export const ContainerHeader = styled.div`
       }
     }
   }
-
-  /* @media (max-width: 768px) {
-    height: 90vh;
-  } */
 `;
 
 export const Image = styled.img`
@@ -91,7 +90,6 @@ export const Image = styled.img`
 `;
 
 export const ContainerMain = styled.div`
-  font-family: 'Poppins';
   text-align: center;
   color: ${props => props.theme.colors.textPrimary};
 

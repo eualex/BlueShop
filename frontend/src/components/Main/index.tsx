@@ -46,7 +46,7 @@ const Main: React.FC = () => {
         <hr />
         <h1>New Products</h1>
 
-        <div>
+        <div className="container-product">
           <BigProduct
             image={ImgProduct2}
             title="The Best is back"
@@ -58,18 +58,24 @@ const Main: React.FC = () => {
           <hr />
           <h1>Nike Session</h1>
 
-          <BigProduct
-            image={ImgProduct1}
-            title="The most beautiful of Nike"
-            price={199.99}
-            reverse="row-reverse"
-          />
+          <div className="container-product">
+            <BigProduct
+              image={ImgProduct1}
+              title="The most beautiful of Nike"
+              price={199.99}
+              reverse="row-reverse"
+            />
+          </div>
+
           <hr />
-          <BigProduct
-            image={ImgProduct3}
-            title="The second most beautiful of Nike"
-            price={149.99}
-          />
+
+          <div className="container-product">
+            <BigProduct
+              image={ImgProduct3}
+              title="The second most beautiful of Nike"
+              price={149.99}
+            />
+          </div>
         </ContainerNike>
       </ContainerMain>
 

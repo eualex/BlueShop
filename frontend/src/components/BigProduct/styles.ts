@@ -5,16 +5,12 @@ interface ProductContainerProps {
 }
 
 export const Container = styled.div<ProductContainerProps>`
+  height: 100vh;
+  
   display: flex;
+  flex-direction: ${props => props.reverse};
   justify-content: center;
   align-items: center;
-  flex-direction: ${props => props.reverse};
-  
-  width: 100%;
-  max-width: 980px;
-  margin: auto;
-
-  height: 100vh;
 
   img {
     width: 400px;
