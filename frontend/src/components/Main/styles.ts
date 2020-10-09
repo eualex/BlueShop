@@ -79,6 +79,10 @@ export const ContainerHeader = styled.div`
       }
     }
   }
+
+  /* @media (max-width: 768px) {
+    height: 90vh;
+  } */
 `;
 
 export const Image = styled.img`
