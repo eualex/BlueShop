@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 import Button from "../Button";
 
@@ -17,10 +20,18 @@ const BigProduct: React.FC<BigProductProps> = ({
   price,
   reverse = "row",
 }) => {
+  useEffect(() => {
+    Aos.init({ duration: 1800 });
+  }, []);
+
   return (
     <Container reverse={reverse}>
-      <img src={image} alt="produto" />
-      <div>
+      <img
+        src={image}
+        alt="produto"
+        data-aos={reverse === "row-reverse" ? "fade-left" : "fade-right"}
+      />
+      <div data-aos={reverse === "row-reverse" ? "fade-right" : "fade-left"}>
         <h1>{title}</h1>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting

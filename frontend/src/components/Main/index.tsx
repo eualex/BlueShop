@@ -52,11 +52,6 @@ const Main: React.FC = () => {
         <h1>New Products</h1>
 
         <div className="container-product">
-          <div data-aos="fade-right">
-            <h1>
-              Teste
-            </h1>
-          </div>
           <BigProduct
             image={ImgProduct2}
             title="The Best is back"

@@ -85,6 +85,8 @@ export const ContainerNav = styled.div<Props>`
 
       width: 100%;
 
+      height: 10%;
+
       li {
         height: 60%;
         margin-bottom: 35px;
@@ -108,7 +110,7 @@ export const ContainerNav = styled.div<Props>`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 15%;
+      height: 10%;
 
       a {
         font-size: 3rem;
