@@ -5,7 +5,7 @@ import { ThemeContext } from 'styled-components';
 import Switch from 'react-switch';
 import { ContainerNav } from "./styles";
 
-import { useOpen } from '../../../../contexts/burguerOpen';
+// import { useOpen } from '../../../../contexts/burguerOpen';
 import { useTheme } from '../../../../contexts/theme';
 import dark from "../../../../styles/themes/dark";
 import light from "../../../../styles/themes/light";
