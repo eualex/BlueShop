@@ -13,10 +13,18 @@ export const Container = styled.div`
     transform: translateY(-123%);
     font-size: 1.4rem;
     color: ${({ theme }) => theme.colors.primary };
+
+    @media (max-width: 768px) {
+      margin-top: 20px;
+    }
   }
 
   input:focus + label::after, input:valid + label::after {
     transform: translateX(0%);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
   }
 `;
 
@@ -27,9 +35,11 @@ export const CustomInput = styled.input`
   padding-top: 20px;
   border: none;
 
-  color: #595f6e;
+  color: ${({ theme }) => theme.colors.textLogin};
 
   outline: none;
+
+  background-color: transparent;
 `;
 
 export const CustomLabel = styled.label`
@@ -42,7 +52,7 @@ export const CustomLabel = styled.label`
 
   pointer-events: none;
 
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.textPrimary };
 
   &::after {
     content: "";
@@ -67,5 +77,7 @@ export const CustomSpan = styled.span`
   left: 0px;
 
   transition: all 0.3s ease;
+
+  color: ${({ theme }) => theme.colors.textPrimary };
 `;
 

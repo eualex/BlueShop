@@ -9,9 +9,15 @@ export const ContainerForm = styled.form`
   /* width: 80%; */
 
   margin: 20px 0px;
+
+  @media (max-width: 768px) {
+    background-color: ${({ theme }) => theme.colors.background};
+  }
 `;
 
 export const ConteinerTermOfService = styled.div`
+  color: ${({ theme }) => theme.colors.textPrimary};
+
   label {
     margin-left: 5px;
   }

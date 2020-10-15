@@ -11,10 +11,11 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  overflow: hidden;
 `;
 
 export const Wrapper = styled.div`
-  position: relative;
 
   background: #fff;
   -webkit-box-shadow: -1px 6px 33px -6px rgba(0, 0, 0, 0.15);
@@ -22,7 +23,6 @@ export const Wrapper = styled.div`
   box-shadow: -1px 6px 33px -6px rgba(0, 0, 0, 0.15);
 
   height: 100%;
-  max-height: 480px;
 
 
   width: 100%;
@@ -32,6 +32,22 @@ export const Wrapper = styled.div`
 
   display: flex;
   align-items: center;
+
+  @media (min-width: 768px) {
+    max-height: 480px;
+  }
+
+  @media (max-width: 768px) {
+    background-color: ${({ theme }) => theme.colors.background};
+
+    display: flex;
+    flex-direction: column;
+    
+    box-shadow: none;
+
+    width: 100vw;
+    height: 100vh;
+  }
 `;
 
 export const ContainerLeft = styled.div`
@@ -49,6 +65,11 @@ export const ContainerLeft = styled.div`
   h1 {
     color: ${({ theme }) => theme.colors.textPrimary};
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 60%;
+  }
 `;
 
 export const ContainerRight = styled.div`
@@ -61,6 +82,13 @@ export const ContainerRight = styled.div`
   justify-content: center;
 
   padding: 0px 80px 0px 40px;
+
+  @media (max-width: 768px) {
+    padding: 0px 30px;
+
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const ContainerForm = styled.form`
@@ -74,7 +102,7 @@ export const ContainerForm = styled.form`
 `;
 
 export const ContainerStateSing = styled.div<Props>`
-  color: #444;
+  color: ${({ theme }) => theme.colors.textPrimary};
 
   span:hover {
     cursor: pointer;
@@ -97,6 +125,15 @@ export const ContainerStateSing = styled.div<Props>`
         ? ({ theme }) => theme.colors.textQuartenary
         : ({ theme }) => theme.colors.primary};
     font-size: ${(props) => (props.stateSing ? "2rem" : "2.6rem")};
+  }
+
+  @media (max-width: 768px) {
+    text-align: center;
+    font-size: 1.9rem;
+
+    span {
+      font-size: 4rem;
+    }
   }
 `;
 
