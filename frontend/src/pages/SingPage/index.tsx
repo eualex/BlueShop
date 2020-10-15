@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 import {
   Container,
@@ -18,11 +21,16 @@ import SingIn from "./SingIn";
 const Login: React.FC = () => {
   const [singIn, setSingIn] = useState(true);
 
+  useEffect(() => {
+    Aos.init({ duration: 1800 });
+  }, []);
+
   return (
     <Container>
       <Wrapper>
         <ContainerLeft>
-          {singIn ? <Image src={SingInImg} alt="Login" /> : <Image src={SingUpImg} alt="register" />}
+          {singIn && <Image data-aos="fade-up" src={SingInImg} alt="Login" />}
+          {!singIn && <Image data-aos="fade-up" src={SingUpImg} alt="register" />}
 
           <h1>Join Blue</h1>
         </ContainerLeft>
@@ -42,7 +50,8 @@ const Login: React.FC = () => {
             </span>
           </ContainerStateSing>
 
-          {singIn ? <SingIn /> : <SingUp />}
+          { singIn && <SingIn data-aos="fade-up"/> } 
+          { !singIn && <SingUp /> }
         </ContainerRight>
       </Wrapper>
     </Container>

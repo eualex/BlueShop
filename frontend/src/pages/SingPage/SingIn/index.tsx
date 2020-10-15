@@ -3,7 +3,7 @@ import React from "react";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 
-import { ContainerForm, ConteinerTermOfService } from "./styles";
+import { ContainerForm } from "./styles";
 
 const SingIn: React.FC = () => {
   return (

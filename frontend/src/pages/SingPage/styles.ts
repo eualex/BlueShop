@@ -24,7 +24,6 @@ export const Wrapper = styled.div`
   height: 100%;
   max-height: 480px;
 
-  border-radius: 10px;
 
   width: 100%;
   max-width: 980px;
@@ -33,12 +32,9 @@ export const Wrapper = styled.div`
 
   display: flex;
   align-items: center;
-  /* justify-content: space-around; */
 `;
 
 export const ContainerLeft = styled.div`
-  /* background-color: ${({ theme }) => theme.colors.primary}; */
-
   width: 50%;
   height: 100%;
 
@@ -56,7 +52,6 @@ export const ContainerLeft = styled.div`
 `;
 
 export const ContainerRight = styled.div`
-  /* background: red; */
   height: 100%;
   width: 50%;
 
@@ -74,7 +69,6 @@ export const ContainerForm = styled.form`
   justify-content: space-around;
 
   height: 40%;
-  /* width: 80%; */
 
   margin: 20px 0px;
 `;
