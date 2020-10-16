@@ -6,9 +6,9 @@ import Switch from 'react-switch';
 import { ContainerNav } from "./styles";
 
 // import { useOpen } from '../../../../contexts/burguerOpen';
-import { useTheme } from '../../../../contexts/theme';
-import dark from "../../../../styles/themes/dark";
-import light from "../../../../styles/themes/light";
+import { useTheme } from '../../../../../contexts/theme';
+import dark from "../../../../../styles/themes/dark";
+import light from "../../../../../styles/themes/light";
 
 import { Link } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ const RightNav: React.FC<Props> = ({ open }) => {
 
   const toggleTheme = useCallback(() => {
     setTheme(theme.title === 'light' ? dark : light);
-  }, [theme]);
+  }, [theme, setTheme]);
 
 
   return (

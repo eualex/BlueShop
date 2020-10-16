@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import Switch from "react-switch";
-
 interface Props {
   open: boolean;
 }

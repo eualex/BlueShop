@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-import Button from "../Button";
+import Button from "../../../components/Button";
 
 import { Container } from "./styles";
 

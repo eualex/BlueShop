@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
-import Login from './pages/SingPage';
+import Login from './pages/SingInSingUp';
 import Main from './pages/Main';
 
 const Routes: React.FC = () => {

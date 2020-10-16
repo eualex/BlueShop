@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { ContainerBurguer } from './styles';
 
-import { useOpen } from '../../../../contexts/burguerOpen';
+import { useOpen } from '../../../../../contexts/burguerOpen';
 
 import RightNav from '../RightNav';
 

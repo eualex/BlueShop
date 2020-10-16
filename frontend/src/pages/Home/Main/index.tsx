@@ -3,14 +3,14 @@ import React, { useEffect } from "react";
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
-import Ilustration from "../../img/onlineShopping.svg";
-import ImgProduct1 from "../../img/product1.png";
-import ImgProduct2 from "../../img/product2.png";
-import ImgProduct3 from "../../img/product3.png";
+import Ilustration from "../../../img/onlineShopping.svg";
+import ImgProduct1 from "../../../img/product1.png";
+import ImgProduct2 from "../../../img/product2.png";
+import ImgProduct3 from "../../../img/product3.png";
 
 import BigProduct from "../BigProduct";
 
-import { useOpen } from '../../contexts/burguerOpen';
+import { useOpen } from '../../../contexts/burguerOpen';
 
 import {
   Container,
@@ -20,7 +20,7 @@ import {
   ContainerNike,
 } from "./styles";
 
-import Button from "../Button";
+import Button from "../../../components/Button";
 
 const Main: React.FC = () => {
   const { open } = useOpen();
