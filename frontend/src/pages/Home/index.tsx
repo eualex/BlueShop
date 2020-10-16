@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container } from './styles';
 
-import Header from './Header';
+import Header from '../../components/Header';
 import Main from './Main';
 
 import { useOpen } from '../../contexts/burguerOpen';

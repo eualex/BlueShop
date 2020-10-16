@@ -1,11 +1,29 @@
 import React from 'react';
+import Header from '../../components/Header';
+import Aside from './Aside';
 
-import { Container } from './styles';
+import { Container, Input, ContainerInput, Wrapper, ContainerProducts } from './styles';
 
 const Main: React.FC = () => {
   return (
     <Container>
-      <h1>Main</h1>
+      <Header />
+
+      <ContainerInput>
+        <Input type="text" name="search" placeholder="Search..." />
+      </ContainerInput>
+
+      {/* <hr/> */}
+
+      <Wrapper>
+        <Aside />
+
+        <ContainerProducts>
+
+        </ContainerProducts>
+
+      </Wrapper>
+      
     </Container>
   );
 };
