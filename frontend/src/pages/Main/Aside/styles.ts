@@ -14,6 +14,10 @@ export const ContainerSort = styled.div`
   flex-direction: column;
 
   border: 1px solid  rgba(89, 95, 110, 0.2);
+
+  h5 {
+    color: ${({ theme }) => theme.colors.textPrimary};
+  }
 `;
 
 export const ContainerFilter = styled.div`
@@ -26,6 +30,10 @@ export const ContainerFilter = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
+  h5 {
+    color: ${({ theme }) => theme.colors.textPrimary};
+  }
 `;
 
 export const Select = styled.select`

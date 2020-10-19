@@ -35,8 +35,11 @@ export const Input = styled.input`
   &::placeholder {
     font-size: 5rem;
     text-align: center;
+    font-weight: bold;
+
     opacity: 0.4;
-    bottom: 0;
+
+    /* bottom: 0; */
   }
 `;
 
@@ -46,6 +49,20 @@ export const Wrapper = styled.div`
   width: 100%;
   max-width: 980px;
   margin: auto;
+
+  display: flex;
+  
 `;
 
-export const ContainerProducts = styled.div``;
+export const ContainerProducts = styled.div`
+  width: 80%;
+  
+
+  /* background: red;  */
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  /* grid */
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 0px;
+`;
