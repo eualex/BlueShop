@@ -14,13 +14,16 @@ interface Props {
 const Product: React.FC<Props> = ({ img, title, description, price }) => {
   return (
     <Container>
-      <ButtonAddToCart to="">
-        <FiPlus />
-      </ButtonAddToCart>
 
       <Header>
-        <h4>{title}</h4>
-        <p>{description}</p>
+        <span>
+          <h4>{title}</h4>
+          <p>{description}</p>
+        </span>
+
+        <ButtonAddToCart to="">
+          <FiPlus color="#fff"/>
+        </ButtonAddToCart>
       </Header>
 
       <Image src={img} alt='product'/>

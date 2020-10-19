@@ -15,6 +15,8 @@ export default {
     // Login
     backgroundLogin: "#fff",
     textLogin: "#595f6e",
-    inputLogin: "#000"
+    inputLogin: "#000",
+
+    backgroundMain: "#B8CDFA"
   },
 };

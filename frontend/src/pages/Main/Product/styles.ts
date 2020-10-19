@@ -4,17 +4,33 @@ import styled from 'styled-components';
 export const Container = styled.div`
   padding: 20px;
 
-  /* height: 90%; */
-  /* width: 28%; */
-
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 
-  border: 1px solid  rgba(89, 95, 110, 0.2);
+  border: 1px solid  rgba(89, 95, 110, 0.1);
+
+  transition: all 0.5s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.backgroundMain};
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      z-index: 10;
+    }
+
+    img {
+      transform: rotate(10deg) scale(1.6);
+    }
+  }
 `;
 
 export const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
 
   h4 {
     color: ${({ theme }) => theme.colors.textPrimary};
@@ -31,6 +47,10 @@ export const Image = styled.img`
   width: 180px;
 
   padding: 40px 0px;
+
+  transition: all 0.5s ease;
+
+  z-index: 5;
 `;
 
 export const Footer = styled.footer`
@@ -57,11 +77,9 @@ export const ButtonAddToCart = styled(Link)`
   width: 40px;
   height: 40px;
 
-  border-radius: 20px;
+  border-radius: 15px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: ${({ theme }) => theme.colors.primary};
 
   display: none;
 

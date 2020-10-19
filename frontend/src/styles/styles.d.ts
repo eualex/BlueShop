@@ -19,6 +19,9 @@ declare module 'styled-components' {
       backgroundLogin: string;
       textLogin: string;
       inputLogin: string;
+
+      //main
+      backgroundMain: string; 
     };
   }
 }

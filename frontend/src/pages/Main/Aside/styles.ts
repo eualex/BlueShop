@@ -21,7 +21,7 @@ export const ContainerSort = styled.div`
 `;
 
 export const ContainerFilter = styled.div`
-  background: #B8CDFA ;
+  background: ${({ theme }) => theme.colors.backgroundMain};
 
   height: 73%;
 
@@ -37,11 +37,6 @@ export const ContainerFilter = styled.div`
 `;
 
 export const Select = styled.select`
-  /* -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none; */
- 
   background: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.textLogin};
 
@@ -50,7 +45,5 @@ export const Select = styled.select`
 
   border: none;
   border-radius: 3px;
-  
-  /* opacity: 0.7; */
 `;
 
