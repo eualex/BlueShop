@@ -83,4 +83,10 @@ export const ButtonAddToCart = styled(Link)`
 
   display: none;
 
+  transition: all 0.3s ease; 
+
+  &:hover {
+    background-color: #5486F2;
+  }
+
 `;

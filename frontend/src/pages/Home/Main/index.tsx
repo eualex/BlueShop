@@ -3,12 +3,15 @@ import React, { useEffect } from "react";
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
+import { Link } from "react-router-dom";
+
+import BigProduct from "../BigProduct";
+import Button from "../../../components/Button";
+
 import Ilustration from "../../../img/onlineShopping.svg";
 import ImgProduct1 from "../../../img/product1.png";
 import ImgProduct2 from "../../../img/product2.png";
 import ImgProduct3 from "../../../img/product3.png";
-
-import BigProduct from "../BigProduct";
 
 import { useOpen } from '../../../contexts/burguerOpen';
 
@@ -19,8 +22,6 @@ import {
   ContainerMain,
   ContainerNike,
 } from "./styles";
-
-import Button from "../../../components/Button";
 
 const Main: React.FC = () => {
   const { open } = useOpen();
@@ -38,7 +39,7 @@ const Main: React.FC = () => {
             <h2>Sale up to 50% off</h2>
 
             <span>
-              <Button>Shop</Button>
+              <Button><Link to="login">Shop</Link></Button>
             </span>
           </div>
 

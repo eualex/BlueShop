@@ -41,8 +41,8 @@ const Login: React.FC = () => {
               onClick={() => setSingIn(true)}
             >
               Sing In
-            </span>{" "}
-            or{" "}
+            </span>{"  "}
+            or{"  "}
             <span
               onClick={() => setSingIn(false)}
             >
@@ -50,7 +50,7 @@ const Login: React.FC = () => {
             </span>
           </ContainerStateSing>
 
-          { singIn && <SingIn data-aos="fade-up"/> } 
+          { singIn && <SingIn /> } 
           { !singIn && <SingUp /> }
         </ContainerRight>
       </Wrapper>

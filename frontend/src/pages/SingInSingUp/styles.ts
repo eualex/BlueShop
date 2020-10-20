@@ -17,7 +17,7 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
 
-  background: #fff;
+  background: ${({ theme }) => theme.colors.backgroundTerceary};
   -webkit-box-shadow: -1px 6px 33px -6px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: -1px 6px 33px -6px rgba(0, 0, 0, 0.15);
   box-shadow: -1px 6px 33px -6px rgba(0, 0, 0, 0.15);

@@ -5,7 +5,17 @@ import Input from "../../../components/Input";
 
 import { ContainerForm, ConteinerTermOfService } from "./styles";
 
+import { useHistory } from 'react-router-dom';
+
 const SingUp: React.FC = () => {
+  const history = useHistory();
+
+  const handleLogin = () => {
+    history.push("/main");
+
+    console.log('hello')
+  }
+
   return (
     <>
       <ContainerForm>
@@ -21,7 +31,7 @@ const SingUp: React.FC = () => {
         </label>
       </ConteinerTermOfService>
 
-      <Button>Sing Up</Button>
+      <Button onClick={() => console.log('aaa')}>Sing Up</Button>
     </>
   );
 };

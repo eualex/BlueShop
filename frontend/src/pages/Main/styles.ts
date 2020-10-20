@@ -10,6 +10,7 @@ export const Container = styled.div`
 `;
 
 export const ContainerInput = styled.div`
+
   height: 20%;
   width: 100%;
   max-width: 980px;
@@ -26,20 +27,20 @@ export const Input = styled.input`
   font-family: 'Poppins', sans-serif;
   font-size: 2rem;
   color: ${({ theme }) => theme.colors.textPrimary};
+  line-height: 220px !important;
 
   width: 50%;
   height: 70%;
 
   border: none;
-
+  
   &::placeholder {
+
     font-size: 5rem;
     text-align: center;
     font-weight: bold;
 
     opacity: 0.4;
-
-    /* bottom: 0; */
   }
 `;
 

@@ -6,7 +6,7 @@ import Header from '../../components/Header';
 import Main from './Main';
 
 import { useOpen } from '../../contexts/burguerOpen';
-import Footer from './Footer';
+import Footer from '../../components/Footer';
 
 const Home: React.FC = () => {
   const { open } = useOpen();
@@ -14,7 +14,7 @@ const Home: React.FC = () => {
   return (
     <Container open={open}>
       <Header />
-      { open === false && 
+      { !open && 
         <>
           <Main />
           <Footer />
