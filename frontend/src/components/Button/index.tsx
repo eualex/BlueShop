@@ -1,17 +1,19 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { ContainerButton } from './styles';
+import { ContainerButton } from "./styles";
 
-interface ButtonComponentProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactChild;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+
+/**
+ * Button.
+ *
+ * @param {ButtonProps} props button's props
+ * @returns {React.ReactElement<ButtonProps>} Button.
+ */
+const Button: React.FC<ButtonProps> = ({ children, ...rest  }: ButtonProps): React.ReactElement<ButtonProps> => {
+  // const {  } = props;
+
+  return <ContainerButton {...rest}>{children}</ContainerButton>;
 };
-
-const Button = ({ onClick, children, ...otherProps }: ButtonComponentProps) => {
-
-  return (
-    <ContainerButton onClick={onClick} {...otherProps}>{children}</ContainerButton>
-  );
-}
 
 export default Button;

@@ -18,14 +18,14 @@ export const ContainerButton = styled.button`
     color: ${(props) => props.theme.colors.textPrimary};
     border: 1px solid ${(props) => props.theme.colors.textPrimary};
     transition: 0.3s ease-in;
+
+    a {
+      color: ${(props) => props.theme.colors.textPrimary};
+    }
   }
 
   a {
     text-decoration: none;
     color: ${(props) => props.theme.colors.textTerceary};
-
-    &:hover {
-      color: ${(props) => props.theme.colors.textPrimary};
-    }
   }
 `;

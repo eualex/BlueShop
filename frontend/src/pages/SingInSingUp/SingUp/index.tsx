@@ -11,9 +11,9 @@ const SingUp: React.FC = () => {
   const history = useHistory();
 
   const handleLogin = () => {
-    history.push("/main");
-
     console.log('hello')
+    
+    history.push("/main");
   }
 
   return (
@@ -31,7 +31,7 @@ const SingUp: React.FC = () => {
         </label>
       </ConteinerTermOfService>
 
-      <Button onClick={() => console.log('aaa')}>Sing Up</Button>
+      <Button onClick={handleLogin}>Sing Up</Button>
     </>
   );
 };
