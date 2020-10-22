@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container, Header, Image, Footer, ButtonAddToCart } from './styles';
 
-import { FiPlus } from "react-icons/fi";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 interface Props {
   img: string;
@@ -22,7 +22,7 @@ const Product: React.FC<Props> = ({ img, title, description, price }) => {
         </span>
 
         <ButtonAddToCart to="">
-          <FiPlus color="#fff"/>
+          <AiOutlineShoppingCart color="#fff"/>
         </ButtonAddToCart>
       </Header>
 

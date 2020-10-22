@@ -2,6 +2,12 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  /* max-width: 300px;
+  width: 100%;
+
+  max-height: 240px;
+  height: 100%; */
+  
   padding: 20px;
 
   display: flex;
@@ -11,6 +17,8 @@ export const Container = styled.div`
   border: 1px solid  rgba(89, 95, 110, 0.1);
 
   transition: all 0.5s ease;
+
+  margin: 40px 0;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.backgroundMain};

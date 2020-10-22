@@ -52,13 +52,18 @@ export const Wrapper = styled.div`
   margin: auto;
 
   display: flex;
+
+  @media(max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
   
 `;
 
 export const ContainerProducts = styled.div`
   width: 80%;
   
-
+  margin-left: 30px;
   /* background: red;  */
   
   display: grid;
@@ -66,4 +71,9 @@ export const ContainerProducts = styled.div`
   /* grid */
   grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 0px;
+
+  @media(max-width: 768px) {
+    width: 80%;
+    margin: 0 auto;
+  }
 `;
