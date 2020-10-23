@@ -18,6 +18,6 @@ export default {
     textLogin: "#595f6e",
     inputLogin: "#000",
 
-    backgroundMain: "#1C2321"
+    backgroundMain: "#181d20"
   },
 };
