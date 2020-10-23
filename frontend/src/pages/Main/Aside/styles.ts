@@ -1,13 +1,30 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
+interface Props {
+  Hidden: boolean;
+}
 
 export const Container = styled.div`
   height: 73vh;
   width: 25%;
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     width: 100%;
+    
     padding-bottom: 30px;
+    
+    .show {
+      /* height: 100%; */
+      /* max-height: 100%; */
+
+      span span svg {
+        margin-bottom: 4px;
+
+        transform: rotate(90deg);
+      }
+    }
   }
+
 `;
 
 export const ContainerFilter = styled.div`
@@ -19,7 +36,7 @@ export const ContainerFilter = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
 
-  span {
+  span span {
     h4 {
       color: ${({ theme }) => theme.colors.textPrimary};
       margin-bottom: 10px;
@@ -32,14 +49,18 @@ export const ContainerFilter = styled.div`
     }
   }
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     width: 80%;
     margin: 0 auto;
-    /* height: 10%; */
-    /* margin-bottom: 10px; */
+    /* height: 100%; */
+
     padding: 0;
 
-    span {
+    /* max-height: 100px;
+
+    transition: max-height 3s ease; */
+
+    span span {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -47,7 +68,7 @@ export const ContainerFilter = styled.div`
       width: 70%;
       margin: 0 auto;
 
-      padding: 15px 0 ;
+      padding: 15px 0;
 
       h4 {
         margin: 0;
@@ -60,24 +81,6 @@ export const ContainerFilter = styled.div`
         opacity: 0.7;
       }
     }
-    
-    &:hover {
-      div {
-        display: block;
-
-        width: 80%;
-        margin: 0 auto;
-
-        padding: 0 20px 20px 0;
-      }
-
-      span svg {
-        margin-bottom: 4px;
-        
-        transform: rotate(90deg);
-      }
-    }
-
   }
 `;
 
@@ -86,23 +89,66 @@ export const Select = styled.select`
   color: ${({ theme }) => theme.colors.textLogin};
 
   width: 100%;
-  padding: 10px 11px;
+  height: 40px;
+  padding: 0px 20px;
 
   border: none;
   border-radius: 3px;
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<Props>`
   width: 100%;
 
   select {
     margin: 10px;
   }
 
-  @media(max-width: 768px) {
-    display: none;
+  @media (max-width: 768px) {
+    /* background: ${({ theme }) => theme.colors.backgroundMain}; */
 
-    transition: opacity 1s ease;
+    max-height: ${props => props.Hidden ? "0px" : "500px"};
+
+    width: 80%;
+    margin: 0 auto;
+
+    transition: max-height 1.8s ease;
+
+    div {
+      padding: 0 20px 20px 0;
+      /* display: ${props => props.Hidden ? "none" : "block"}; */
+      visibility: ${props => props.Hidden ? "hidden" : "visible"};
+
+      overflow: hidden;
+
+      transition: visibility 0.3s linear;
+
+
+      select:nth-child(1) {
+        transform: ${props => props.Hidden ? "translateX(-50%)" : "translateX(0)"};
+        transition: transform 0.5s linear;
+
+        z-index: 1;
+      }
+
+      select:nth-child(2) {
+        transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
+        transition: transform 0.8s linear;
+      }
+
+      select:nth-child(3) {
+        transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
+        transition: transform 1.1s linear;
+      }
+
+      select:nth-child(4) {
+        transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
+        transition: transform 1.4s linear;
+      }
+
+      select:nth-child(5) {
+        transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
+        transition: transform 1.7s linear;
+      }
+    }
   }
 `;
-
