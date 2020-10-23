@@ -12,7 +12,7 @@ import {
 } from "./styles";
 
 import ImgProductAdidas from "../../img/svgtenis/adidas.svg";
-import ChooseCategory from "./ChooseCategory";
+// import ChooseCategory from "./ChooseCategory";
 
 const Main: React.FC = () => {
   return (

@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from "react";
-
-import Aos from 'aos';
-import 'aos/dist/aos.css';
+import React, { useState } from "react";
 
 import { Container, ContainerFilter, Select, Wrapper } from "./styles";
 
@@ -14,7 +11,6 @@ const Aside: React.FC = () => {
 
   const [hidden, setHidden] = useState(true);
   const [classContainerFilter, setClassContainerFilter] = useState("");
-  const [fade, setFade] = useState("");
 
   const toggleFilter = () => {
     
@@ -24,10 +20,6 @@ const Aside: React.FC = () => {
     
     setHidden(!hidden);
   }
-
-  useEffect(() => {
-    Aos.init({ duration: 1800 });
-  }, [])
 
   return (
     <Container>
