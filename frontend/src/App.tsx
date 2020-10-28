@@ -5,7 +5,7 @@ import BurguerOpenProvider from './contexts/burguerOpen';
 
 import { GlobalStyle } from './styles/GlobalStyles';
 
-import Home from './pages/Home';
+import Routes from './routes';
 
 const App: React.FC = () => {
 
@@ -14,7 +14,7 @@ const App: React.FC = () => {
       <ThemeProvider>
         <BurguerOpenProvider>
           <GlobalStyle />
-          <Home />
+          <Routes />
         </BurguerOpenProvider>
       </ThemeProvider>
     </>

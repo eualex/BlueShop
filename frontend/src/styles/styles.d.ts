@@ -14,6 +14,14 @@ declare module 'styled-components' {
       textSecondary: string;
       textTerceary: string;
       textQuartenary: string;
+      
+      //login
+      backgroundLogin: string;
+      textLogin: string;
+      inputLogin: string;
+
+      //main
+      backgroundMain: string; 
     };
   }
 }

@@ -3,14 +3,17 @@ import React, { useEffect } from "react";
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
-import Ilustration from "../../img/onlineShopping.svg";
-import ImgProduct1 from "../../img/product1.png";
-import ImgProduct2 from "../../img/product2.png";
-import ImgProduct3 from "../../img/product3.png";
+import { Link } from "react-router-dom";
 
 import BigProduct from "../BigProduct";
+import Button from "../../../components/Button";
 
-import { useOpen } from '../../contexts/burguerOpen';
+import Ilustration from "../../../img/onlineShopping.svg";
+import ImgProduct1 from "../../../img/product1.png";
+import ImgProduct2 from "../../../img/product2.png";
+import ImgProduct3 from "../../../img/product3.png";
+
+import { useOpen } from '../../../contexts/burguerOpen';
 
 import {
   Container,
@@ -19,9 +22,6 @@ import {
   ContainerMain,
   ContainerNike,
 } from "./styles";
-
-import Button from "../Button";
-import Footer from "../Footer";
 
 const Main: React.FC = () => {
   const { open } = useOpen();
@@ -39,15 +39,16 @@ const Main: React.FC = () => {
             <h2>Sale up to 50% off</h2>
 
             <span>
-              <Button>Shop</Button>
+              <Button><Link to="login">Shop</Link></Button>
             </span>
           </div>
 
           <Image data-aos="fade-left" src={Ilustration} />
         </div>
       </ContainerHeader>
-
+      
       <ContainerMain>
+        
         <hr />
         <h1>New Products</h1>
 
@@ -59,6 +60,7 @@ const Main: React.FC = () => {
           />
         </div>
 
+       
         <ContainerNike>
           <hr />
           <h1>Nike Session</h1>
@@ -83,8 +85,6 @@ const Main: React.FC = () => {
           </div>
         </ContainerNike>
       </ContainerMain>
-
-      <Footer />
     </Container>
   );
 };

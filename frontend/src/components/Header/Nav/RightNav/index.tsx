@@ -1,14 +1,17 @@
 import React, { useCallback, useContext } from "react";
+
 import { ThemeContext } from 'styled-components';
 
 import Switch from 'react-switch';
 import { ContainerNav } from "./styles";
 
-import { useOpen } from '../../../../contexts/burguerOpen';
+// import { useOpen } from '../../../../contexts/burguerOpen';
 import { useTheme } from '../../../../contexts/theme';
 import dark from "../../../../styles/themes/dark";
 import light from "../../../../styles/themes/light";
- 
+
+import { Link } from 'react-router-dom';
+
 interface Props {
   open: boolean;
 }
@@ -19,28 +22,28 @@ const RightNav: React.FC<Props> = ({ open }) => {
 
   const toggleTheme = useCallback(() => {
     setTheme(theme.title === 'light' ? dark : light);
-  }, [theme]);
+  }, [theme, setTheme]);
 
 
   return (
     <ContainerNav open={open}>
       <ul>
         <li>
-          <a href="#">Woman</a>
+          <Link to="">Woman</Link>
         </li>
         <li>
-          <a href="#">Man</a>
+          <Link to="">Man</Link>
         </li>
         <li>
-          <a href="#">Delivery</a>
+          <Link to="">Delivery</Link>
         </li>
         <li>
-          <a href="#">Contact us</a>
+          <Link to="">Contact us</Link>
         </li>
       </ul>
 
       <span>
-        <a href="#">Login</a>
+        <Link to="/login">Login</Link>
         <Switch 
           onChange={toggleTheme}
           checked={title === 'dark'}

@@ -1,0 +1,24 @@
+import styled from 'styled-components';
+
+export const ContainerForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  height: 40%;
+  /* width: 80%; */
+
+  margin: 20px 0px;
+
+  @media (max-width: 768px) {
+    background-color: ${({ theme }) => theme.colors.background};
+  }
+`;
+
+export const ConteinerTermOfService = styled.div`
+  color: ${({ theme }) => theme.colors.textPrimary};
+
+  label {
+    margin-left: 5px;
+  }
+`;

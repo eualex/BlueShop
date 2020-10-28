@@ -3,13 +3,15 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 90%;
   margin: auto;
+  margin-bottom: 15px;
   max-width: 980px;
 
+  /* Altura do Header */
   height: 5vh;
 
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 
-  margin-top: 20px;
+  padding-top: 20px;
 `;
