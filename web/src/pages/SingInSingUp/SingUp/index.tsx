@@ -20,8 +20,6 @@ const SingUp: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const [error, setError] = useState("");
-
   const handleLogin = async () => {
     await api.post('/users', {
       name,
@@ -32,7 +30,6 @@ const SingUp: React.FC = () => {
     .catch(err => {
       setOpenMessage(true);
       setMessageError(err.response.data.message);
-      console.log(err.response.data);
     })
 
     // history.push("/main");
@@ -50,7 +47,7 @@ const SingUp: React.FC = () => {
         />
         <Input
           name="email"
-          type="email"
+          type="text"
           labelName="E-mail"
           onChange={(e) => setEmail(e.target.value)}
         />

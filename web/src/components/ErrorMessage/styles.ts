@@ -7,6 +7,9 @@ interface Props {
 export const Container = styled.div<Props>`
   visibility: ${(props) => props.open ? 'visible' : 'hidden'};
 
+  transform: ${(props) => props.open ? 'translateX(0)' : 'translateX(100%)'};
+  transition: transform 0.3s linear;
+
   background: #FF312E;
   color: #fff;
   
@@ -39,11 +42,11 @@ export const Container = styled.div<Props>`
   }
 
   @media(max-width: 768px) {
-    width: 86%;
     margin: 30px;
 
     position: fixed;
-
+    right: auto;
+    
     span svg {
       width: 25px;
       height: 25px;

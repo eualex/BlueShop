@@ -28,7 +28,6 @@ const SingIn: React.FC = () => {
       .catch((err) => {
         setOpenMessage(true);
         setMessageError(err.response.data.message);
-        console.log(err.response);
       });
 
     // history.push("/main");
@@ -39,7 +38,7 @@ const SingIn: React.FC = () => {
       <ContainerForm>
         <Input
           name="email"
-          type="email"
+          type="text"
           labelName="E-mail"
           onChange={(e) => setEmail(e.target.value)}
         />

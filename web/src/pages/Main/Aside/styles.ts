@@ -10,12 +10,9 @@ export const Container = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    
     padding-bottom: 30px;
     
     .show {
-      /* height: 100%; */
-      /* max-height: 100%; */
 
       span span svg {
         margin-bottom: 4px;
@@ -52,13 +49,7 @@ export const ContainerFilter = styled.div`
   @media (max-width: 768px) {
     width: 80%;
     margin: 0 auto;
-    /* height: 100%; */
-
     padding: 0;
-
-    /* max-height: 100px;
-
-    transition: max-height 3s ease; */
 
     span span {
       display: flex;
@@ -104,8 +95,6 @@ export const Wrapper = styled.div<Props>`
   }
 
   @media (max-width: 768px) {
-    /* background: ${({ theme }) => theme.colors.backgroundMain}; */
-
     max-height: ${props => props.Hidden ? "0px" : "500px"};
 
     width: 80%;
@@ -115,7 +104,6 @@ export const Wrapper = styled.div<Props>`
 
     div {
       padding: 0 20px 20px 0;
-      /* display: ${props => props.Hidden ? "none" : "block"}; */
       visibility: ${props => props.Hidden ? "hidden" : "visible"};
 
       overflow: hidden;
@@ -125,29 +113,29 @@ export const Wrapper = styled.div<Props>`
 
       select:nth-child(1) {
         transform: ${props => props.Hidden ? "translateX(-50%)" : "translateX(0)"};
-        transition: transform 0.5s linear;
+        transition: transform 0.3s linear;
 
         z-index: 1;
       }
 
       select:nth-child(2) {
         transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
-        transition: transform 0.8s linear;
+        transition: transform 0.3s linear;
       }
 
       select:nth-child(3) {
         transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
-        transition: transform 1.1s linear;
+        transition: transform 0.3s linear;
       }
 
       select:nth-child(4) {
         transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
-        transition: transform 1.4s linear;
+        transition: transform 0.7s linear;
       }
 
       select:nth-child(5) {
         transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
-        transition: transform 1.7s linear;
+        transition: transform 0.9s linear;
       }
     }
   }
