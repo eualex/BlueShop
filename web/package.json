@@ -17,6 +17,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",
+    "react-loader-spinner": "^3.1.14",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-switch": "^5.0.1",
@@ -47,6 +48,7 @@
   "devDependencies": {
     "@types/aos": "^3.0.3",
     "@types/axios": "^0.14.0",
+    "@types/react-loader-spinner": "^3.1.1",
     "@types/react-router-dom": "^5.1.6"
   }
 }

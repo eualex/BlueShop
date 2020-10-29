@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from "react";
+import React from "react";
 
 import { Container, CustomInput, CustomLabel, CustomSpan } from "./styles";
 
@@ -8,9 +8,9 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>{
   labelName: string;
 }
 
-const Input: React.FC<InputProps> = ({ name, type, labelName, onChange }: InputProps) => {
+const Input: React.FC<InputProps> = ({ className, name, type, labelName, onChange }: InputProps) => {
   return (
-    <Container>
+    <Container className={className}>
       <CustomInput onChange={onChange} type={type} name={name} autoComplete="off" required />
       <CustomLabel htmlFor={name}>
         <CustomSpan>{labelName}</CustomSpan>

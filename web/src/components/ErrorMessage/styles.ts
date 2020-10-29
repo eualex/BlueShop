@@ -15,7 +15,7 @@ export const Container = styled.div<Props>`
   
   width: 300px;
 
-  padding: 30px 10px;
+  padding: 30px ;
   margin: 30px;
 
   position: absolute;

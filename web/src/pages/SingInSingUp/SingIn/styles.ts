@@ -1,20 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Container = styled.div`
-  width: 100%;
-  height: 60%;
+interface Props {
+  error?: boolean;
+}
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  button {
-    width: 100%;
-  }
-`;
-
-export const ContainerForm = styled.form`
+export const ContainerForm = styled.form<Props>`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -23,4 +13,24 @@ export const ContainerForm = styled.form`
   width: 100%;
 
   margin: 20px 0px;
+
+  .email {
+    input:focus + label span,
+    input:valid + label span {
+      color: ${(props) =>
+        props.error ? ({ theme }) => theme.colors.primary : "#FF312E"};
+    }
+
+    label::after {
+      border-bottom: 3px solid
+        ${(props) =>
+          props.error ? ({ theme }) => theme.colors.primary : "#ff312e"};
+    }
+  }
+`;
+
+export const ContainerSpiner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
