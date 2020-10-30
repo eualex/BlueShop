@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-interface Props {
-  error?: boolean;
-}
-
-export const ContainerForm = styled.form<Props>`
+export const ContainerForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -16,20 +12,6 @@ export const ContainerForm = styled.form<Props>`
 
   @media (max-width: 768px) {
     background-color: ${({ theme }) => theme.colors.background};
-  }
-
-  .email {
-    input:focus + label span,
-    input:valid + label span {
-      color: ${(props) =>
-        props.error ? ({ theme }) => theme.colors.primary : "#FF312E"};
-    }
-
-    label::after {
-      border-bottom: 3px solid
-        ${(props) =>
-          props.error ? ({ theme }) => theme.colors.primary : "#ff312e"};
-    }
   }
 `;
 
