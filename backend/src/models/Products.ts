@@ -22,6 +22,6 @@ export default class Products {
   @OneToMany(() => Image, image => image.product, {
     cascade: ['insert', 'update']
   })
-  @JoinColumn({ name: '_id' })
+  @JoinColumn({ name: 'product_id' })
   images: Image[];
 }
