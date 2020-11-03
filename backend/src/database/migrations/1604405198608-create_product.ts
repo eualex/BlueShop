@@ -24,7 +24,15 @@ export class produtos1604062795418 implements MigrationInterface {
             type: 'integer',
           },
           {
-            name: 'company',
+            name: 'genre',
+            type: 'varchar',
+          },
+          {
+            name: 'category',
+            type: 'varchar',
+          },
+          {
+            name: 'brand',
             type: 'varchar',
           },
           {
