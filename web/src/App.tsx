@@ -1,27 +1,31 @@
-import React from 'react';
+import React from "react";
+import { Provider } from "react-redux";
 
-import ThemeProvider from './contexts/theme';
-import BurguerOpenProvider from './contexts/open';
-import MessageErrorProvider from './contexts/messageError';
+import store from './store';
 
-import { GlobalStyle } from './styles/GlobalStyles';
+import ThemeProvider from "./contexts/theme";
+import BurguerOpenProvider from "./contexts/open";
+import MessageErrorProvider from "./contexts/messageError";
 
-import Routes from './routes';
+import { GlobalStyle } from "./styles/GlobalStyles";
+
+import Routes from "./routes";
 
 const App: React.FC = () => {
-
   return (
     <>
-      <ThemeProvider>
-        <BurguerOpenProvider>
-          <MessageErrorProvider>
-            <GlobalStyle />
-            <Routes />
-          </MessageErrorProvider>
-        </BurguerOpenProvider>
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider>
+          <BurguerOpenProvider>
+            <MessageErrorProvider>
+              <GlobalStyle />
+              <Routes />
+            </MessageErrorProvider>
+          </BurguerOpenProvider>
+        </ThemeProvider>
+      </Provider>
     </>
   );
-}
+};
 
 export default App;

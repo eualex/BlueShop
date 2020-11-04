@@ -1,4 +1,5 @@
 import React, { useCallback, useContext } from "react";
+import { IoMdAdd } from 'react-icons/io'
 
 import { ThemeContext } from 'styled-components';
 
@@ -28,10 +29,10 @@ const RightNav: React.FC<Props> = ({ open }) => {
     <ContainerNav open={open}>
       <ul>
         <li>
-          <Link to="">Woman</Link>
+          <Link to="">Eletronics</Link>
         </li>
         <li>
-          <Link to="">Man</Link>
+          <Link to="">Sneakers</Link>
         </li>
         <li>
           <Link to="">Delivery</Link>
@@ -42,7 +43,10 @@ const RightNav: React.FC<Props> = ({ open }) => {
       </ul>
 
       <span>
-        <Link to="/login">Login</Link>
+        <Link className="button-add-product" to="register-product">
+          <IoMdAdd color={colors.textPrimary}/>
+        </Link> 
+        <Link className="login" to="/login">Login</Link>
         <Switch 
           onChange={toggleTheme}
           checked={title === 'dark'}

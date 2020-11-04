@@ -39,13 +39,13 @@ export const ContainerNav = styled.div<Props>`
 
   /* Login */
   span {
-    width: 130px;
+    width: 200px;
 
     display: flex;
     align-items: center;
     justify-content: space-around;
 
-    a {
+    .login {
       text-decoration: none;
       font-weight: bold;
       color: ${(props) => props.theme.colors.primary};
@@ -55,9 +55,21 @@ export const ContainerNav = styled.div<Props>`
         transition: 0.3s ease-in;
       }
     }
+
+    .button-add-product {
+      background: ${(props) => props.theme.colors.primary};
+
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 968px) {
     overflow: hidden;
 
     background-color: ${(props) =>

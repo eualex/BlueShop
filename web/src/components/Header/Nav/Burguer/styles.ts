@@ -36,7 +36,7 @@ export const ContainerBurguer = styled.div<Props>`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 968px) {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
