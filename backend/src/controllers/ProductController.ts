@@ -11,7 +11,7 @@ export default {
 
     const token = req.userId;
     if (!token) {
-      res.status(401).json({ message: 'Authentication required :(' })
+      return res.status(401).json({ message: 'Authentication required :(' })
     }
 
     const products = await productRepository.find({
@@ -24,9 +24,7 @@ export default {
     const productRepository = getRepository(Products);
     
     const token = req.userId;
-    if (!token) {
-      res.status(401).json({ message: 'Authentication required :(' })
-    }
+    console.log(token)
 
     const { category } = req.params;
     
@@ -36,7 +34,7 @@ export default {
     });
 
     if(products.length === 0) {
-      res.status(404).json({ message: 'Products not found :(' });
+      return res.status(404).json({ message: 'Products not found :(' });
     }
 
     return res.json(product_view.renderMany(products));

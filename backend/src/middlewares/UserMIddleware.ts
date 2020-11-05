@@ -11,7 +11,7 @@ export default ( req: Request, res: Response, next: NextFunction ) => {
   const { authorization } = req.headers;
   
   if (!authorization) {
-    res.sendStatus(401);
+    res.status(401).json({ message: 'Authentication required :(' });
   }
 
   const token = authorization?.replace('Bearer', '').trim();
