@@ -1,4 +1,5 @@
 import React from "react";
+
 import Header from "../../components/Header";
 import Product from "./Product";
 import Aside from "./Aside";
@@ -12,7 +13,6 @@ import {
 } from "./styles";
 
 import ImgProductAdidas from "../../img/svgtenis/adidas.svg";
-// import ChooseCategory from "./ChooseCategory";
 
 const Main: React.FC = () => {
   return (

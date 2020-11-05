@@ -23,6 +23,7 @@
     "react-scripts": "3.4.3",
     "react-switch": "^5.0.1",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "reduxsauce": "^1.2.0",
     "styled-components": "^5.2.0",
     "typescript": "~3.7.2"
@@ -54,6 +55,7 @@
     "@types/react-loader-spinner": "^3.1.1",
     "@types/react-redux": "^7.1.11",
     "@types/react-router-dom": "^5.1.6",
-    "@types/redux": "^3.6.0"
+    "@types/redux": "^3.6.0",
+    "@types/redux-thunk": "^2.1.0"
   }
 }

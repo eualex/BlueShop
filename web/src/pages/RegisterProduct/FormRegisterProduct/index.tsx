@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { RiArrowDownSLine } from 'react-icons/ri';
 // import { useHistory } from "react-router-dom";
 
@@ -28,50 +28,62 @@ const FormRegisterProduct: React.FC = () => {
   const { setOpenMessage } = useOpen();
   const { setMessageError } = useMessage();
 
-  const [image, setImage] = useState<string[  ]>([]);
   const [loader, setLoader] = useState(false);
 
-  const [name, setName] = useState("")
-  const [price, setPrice] = useState<number>()
-  const [genre, setGenre] = useState("")
-  const [category, setCategory] = useState("")
-  const [brand, setBrand] = useState("")
-  const [designer, setDesigner] = useState("")
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [genre, setGenre] = useState("");
+  const [category, setCategory] = useState("");
+  const [brand, setBrand] = useState("");
+  const [design, setDesign] = useState("");
+  const [images, setImages] = useState<File[]>([]);
+  const [previewImages, setPreviewImages] = useState<string[]>([]);
+  
+  const handleImage = (event: ChangeEvent<HTMLInputElement>) => {
+    if(!event.target.files) return
+
+    const selectedImages = Array.from(event.target.files);
+
+    setImages(selectedImages);
+
+    const selectedImagesPreview = selectedImages.map(image => {
+      return URL.createObjectURL(image);
+    })
+
+    setPreviewImages(selectedImagesPreview);
+  }
+
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+
+    const data = new FormData();
+    
+    data.append('name', name);
+    data.append('price', price);
+    data.append('genre', genre);
+    data.append('category', category);
+    data.append('brand', brand);
+    data.append('design', design);
+    images.forEach(image => {
+      data.append('images', image);
+    })
+
+    setLoader(true);
+    try {
+      await api.post('/product', data);
+      setLoader(false);
+
+      alert('deu certo');
+    } catch (err) {
+      setOpenMessage(true);
+      setMessageError(err.response.data.message);
+    }
+  }
  
-  //registrando usuario na base, caso não haja erro de validação
-  // const handleRegister = async () => {
-  //   setLoader(true);
-
-  //   await api
-  //     .post("/users", { name, email, password })
-  //     .then((res) => console.log('produto cadastrado'))
-  //     .catch((err) => {
-  //       setLoader(false);
-  //       setOpenMessage(true);
-  //       setMessageError(err.response.data.message);
-  //     });
-  // };
-
-  // //checando se os dados do input são vazios ou válidos
-  // const checkData = () => {
-  //   if (name === "" || password === "" || email === "") {
-  //     setOpenMessage(true);
-  //     setMessageError("It seems that you stopped writing some data 🤔");
-  //   }
-
-  //   // else if (checkEmailIsValid(email)) {
-  //   //   handleRegister();
-  //   // } else {
-  //   //   setOpenMessage(true);
-  //   //   setMessageError("Invalid Email 😥");
-  //   // }
-  // };
-
-  console.log(image);
 
   return (
     <>
-      <ContainerForm>
+      <ContainerForm onSubmit={handleSubmit}>
         <Input
           name="name"
           type="text"
@@ -82,7 +94,7 @@ const FormRegisterProduct: React.FC = () => {
           name="price"
           type="text"
           labelName="Price"
-          onChange={(e) => setPrice(Number(e.target.value))} 
+          onChange={(e) => setPrice(e.target.value)} 
         />
         <Input
           name="brand"
@@ -94,30 +106,29 @@ const FormRegisterProduct: React.FC = () => {
           name="designer"
           type="text"
           labelName="Designer(optional)"
-          onChange={(e) => setDesigner(e.target.value)}
+          onChange={(e) => setDesign(e.target.value)}
         />
         <ContainerSelect>
           <RiArrowDownSLine color={colors.textPrimary} size={20}/>
-          <Select defaultValue="Genre">
+          <Select defaultValue="Genre" onChange={e => setGenre(e.target.value)}>
             <option disabled hidden defaultValue="Genre">Genre</option>
-            <option value="Women">Women</option>
-            <option value="Men">Men</option>
+            <option value="women">Women</option>
+            <option value="men">Men</option>
           </Select>
         </ContainerSelect>
+
         <ContainerSelect>
         <RiArrowDownSLine color={colors.textPrimary} size={20}/>
-          <Select defaultValue="Category">
+          <Select defaultValue="Category" onChange={e => setCategory(e.target.value)}>
           <option disabled hidden defaultValue="Category">Category</option>
-            <option value="Women">Eletronics</option>
-            <option value="Men">Sneakers</option>
+            <option value="eletronics">Eletronics</option>
+            <option value="sneakers">Sneakers</option>
           </Select>
         </ContainerSelect>
 
         <ContainerInputFile>
-          <label>Product Image</label>
-          <InputFile type="file" name="arquivo" onChange={e => setImage([...image, e.target.value])}/>
-          <p>{image[0]} {image.length > 1 && "..."}</p>
-          <p>{image.length > 1 && "..."}</p>
+          <label htmlFor="arquivo" >Product Image</label>
+          <InputFile type="file" multiple name="arquivo" onChange={handleImage}/>
         </ContainerInputFile>
         
         {loader ? (
@@ -125,7 +136,7 @@ const FormRegisterProduct: React.FC = () => {
             <Loader width={40} height={40} />
           </ContainerLoader>
         ) : (
-          <Button>Register</Button>
+          <Button type="submit">Register</Button>
         )}
       </ContainerForm>
 

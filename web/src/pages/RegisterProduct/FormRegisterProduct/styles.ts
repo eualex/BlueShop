@@ -68,40 +68,34 @@ export const Select = styled.select`
   }
 `;
 
-export const InputFile = styled.input``;
-
 export const ContainerInputFile = styled.div`
   position: relative;
   width: 100%;
   height: 10%;
-  
+
   p {
     color: ${({ theme }) => theme.colors.textPrimary};
     font-size: 1rem;
 
-    @media(max-width: 768px) {
+    @media (max-width: 768px) {
       margin-bottom: 20px;
       height: 20px;
       text-align: center;
     }
   }
 
-  input[type="file"] {
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-  }
   label {
     position: absolute;
 
     margin-top: 10px;
-    padding: 10px 10px;
+    padding: 10px;
     width: 100%;
-    height: 40px;
+    height: 100%;
 
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.textPrimary};
-
+    
+    line-height: -50px;
     text-transform: uppercase;
     text-align: center;
     cursor: pointer;
@@ -110,9 +104,15 @@ export const ContainerInputFile = styled.div`
 
     border-radius: 5px;
 
-    @media(max-width: 768px) {
+    @media (max-width: 768px) {
       background-color: ${({ theme }) => theme.colors.backgroundTerceary};
       height: 30px;
     }
   }
+`;
+
+export const InputFile = styled.input`
+  opacity: 0;
+  width: 100%;
+  height: 100%;
 `;
