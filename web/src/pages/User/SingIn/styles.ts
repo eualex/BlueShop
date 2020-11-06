@@ -8,7 +8,7 @@ export const ContainerForm = styled.form`
   height: 40%;
   width: 100%;
 
-  margin: 20px 0px;
+  margin-top: 20px;
 `;
 
 export const ContainerSpiner = styled.div`

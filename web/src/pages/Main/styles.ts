@@ -57,7 +57,6 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
   }
-  
 `;
 
 export const ContainerProducts = styled.div`

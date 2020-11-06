@@ -44,7 +44,7 @@ const SingUp: React.FC = () => {
 
   //checando se os dados do input são vazios ou válidos
   const checkData = () => {
-    if (name === "" || password === "" || email === "") {
+    if (!name || !password || !email) {
       setOpenMessage(true);
       setMessageError("It seems that you stopped writing some data 🤔");
     }
@@ -63,19 +63,19 @@ const SingUp: React.FC = () => {
         <Input
           name="name"
           type="text"
-          labelName="Name"
+          placeholder="Name"
           onChange={(e) => setName(e.target.value)}
         />
         <Input
           name="email"
           type="text"
-          labelName="E-mail"
+          placeholder="E-mail"
           onChange={(e) => setEmail(e.target.value)} 
         />
         <Input
           name="password"
           type="password"
-          labelName="Password"
+          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
       </ContainerForm>

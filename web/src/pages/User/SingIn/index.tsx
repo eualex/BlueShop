@@ -62,14 +62,14 @@ const SingIn: React.FC = () => {
         <Input
           name="email"
           type="text"
-          labelName="E-mail"
+          placeholder="E-mail"
           onChange={(e) => setEmail(e.target.value)}
           className="email"
         />
         <Input
           name="password"
           type="password"
-          labelName="Password"
+          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
       </ContainerForm>
