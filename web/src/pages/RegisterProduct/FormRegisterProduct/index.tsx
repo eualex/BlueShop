@@ -89,39 +89,41 @@ const FormRegisterProduct: React.FC = () => {
     <>
       <ContainerForm onSubmit={validateData}>
         <Input
+          labelValue="Name"
           name="name"
           type="text"
-          placeholder="Name"
+          // placeholder="Name"
           onChange={(e) => setName(e.target.value)}
         />
         <Input
           name="price"
           type="text"
-          placeholder="Price"
+          labelValue="Price"
           onChange={(e) => setPrice(e.target.value)}
         />
         <Input
           name="brand"
           type="text"
-          placeholder="Brand"
+          labelValue="Brand"
           onChange={(e) => setBrand(e.target.value)}
         />
         <Input
           name="designer"
           type="text"
-          placeholder="Designer(optional)"
+          labelValue="Designer(optional)"
           onChange={(e) => setDesign(e.target.value)}
         />
 
         <Select
           onChange={(e) => setGenre(e.target.value)}
-          titleValue="Genre"
+          title="Genre"
           options={["Women", "Man"]}
+          className="form-select"
         />
 
         <Select
           onChange={(e) => setCategory(e.target.value)}
-          titleValue="Category"
+          title="Category"
           options={["Eletronics", "Sneakers"]}
         />
 

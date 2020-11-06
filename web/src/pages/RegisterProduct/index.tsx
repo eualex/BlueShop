@@ -6,8 +6,8 @@ import 'aos/dist/aos.css';
 import {
   Container,
   Wrapper,
-  ContainerLeft,
-  ContainerRight,
+  ContainerTop,
+  ContainerBottom,
   Image,
 } from "./styles";
 
@@ -25,14 +25,14 @@ const RegisterProduct: React.FC = () => {
     <Container>
       <ErrorMessage />
       <Wrapper>
-        <ContainerLeft>
-          <Image data-aos="fade-up" src={SingInImg} alt="Register Product"/>
-          <h1>Register a Product</h1>
-        </ContainerLeft>
+        <ContainerTop>
+          <Image data-aos="fade-right" src={SingInImg} alt="Register Product"/>
+          <h1 data-aos="fade-left">Register a Product</h1>
+        </ContainerTop>
 
-        <ContainerRight>
+        <ContainerBottom>
           <FormRegisterProduct />
-        </ContainerRight>
+        </ContainerBottom>
       </Wrapper>
     </Container>
   );
