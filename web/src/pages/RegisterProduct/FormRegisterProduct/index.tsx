@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState, useContext } from "react";
-import { FiX, FiPlus } from 'react-icons/fi';
+import { FiX, FiPlus } from "react-icons/fi";
 // import { useHistory } from "react-router-dom";
 
 import { ThemeContext } from "styled-components";
@@ -21,6 +21,7 @@ import {
   ImagesContainer,
   ImageContainer,
 } from "./styles";
+import TextArea from "./TextArea";
 
 const FormRegisterProduct: React.FC = () => {
   const { colors } = useContext(ThemeContext);
@@ -33,6 +34,7 @@ const FormRegisterProduct: React.FC = () => {
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
   const [genre, setGenre] = useState("");
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
@@ -53,7 +55,7 @@ const FormRegisterProduct: React.FC = () => {
       return URL.createObjectURL(image);
     });
 
-    if(previewImages.length !== 0) {
+    if (previewImages.length !== 0) {
       setPreviewImages([...previewImages, ...selectedImagesPreview]);
     } else setPreviewImages(selectedImagesPreview);
   };
@@ -63,6 +65,7 @@ const FormRegisterProduct: React.FC = () => {
       !name ||
       !price ||
       !genre ||
+      !description ||
       !category ||
       !brand ||
       !design ||
@@ -80,6 +83,7 @@ const FormRegisterProduct: React.FC = () => {
 
     data.append("name", name);
     data.append("price", price);
+    data.append("description", description);
     data.append("genre", genre);
     data.append("category", category);
     data.append("brand", brand);
@@ -108,8 +112,8 @@ const FormRegisterProduct: React.FC = () => {
       images.splice(index, 1);
       previewImages.splice(index, 1);
 
-      setPreviewImages([ ...previewImages ]);
-      setImages([ ...images ]);
+      setPreviewImages([...previewImages]);
+      setImages([...images]);
     }
   };
 
@@ -123,18 +127,27 @@ const FormRegisterProduct: React.FC = () => {
           // placeholder="Name"
           onChange={(e) => setName(e.target.value)}
         />
+
         <Input
           name="price"
           type="text"
           labelValue="Price"
           onChange={(e) => setPrice(e.target.value)}
         />
+
+        <TextArea
+          name="Description"
+          value={description}
+          onChange={(e) => setDescription((e.target.value).trim())}
+        />
+
         <Input
           name="brand"
           type="text"
           labelValue="Brand"
           onChange={(e) => setBrand(e.target.value)}
         />
+
         <Input
           name="designer"
           type="text"
@@ -156,7 +169,9 @@ const FormRegisterProduct: React.FC = () => {
         />
 
         <ContainerInputFile>
-          <label htmlFor="images" className="input-file">Images:</label>
+          <label htmlFor="images" className="input-file">
+            Images:
+          </label>
           <ImagesContainer>
             {previewImages.map((image, index) => (
               <ImageContainer key={index}>
@@ -169,7 +184,7 @@ const FormRegisterProduct: React.FC = () => {
               </ImageContainer>
             ))}
             <label htmlFor="image[]" className="new-image">
-              <FiPlus size={24} color={colors.primary}/>
+              <FiPlus size={24} color={colors.primary} />
             </label>
           </ImagesContainer>
 

@@ -42,7 +42,7 @@ export const ContainerLoader = styled.div`
 export const ContainerSelect = styled.div`
   border: 2px solid ${({ theme }) => theme.colors.textLogin};
   border-radius: 10px;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,7 +83,7 @@ export const ContainerInputFile = styled.div`
   height: 120px;
 
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: space-around;
 
   .new-image {
@@ -101,7 +101,7 @@ export const ContainerInputFile = styled.div`
   }
 
   .input-file {
-    color: ${ ({ theme }) => theme.colors.textPrimary};
+    color: ${({ theme }) => theme.colors.textPrimary};
     margin-bottom: 15px;
 
     font-size: 2rem;
@@ -127,7 +127,6 @@ export const ImageContainer = styled.div`
     border-radius: 20px;
 
     object-fit: cover;
-
   }
 
   svg {
@@ -137,6 +136,28 @@ export const ImageContainer = styled.div`
 
     cursor: pointer;
   }
-
 `;
+export const ContainerTextArea = styled.div`
+  label {
+    color: ${({ theme }) => theme.colors.textPrimary};
+    font-size: 2rem;
+  }
 
+  textarea {
+    width: 100%;
+    background: ${({ theme }) => theme.colors.background};
+    border: 1px solid ${({ theme }) => theme.colors.textLogin};
+    border-radius: 20px;
+    outline: none;
+    color: ${({ theme }) => theme.colors.textPrimary};
+    font-size: 1.8rem;
+
+    min-height: 120px;
+    max-height: 240px;
+    resize: vertical;
+    padding: 16px;
+    line-height: 28px;
+
+    margin-top: 10px;
+  }
+`;
