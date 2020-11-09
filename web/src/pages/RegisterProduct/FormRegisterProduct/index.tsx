@@ -1,7 +1,8 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState, useContext } from "react";
+import { FiX, FiPlus } from 'react-icons/fi';
 // import { useHistory } from "react-router-dom";
 
-// import { ThemeContext } from "styled-components";
+import { ThemeContext } from "styled-components";
 
 import api from "../../../services/api";
 import { useOpen } from "../../../contexts/open";
@@ -17,10 +18,12 @@ import {
   ContainerLoader,
   InputFile,
   ContainerInputFile,
+  ImagesContainer,
+  ImageContainer,
 } from "./styles";
 
 const FormRegisterProduct: React.FC = () => {
-  // const { colors } = useContext(ThemeContext);
+  const { colors } = useContext(ThemeContext);
   // const history = useHistory();
 
   const { setOpenMessage } = useOpen();
@@ -52,11 +55,19 @@ const FormRegisterProduct: React.FC = () => {
   };
 
   const validateData = (event: FormEvent) => {
-    if(!name || !price || !genre || !category || !brand || !design || !images) {
+    if (
+      !name ||
+      !price ||
+      !genre ||
+      !category ||
+      !brand ||
+      !design ||
+      !images
+    ) {
       setOpenMessage(true);
       setMessageError("It seems that you stopped writing some data 🤔");
-    } else handleSubmit(event) 
-  }
+    } else handleSubmit(event);
+  };
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -82,6 +93,19 @@ const FormRegisterProduct: React.FC = () => {
     } catch (err) {
       setOpenMessage(true);
       setMessageError(err.response.data.message);
+    }
+  };
+
+  const handleDeleteImage = (index: number) => {
+    if (previewImages.length === 1) {
+      setPreviewImages([]);
+      setImages([]);
+    } else {
+      images.splice(index, 1);
+      previewImages.splice(index, 1);
+
+      setPreviewImages([ ...previewImages ]);
+      setImages([ ...images ]);
     }
   };
 
@@ -128,13 +152,24 @@ const FormRegisterProduct: React.FC = () => {
         />
 
         <ContainerInputFile>
-          <label htmlFor="arquivo">Product Image</label>
-          <InputFile
-            type="file"
-            multiple
-            name="arquivo"
-            onChange={handleImage}
-          />
+          <label htmlFor="images" className="input-file">Images:</label>
+          <ImagesContainer>
+            {previewImages.map((image, index) => (
+              <ImageContainer key={index}>
+                <FiX
+                  size={24}
+                  color="red"
+                  onClick={() => handleDeleteImage(index)}
+                ></FiX>
+                <img src={image} alt="Product" />
+              </ImageContainer>
+            ))}
+            <label htmlFor="image[]" className="new-image">
+              <FiPlus size={24} color={colors.primary}/>
+            </label>
+          </ImagesContainer>
+
+          <InputFile type="file" multiple onChange={handleImage} id="image[]" />
         </ContainerInputFile>
 
         {loader ? (
