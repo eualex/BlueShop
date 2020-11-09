@@ -16,7 +16,7 @@ export const ContainerForm = styled.form`
   }
 
   .form-select {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   @media (max-width: 768px) {
