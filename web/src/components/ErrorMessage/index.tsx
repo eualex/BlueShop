@@ -1,19 +1,17 @@
 import React from 'react';
 
-import { useMessage } from '../../contexts/messageError';
-import { useOpen } from '../../contexts/open';
+import { useErrorMessage } from '../../contexts/error';
 
 import { AiOutlineClose } from 'react-icons/ai';
 import { Container } from './styles';
 
 const ErrorMessage: React.FC = () => {
-  const { openMessage, setOpenMessage } = useOpen();
-  const { messageError } = useMessage();
+  const { openError, setOpenError, messageError } = useErrorMessage();
 
   return (
-    <Container open={openMessage}>
+    <Container open={openError}>
       <span>
-        <AiOutlineClose onClick={() => setOpenMessage(!openMessage)}/>
+        <AiOutlineClose onClick={() => setOpenError(!openError)}/>
       </span>
       <p>{messageError}</p>
     </Container>

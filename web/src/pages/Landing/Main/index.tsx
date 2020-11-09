@@ -13,7 +13,7 @@ import ImgProduct1 from "../../../img/product1.png";
 import ImgProduct2 from "../../../img/product2.png";
 import ImgProduct3 from "../../../img/product3.png";
 
-import { useOpen } from '../../../contexts/open';
+import { useOpen } from '../../../contexts/BurguerMenu';
 
 import {
   Container,

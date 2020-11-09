@@ -14,6 +14,7 @@ import {
 import SingInImg from "../../img/register_product.svg";
 
 import ErrorMessage from "../../components/ErrorMessage";
+import SuccessMessage from "../../components/SuccessMessage";
 import FormRegisterProduct from './FormRegisterProduct';
 
 const RegisterProduct: React.FC = () => {
@@ -24,6 +25,7 @@ const RegisterProduct: React.FC = () => {
   return (
     <Container>
       <ErrorMessage />
+      <SuccessMessage />
       <Wrapper>
         <ContainerTop>
           <Image data-aos="fade-right" src={SingInImg} alt="Register Product"/>

@@ -5,7 +5,7 @@ import { Container } from './styles';
 import Header from '../../components/Header';
 import Main from './Main';
 
-import { useOpen } from '../../contexts/open';
+import { useOpen } from '../../contexts/BurguerMenu';
 import Footer from '../../components/Footer';
 
 const Home: React.FC = () => {

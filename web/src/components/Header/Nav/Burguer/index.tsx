@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ContainerBurguer } from './styles';
 
-import { useOpen } from '../../../../contexts/open';
+import { useOpen } from '../../../../contexts/BurguerMenu';
 
 import RightNav from '../RightNav';
 

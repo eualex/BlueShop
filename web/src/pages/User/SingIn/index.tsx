@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import api from "../../../services/api";
-import { useOpen } from "../../../contexts/open";
-import { useMessage } from "../../../contexts/messageError";
+import { useErrorMessage } from "../../../contexts/error";
 import checkEmailIsValid from "../../../utils/checkEmail";
 
 import Button from "../../../components/Button";
@@ -15,8 +14,7 @@ import { ContainerForm, ContainerSpiner } from "./styles";
 const SingIn: React.FC = () => {
   const history = useHistory();
 
-  const { setOpenMessage } = useOpen();
-  const { setMessageError } = useMessage();
+  const { setOpenError, setMessageError } = useErrorMessage();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +28,7 @@ const SingIn: React.FC = () => {
       .then((res) => history.push("/main"))
       .catch((err) => {
         setLoader(false);
-        setOpenMessage(true);
+        setOpenError(true);
         setMessageError(
           err.response?.data?.message || "Parece que correu um erro :("
         );
@@ -43,7 +41,7 @@ const SingIn: React.FC = () => {
   //checando se os dados do input são vazios ou válidos
   const checkData = () => {
     if (password === "" || email === "") {
-      setOpenMessage(true);
+      setOpenError(true);
       setMessageError("It seems that you stopped writing some data 🤔");
     }
 
@@ -51,7 +49,7 @@ const SingIn: React.FC = () => {
       handlerLogin();
     } else {
       // console.log(email)
-      setOpenMessage(true);
+      setOpenError(true);
       setMessageError("Invalid Email 😥");
     }
   };

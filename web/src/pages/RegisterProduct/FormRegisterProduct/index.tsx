@@ -5,8 +5,8 @@ import { FiX, FiPlus } from 'react-icons/fi';
 import { ThemeContext } from "styled-components";
 
 import api from "../../../services/api";
-import { useOpen } from "../../../contexts/open";
-import { useMessage } from "../../../contexts/messageError";
+import { useErrorMessage } from "../../../contexts/error";
+import { useSuccessMessage } from "../../../contexts/success";
 
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
@@ -26,8 +26,8 @@ const FormRegisterProduct: React.FC = () => {
   const { colors } = useContext(ThemeContext);
   // const history = useHistory();
 
-  const { setOpenMessage } = useOpen();
-  const { setMessageError } = useMessage();
+  const { setMessageSuccess, setOpenSuccess } = useSuccessMessage();
+  const { setOpenError, setMessageError } = useErrorMessage();
 
   const [loader, setLoader] = useState(false);
 
@@ -68,7 +68,7 @@ const FormRegisterProduct: React.FC = () => {
       !design ||
       !images
     ) {
-      setOpenMessage(true);
+      setOpenError(true);
       setMessageError("It seems that you stopped writing some data 🤔");
     } else handleSubmit(event);
   };
@@ -92,10 +92,10 @@ const FormRegisterProduct: React.FC = () => {
     try {
       await api.post("/product", data);
       setLoader(false);
-
-      alert("deu certo");
+      setMessageSuccess("Product created with success 🙂");
+      setOpenSuccess(true);
     } catch (err) {
-      setOpenMessage(true);
+      setOpenError(true);
       setMessageError(err.response.data.message);
     }
   };

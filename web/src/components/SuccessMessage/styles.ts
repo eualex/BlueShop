@@ -10,7 +10,7 @@ export const Container = styled.div<Props>`
   transform: ${(props) => props.open ? 'translateX(0)' : 'translateX(100%)'};
   transition: transform 0.3s linear;
 
-  background: #FF312E;
+  background: #2BA84A;
   color: #fff;
   
   width: 300px;
