@@ -45,13 +45,17 @@ const FormRegisterProduct: React.FC = () => {
 
     const selectedImages = Array.from(event.target.files);
 
-    setImages(selectedImages);
+    if (images.length !== 0) {
+      setImages([...images, ...selectedImages]);
+    } else setImages(selectedImages);
 
     const selectedImagesPreview = selectedImages.map((image) => {
       return URL.createObjectURL(image);
     });
 
-    setPreviewImages(selectedImagesPreview);
+    if(previewImages.length !== 0) {
+      setPreviewImages([...previewImages, ...selectedImagesPreview]);
+    } else setPreviewImages(selectedImagesPreview);
   };
 
   const validateData = (event: FormEvent) => {
