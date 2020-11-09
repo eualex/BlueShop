@@ -12,6 +12,9 @@ export default class Products {
 
   @Column()
   price: string;
+
+  @Column()
+  description: string;
   
   @Column()
   category: string;

@@ -14,7 +14,7 @@ const upload = multer({ storage: UploadConfig.storage, limits: UploadConfig.limi
 routes.post('/users', UserController.store);
 routes.post('/auth', AuthController.authenticate);
 routes.post('/product', upload.array('images'), ProductController.store);
-routes.get('/products', ProductController.index);
+routes.get('/products', authMiddleware, ProductController.index);
 routes.get('/products/:category', authMiddleware, ProductController.show);
 
 export default routes;
