@@ -92,8 +92,9 @@ export const Dropdown = styled.div`
 
     transition: width 1s ease;
     li {
-      a {
-        text-decoration: none;
+      span {
+        width: 100%;
+        /* text-decoration: none; */
         color: ${({ theme }) => theme.colors.textPrimary};
 
         transition: all 0.4s ease;

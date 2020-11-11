@@ -25,7 +25,7 @@ const SingIn: React.FC = () => {
 
     await api
       .post("/auth", { email, password })
-      .then((res) => history.push("/main"))
+      .then((res) => history.push("/category"))
       .catch((err) => {
         setLoader(false);
         setOpenError(true);

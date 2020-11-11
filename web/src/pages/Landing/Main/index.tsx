@@ -10,7 +10,7 @@ import BigProduct from "../BigProduct";
 import HeaderMain from "./HeaderMain";
 import Loader from "../../../components/Loader";
 
-import { useOpen } from "../../../contexts/BurguerMenu";
+import { useOpen } from "../../../contexts/burguerMenu";
 
 import * as Styles from "./styles";
 

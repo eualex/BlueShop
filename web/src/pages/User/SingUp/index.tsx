@@ -32,7 +32,7 @@ const SingUp: React.FC = () => {
 
     await api
       .post("/users", { name, email, password })
-      .then((res) => history.push("/main"))
+      .then((res) => history.push("/category"))
       .catch((err) => {
         setLoader(false);
         setOpenError(true);

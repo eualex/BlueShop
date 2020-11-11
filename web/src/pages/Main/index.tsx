@@ -1,34 +1,52 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { loadProducts } from "../../store/ducks/ProductsData";
+import { RootState } from "../../store/ducks";
 
 import Header from "../../components/Header";
 import Product from "./Product";
 import Aside from "./Aside";
 
-import {
-  Container,
-  Input,
-  ContainerInput,
-  Wrapper,
-  ContainerProducts,
-} from "./styles";
+import { useCategory } from '../../contexts/category';
+
+import * as Styles from "./styles";
 
 import ImgProductAdidas from "../../img/svgtenis/adidas.svg";
 
 const Main: React.FC = () => {
+  // const dispatch = useDispatch();
+  const { category } = useCategory();
+
+  const { data } = useSelector((state: RootState) => state.products);
+
+  // const filtredData = data.filter(product => {
+  //   if(category.name === "eletronics") {
+  //     switch(category.item) {
+  //       case 'notebooks':
+  //         return product.category === ''
+  //     }
+  //   }
+  // })
+
+  // const load = useCallback(() => {
+  //   dispatch(loadProducts());
+  // }, [dispatch]);
+
+  // useEffect(() => load(), [load]);
+
   return (
-    <Container>
+    <Styles.Container>
       <Header />
-
-      {/* <ChooseCategory /> */}
-
-      <ContainerInput>
-        <Input type="text" name="search" placeholder="Search..." />
-      </ContainerInput>
       
-      <Wrapper>
+      <Styles.ContainerInput>
+        <Styles.Input type="text" name="search" placeholder="Search..." />
+      </Styles.ContainerInput>
+      
+      <Styles.Wrapper>
         <Aside />
 
-        <ContainerProducts>
+        <Styles.ContainerProducts>
           <Product 
             description="NMD City Sock 2" 
             img={ImgProductAdidas}
@@ -47,9 +65,9 @@ const Main: React.FC = () => {
             price={100}
             title="Adidas"
           />
-        </ContainerProducts>
-      </Wrapper>
-    </Container>
+        </Styles.ContainerProducts>
+      </Styles.Wrapper>
+    </Styles.Container>
   );
 };
 

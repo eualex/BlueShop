@@ -32,7 +32,7 @@ export const { Types, Creators } = createActions({
   fetchProductsFailure: ["value_products_failure"],
 });
 
-export const loadProducts = () => {
+export const loadProducts = (category?: string) => {
   return async (dispatch: Dispatch<any>) => {
     dispatch(Creators.fetchProductsRequest());
 

@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 import Main from "./Main";
 import Footer from "../../components/Footer";
 
-import { useOpen } from "../../contexts/BurguerMenu";
+import { useOpen } from "../../contexts/burguerMenu";
 
 const Landing: React.FC = () => {
   const { open } = useOpen();
