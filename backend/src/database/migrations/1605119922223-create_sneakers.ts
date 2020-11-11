@@ -1,12 +1,12 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class produtos1604062795418 implements MigrationInterface {
+export class createSneakers1605119922223 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
 
     queryRunner.createTable(
       new Table({
-        name: "products",
+        name: "sneakers",
         columns: [
           {
             name: "id",
@@ -49,7 +49,7 @@ export class produtos1604062795418 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('products');
+    await queryRunner.dropTable('sneakers');
     await queryRunner.query('DROP EXTENSION "uuid-ossp"');
   }
 }

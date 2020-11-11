@@ -1,12 +1,12 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class createImages1604063507992 implements MigrationInterface {
+export class createSneakersImages1605119859858 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
 
     queryRunner.createTable(
       new Table({
-        name: "image",
+        name: "sneaker-image",
         columns: [
           {
             name: 'id',
@@ -20,15 +20,15 @@ export class createImages1604063507992 implements MigrationInterface {
             type: 'varchar'
           },
           {
-            name: 'product_id',
+            name: 'sneaker_id',
             type: 'uuid',
           }
         ],
         foreignKeys: [
           {
-            name: 'ImageProduct',
-            columnNames: ['product_id'],
-            referencedTableName: 'products',
+            name: 'ImageSneaker',
+            columnNames: ['sneaker_id'],
+            referencedTableName: 'sneakers',
             referencedColumnNames: ['id'],
             onUpdate: 'CASCADE',
             onDelete: 'CASCADE',
@@ -39,7 +39,7 @@ export class createImages1604063507992 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    queryRunner.dropTable('image');
+    queryRunner.dropTable('sneaker-image');
     await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
   }
 }

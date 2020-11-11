@@ -1,8 +1,8 @@
 import { PrimaryGeneratedColumn, Column, Entity, OneToMany, JoinColumn } from 'typeorm';
-import Image from './Images';
+import SneakerImage from './SneakersImages';
 
-@Entity('products')
-export default class Products {
+@Entity('sneakers')
+export default class Sneakers {
 
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -28,9 +28,9 @@ export default class Products {
   @Column()
   design: string;
 
-  @OneToMany(() => Image, image => image.product, {
+  @OneToMany(() => SneakerImage, image => image.sneaker, {
     cascade: ['insert', 'update']
   })
-  @JoinColumn({ name: 'product_id' })
-  images: Image[];
+  @JoinColumn({ name: 'sneaker_id' })
+  images: SneakerImage[];
 }
