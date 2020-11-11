@@ -3,6 +3,29 @@ import { AnyAction, Dispatch } from "redux";
 
 import api from "../../services/api";
 
+interface PropsImages {
+  id: string;
+  url: string;
+}
+
+export interface PropsProduct {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  genre: string;
+  category: string;
+  brand: string;
+  design?: string;
+  images: PropsImages[];
+}
+
+export interface PropsState {
+  loading: boolean;
+  data: PropsProduct[];
+  error: string;
+}
+
 export const { Types, Creators } = createActions({
   fetchProductsRequest: [],
   fetchProductsSuccess: ["value_products_success"],
@@ -14,12 +37,7 @@ export const loadProducts = () => {
     dispatch(Creators.fetchProductsRequest());
 
     try {
-      const res = await api
-        .get("/products", {
-          headers: {
-            authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1ZGZhMjM4LTQ5ODUtNDYyZi05ODE2LTlkMjk1MjZiMTZkNCIsImlhdCI6MTYwNDU4NDM3MywiZXhwIjoxNjA0NjcwNzczfQ.cff0feQamDgVLopJmk_HRbuCZQchnjwsM7RExvYBDyM",
-          },
-        });
+      const res = await api.get("/products");
       dispatch(Creators.fetchProductsSuccess(res.data))
     } catch (err) {
       return console.log(err.response.data.message);
@@ -27,7 +45,7 @@ export const loadProducts = () => {
   };
 };
 
-export const INICIAL_STATE = {
+export const INICIAL_STATE: PropsState = {
   loading: false,
   data: [],
   error: "",

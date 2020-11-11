@@ -11,6 +11,7 @@ interface BigProductProps {
   image: string;
   title: string;
   price: number;
+  description: string;
   reverse?: string;
 }
 
@@ -18,6 +19,7 @@ const BigProduct: React.FC<BigProductProps> = ({
   image,
   title,
   price,
+  description,
   reverse = "row",
 }) => {
   useEffect(() => {
@@ -33,11 +35,7 @@ const BigProduct: React.FC<BigProductProps> = ({
       />
       <div data-aos={reverse === "row-reverse" ? "fade-right" : "fade-left"}>
         <h1>{title}</h1>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s
-        </p>
+        <p>{description}</p>
         <span>
           <h3>${price}</h3>
           <Button>Buy</Button>

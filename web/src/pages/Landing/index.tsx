@@ -1,27 +1,28 @@
-import React from 'react';
+import React from "react";
 
-import { Container } from './styles';
+import * as Styles from "./styles";
 
-import Header from '../../components/Header';
-import Main from './Main';
+import Header from "../../components/Header";
+import Main from "./Main";
+import Footer from "../../components/Footer";
 
-import { useOpen } from '../../contexts/BurguerMenu';
-import Footer from '../../components/Footer';
+import { useOpen } from "../../contexts/BurguerMenu";
 
-const Home: React.FC = () => {
+const Landing: React.FC = () => {
   const { open } = useOpen();
 
   return (
-    <Container open={open}>
+    <Styles.Container>
       <Header />
-      { !open && 
+
+      {!open && (
         <>
           <Main />
           <Footer />
         </>
-      }
-    </Container>
+      )}
+    </Styles.Container>
   );
 };
 
-export default Home;
+export default Landing;

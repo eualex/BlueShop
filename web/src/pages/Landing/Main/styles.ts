@@ -118,3 +118,14 @@ export const ContainerNike = styled.div`
     margin-top: 50px;
   }
 `;
+
+export const ContainerLoader = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 60px 0px;
+`;

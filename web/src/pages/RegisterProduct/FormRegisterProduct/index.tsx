@@ -99,6 +99,7 @@ const FormRegisterProduct: React.FC = () => {
       setMessageSuccess("Product created with success 🙂");
       setOpenSuccess(true);
     } catch (err) {
+      setLoader(false);
       setOpenError(true);
       setMessageError(err.response.data.message);
     }
