@@ -1,27 +1,17 @@
 import React, { useEffect } from "react";
-
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
-import { Link } from "react-router-dom";
-
 import BigProduct from "../BigProduct";
-import Button from "../../../components/Button";
+import HeaderMain from "./HeaderMain";
 
-import Ilustration from "../../../img/onlineShopping.svg";
 import ImgProduct1 from "../../../img/product1.png";
 import ImgProduct2 from "../../../img/product2.png";
 import ImgProduct3 from "../../../img/product3.png";
 
 import { useOpen } from '../../../contexts/BurguerMenu';
 
-import {
-  Container,
-  ContainerHeader,
-  Image,
-  ContainerMain,
-  ContainerNike,
-} from "./styles";
+import * as Styles from "./styles";
 
 const Main: React.FC = () => {
   const { open } = useOpen();
@@ -31,24 +21,10 @@ const Main: React.FC = () => {
   }, [])
 
   return (
-    <Container open={open}>
-      <ContainerHeader>
-        <div>
-          <div data-aos="fade-right">
-            <h1>Fabric of the city</h1>
-            <h2>Sale up to 50% off</h2>
-
-            <span>
-              <Button><Link to="login">Shop</Link></Button>
-            </span>
-          </div>
-
-          <Image data-aos="fade-left" src={Ilustration} />
-        </div>
-      </ContainerHeader>
+    <Styles.Container open={open}>
+      <HeaderMain />
       
-      <ContainerMain>
-        
+      <Styles.ContainerMain>
         <hr />
         <h1>New Products</h1>
 
@@ -59,9 +35,8 @@ const Main: React.FC = () => {
             price={100}
           />
         </div>
-
        
-        <ContainerNike>
+        <Styles.ContainerNike>
           <hr />
           <h1>Nike Session</h1>
 
@@ -83,9 +58,9 @@ const Main: React.FC = () => {
               price={149.99}
             />
           </div>
-        </ContainerNike>
-      </ContainerMain>
-    </Container>
+        </Styles.ContainerNike>
+      </Styles.ContainerMain>
+    </Styles.Container>
   );
 };
 
