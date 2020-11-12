@@ -29,7 +29,6 @@ export default {
       price,
       description,
       genre,
-      category,
       brand,
       design,
     } = req.body;
@@ -39,7 +38,6 @@ export default {
       price,
       description,
       genre,
-      category,
       brand,
       design,
       images,
@@ -50,7 +48,6 @@ export default {
       price: Yup.number().required(),
       description: Yup.string().required(),
       genre: Yup.string().required(),
-      category: Yup.string().required(),
       brand: Yup.string(),
       design: Yup.string(),
       images: Yup.array(

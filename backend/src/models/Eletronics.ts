@@ -15,9 +15,6 @@ export default class Eletronics {
 
   @Column()
   description: string;
-  
-  @Column()
-  category: string;
 
   @Column()
   item: string;

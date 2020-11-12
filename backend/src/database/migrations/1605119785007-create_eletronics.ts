@@ -32,10 +32,6 @@ export class createEletronics1605119785007 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "category",
-            type: "varchar",
-          },
-          {
             name: "brand",
             type: "varchar",
           },

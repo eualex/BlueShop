@@ -10,6 +10,6 @@ export default class EletronicsImages {
   path: string;
 
   @ManyToOne(() => Eletronic, eletronic => eletronic.images)
-  @JoinColumn({ name: 'sneaker_id' })
+  @JoinColumn({ name: 'eletronic_id' })
   eletronic: Eletronic
 }

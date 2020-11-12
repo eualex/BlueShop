@@ -15,9 +15,6 @@ export default class Sneakers {
 
   @Column()
   description: string;
-  
-  @Column()
-  category: string;
 
   @Column()
   genre: string;

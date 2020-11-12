@@ -9,7 +9,6 @@ export default {
       price: eletronics.price,
       description: eletronics.description,
       brand: eletronics.brand,
-      category: eletronics.category,
       item: eletronics.item,
       images: eletronics_image_view.renderMany(eletronics.images)
     };

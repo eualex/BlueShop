@@ -9,7 +9,6 @@ export default {
       price: sneaker.price,
       description: sneaker.description,
       brand: sneaker.brand,
-      category: sneaker.category,
       design: sneaker.design,
       genre: sneaker.genre,
       images: sneakers_image_view.renderMany(sneaker.images)

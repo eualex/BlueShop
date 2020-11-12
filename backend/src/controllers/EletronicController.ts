@@ -24,15 +24,15 @@ export default {
       return { path: image.filename };
     });
 
-    const { name, price, description, item, category, brand } = req.body;
+    const { name, price, description, item, brand } = req.body;
 
-    const data = { name, price, description, category, brand, images };
+    const data = { name, price, description, item, brand, images };
 
     const schema = Yup.object().shape({
       name: Yup.string().required(), 
       price: Yup.number().required(), 
       description: Yup.string().required(), 
-      category: Yup.string().required(), 
+      item: Yup.string().required(), 
       brand: Yup.string(), 
       images: Yup.array(
         Yup.object().shape({

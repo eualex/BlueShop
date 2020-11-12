@@ -32,10 +32,6 @@ export class createSneakers1605119922223 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'category',
-            type: 'varchar',
-          },
-          {
             name: 'brand',
             type: 'varchar',
           },
