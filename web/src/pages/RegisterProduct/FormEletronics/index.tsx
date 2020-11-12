@@ -11,7 +11,8 @@ import { useSuccessMessage } from "../../../contexts/success";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import Loader from "../../../components/Loader";
-import Select from "./Select";
+import Select from "../Select";
+import TextArea from "../TextArea";
 
 import {
   ContainerForm,
@@ -21,9 +22,8 @@ import {
   ImagesContainer,
   ImageContainer,
 } from "./styles";
-import TextArea from "./TextArea";
 
-const FormRegisterProduct: React.FC = () => {
+const FormEletronics: React.FC = () => {
   const { colors } = useContext(ThemeContext);
   // const history = useHistory();
 
@@ -35,10 +35,8 @@ const FormRegisterProduct: React.FC = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [genre, setGenre] = useState("");
-  const [category, setCategory] = useState("");
+  const [item, setItem] = useState("");
   const [brand, setBrand] = useState("");
-  const [design, setDesign] = useState("");
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<string[]>([]);
 
@@ -64,11 +62,9 @@ const FormRegisterProduct: React.FC = () => {
     if (
       !name ||
       !price ||
-      !genre ||
+      !item ||
       !description ||
-      !category ||
       !brand ||
-      !design ||
       !images
     ) {
       setOpenError(true);
@@ -84,17 +80,15 @@ const FormRegisterProduct: React.FC = () => {
     data.append("name", name);
     data.append("price", price);
     data.append("description", description);
-    data.append("genre", genre);
-    data.append("category", category);
+    data.append("item", item);
     data.append("brand", brand);
-    data.append("design", design);
     images.forEach((image) => {
       data.append("images", image);
     });
 
     setLoader(true);
     try {
-      await api.post("/product", data);
+      await api.post("/eletronic", data);
       setLoader(false);
       setMessageSuccess("Product created with success 🙂");
       setOpenSuccess(true);
@@ -131,15 +125,15 @@ const FormRegisterProduct: React.FC = () => {
 
         <Input
           name="price"
-          type="text"
+          type="number"
           labelValue="Price"
-          onChange={(e) => setPrice(e.target.value)}
+          onChange={(e) => setPrice(String(e.target.value))}
         />
 
         <TextArea
           name="Description"
           value={description}
-          onChange={(e) => setDescription((e.target.value).trim())}
+          onChange={(e) => setDescription((e.target.value))}
         />
 
         <Input
@@ -149,24 +143,11 @@ const FormRegisterProduct: React.FC = () => {
           onChange={(e) => setBrand(e.target.value)}
         />
 
-        <Input
-          name="designer"
-          type="text"
-          labelValue="Designer(optional)"
-          onChange={(e) => setDesign(e.target.value)}
-        />
-
         <Select
-          onChange={(e) => setGenre(e.target.value)}
-          title="Genre"
-          options={["Women", "Man"]}
+          onChange={(e) => setItem(e.target.value)}
+          title="Item"
+          options={["Smartphone", "Notebook"]}
           className="form-select"
-        />
-
-        <Select
-          onChange={(e) => setCategory(e.target.value)}
-          title="Category"
-          options={["Eletronics", "Sneakers"]}
         />
 
         <ContainerInputFile>
@@ -204,4 +185,4 @@ const FormRegisterProduct: React.FC = () => {
   );
 };
 
-export default FormRegisterProduct;
+export default FormEletronics;

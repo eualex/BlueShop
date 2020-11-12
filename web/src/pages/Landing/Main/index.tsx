@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-import { loadProducts } from "../../../store/ducks/ProductsData";
+import { getSneakers } from "../../../store/ducks/sneakers";
 import { RootState } from "../../../store/ducks";
 
 import BigProduct from "../BigProduct";
@@ -17,11 +17,11 @@ import * as Styles from "./styles";
 const Main: React.FC = () => {
   const dispatch = useDispatch();
 
-  const { data, loading, error } = useSelector((state: RootState) => state.products);
+  const { sneakersData, loading, error } = useSelector((state: RootState) => state.sneakers);
   const { open } = useOpen();
 
   const load = useCallback(() => {
-    dispatch(loadProducts());
+    dispatch(getSneakers());
   }, [dispatch]);
 
   useEffect(() => {
@@ -37,17 +37,17 @@ const Main: React.FC = () => {
         <Styles.ContainerLoader>
           <Loader width={100} height={100} type="ThreeDots"/>
         </Styles.ContainerLoader>
-      ) : data.length !== 0 && !error ? (
+      ) : sneakersData.length !== 0 && !error ? (
         <Styles.ContainerMain>
           <hr />
           <h1>New Products</h1>
 
           <div className="container-product">
             <BigProduct
-              image={data[0].images[0].url}
-              title={data[0].name}
-              price={data[0].price}
-              description={data[0].description}
+              image={sneakersData[0].images[0].url}
+              title={sneakersData[0].name}
+              price={sneakersData[0].price}
+              description={sneakersData[0].description}
             />
           </div>
 
@@ -57,10 +57,10 @@ const Main: React.FC = () => {
 
             <div className="container-product">
               <BigProduct
-                image={data[1].images[0].url}
-                title={data[1].name}
-                price={data[1].price}
-                description={data[1].description}
+                image={sneakersData[1].images[0].url}
+                title={sneakersData[1].name}
+                price={sneakersData[1].price}
+                description={sneakersData[1].description}
                 reverse="row-reverse"
               />
             </div>
@@ -69,15 +69,15 @@ const Main: React.FC = () => {
 
             <div className="container-product">
               <BigProduct
-                image={data[2].images[0].url}
-                title={data[2].name}
-                price={data[2].price}
-                description={data[1].description}
+                image={sneakersData[2].images[0].url}
+                title={sneakersData[2].name}
+                price={sneakersData[2].price}
+                description={sneakersData[1].description}
               />
             </div>
           </Styles.ContainerNike>
         </Styles.ContainerMain>
-      ) : console.log("Fazer pagina de not found :)")}
+      ) : " "}
     </Styles.Container>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { loadProducts } from "../../store/ducks/ProductsData";
+import { getSneakers } from "../../store/ducks/sneakers";
 import { RootState } from "../../store/ducks";
 
 import Header from "../../components/Header";
@@ -15,10 +15,10 @@ import * as Styles from "./styles";
 import ImgProductAdidas from "../../img/svgtenis/adidas.svg";
 
 const Main: React.FC = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { category } = useCategory();
 
-  const { data } = useSelector((state: RootState) => state.products);
+  const { sneakersData } = useSelector((state: RootState) => state.sneakers);
 
   // const filtredData = data.filter(product => {
   //   if(category.name === "eletronics") {

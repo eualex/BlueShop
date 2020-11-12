@@ -1,42 +1,60 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-import Aos from 'aos';
-import 'aos/dist/aos.css';
+import Aos from "aos";
+import "aos/dist/aos.css";
 
-import {
-  Container,
-  Wrapper,
-  ContainerTop,
-  ContainerBottom,
-  Image,
-} from "./styles";
+import * as Styles from "./styles";
 
 import SingInImg from "../../img/register_product.svg";
 
 import ErrorMessage from "../../components/ErrorMessage";
 import SuccessMessage from "../../components/SuccessMessage";
-import FormRegisterProduct from './FormRegisterProduct';
+import FormSneakers from "./FormSneakers";
+import FormEletronics from "./FormEletronics";
 
 const RegisterProduct: React.FC = () => {
+  const [formName, setFormName] = useState("sneakers");
+
   useEffect(() => {
     Aos.init({ duration: 1800 });
   }, []);
 
   return (
-    <Container>
+    <Styles.Container>
       <ErrorMessage />
       <SuccessMessage />
-      <Wrapper>
-        <ContainerTop>
-          <Image data-aos="fade-right" src={SingInImg} alt="Register Product"/>
+      <Styles.Wrapper>
+        <Styles.ContainerTop>
+          <Styles.Image
+            data-aos="fade-right"
+            src={SingInImg}
+            alt="Register Product"
+          />
           <h1 data-aos="fade-left">Register a Product</h1>
-        </ContainerTop>
 
-        <ContainerBottom>
-          <FormRegisterProduct />
-        </ContainerBottom>
-      </Wrapper>
-    </Container>
+          <Styles.ContainerFormName formName={formName}>
+            <span
+              className="sneakers-form-name"
+              onClick={() => setFormName("sneakers")}
+            >
+              Sneakers
+            </span>
+            <span>or</span>
+            <span
+              className="eletronics-form-name"
+              onClick={() => setFormName("eletronics")}
+            >
+              Eletronics
+            </span>
+          </Styles.ContainerFormName>
+        </Styles.ContainerTop>
+
+        <Styles.ContainerBottom>
+          {formName === "sneakers" && <FormSneakers />}
+          {formName === "eletronics" && <FormEletronics />}
+        </Styles.ContainerBottom>
+      </Styles.Wrapper>
+    </Styles.Container>
   );
 };
 

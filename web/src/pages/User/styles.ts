@@ -16,14 +16,12 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-
   background: ${({ theme }) => theme.colors.backgroundTerceary};
   -webkit-box-shadow: -1px 6px 33px -6px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: -1px 6px 33px -6px rgba(0, 0, 0, 0.15);
   box-shadow: -1px 6px 33px -6px rgba(0, 0, 0, 0.15);
 
   height: 100%;
-
 
   width: 100%;
   max-width: 980px;
@@ -42,7 +40,7 @@ export const Wrapper = styled.div`
 
     display: flex;
     flex-direction: column;
-    
+
     box-shadow: none;
 
     width: 100vw;
@@ -109,17 +107,21 @@ export const ContainerStateSing = styled.div<Props>`
   }
 
   span:nth-child(1) {
-    text-decoration: ${(props) => (props.stateSing ? "underline" : "none")};
+    border-bottom: ${(props) =>
+      props.stateSing ? `2px solid ${props.theme.colors.primary}` : "none"};
+
     color: ${(props) =>
       props.stateSing
         ? ({ theme }) => theme.colors.primary
         : ({ theme }) => theme.colors.textQuartenary};
     font-size: ${(props) => (props.stateSing ? "2.6rem" : "2rem")};
-    transition: all 0.5s ease; 
+    transition: all 0.5s ease;
   }
 
   span:nth-child(2) {
-    text-decoration: ${(props) => (props.stateSing ? "none" : "underline")};
+    border-bottom: ${(props) =>
+      props.stateSing ? "none" : `2px solid ${props.theme.colors.primary}`};
+
     color: ${(props) =>
       props.stateSing
         ? ({ theme }) => theme.colors.textQuartenary

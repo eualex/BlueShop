@@ -15,10 +15,6 @@ export const ContainerForm = styled.form`
     margin-bottom: 30px;
   }
 
-  .form-select {
-    margin-bottom: 30px;
-  }
-
   @media (max-width: 768px) {
     background-color: ${({ theme }) => theme.colors.background};
   }
@@ -37,44 +33,6 @@ export const ContainerLoader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-export const ContainerSelect = styled.div`
-  border: 2px solid ${({ theme }) => theme.colors.textLogin};
-  border-radius: 10px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    order: 1;
-  }
-`;
-
-export const Select = styled.select`
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 1px;
-  text-overflow: "";
-
-  padding: 15px;
-
-  width: 90%;
-  height: 100%;
-
-  border: none;
-  border-radius: 5px;
-
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.textPrimary};
-  font-size: 2rem;
-
-  option {
-    color: ${({ theme }) => theme.colors.textPrimary};
-    background: ${({ theme }) => theme.colors.background};
-    /* padding: 10px; */
-  }
 `;
 
 export const ContainerInputFile = styled.div`
@@ -137,27 +95,4 @@ export const ImageContainer = styled.div`
     cursor: pointer;
   }
 `;
-export const ContainerTextArea = styled.div`
-  label {
-    color: ${({ theme }) => theme.colors.textPrimary};
-    font-size: 2rem;
-  }
 
-  textarea {
-    width: 100%;
-    background: ${({ theme }) => theme.colors.background};
-    border: 1px solid ${({ theme }) => theme.colors.textLogin};
-    border-radius: 20px;
-    outline: none;
-    color: ${({ theme }) => theme.colors.textPrimary};
-    font-size: 1.8rem;
-
-    min-height: 120px;
-    max-height: 240px;
-    resize: vertical;
-    padding: 16px;
-    line-height: 28px;
-
-    margin-top: 10px;
-  }
-`;

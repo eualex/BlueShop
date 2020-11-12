@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Props {
+  formName: string;
+}
+
 export const Container = styled.div`
   width: 100vw;
   /* height: 100vh; */
@@ -7,7 +11,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   /* background-color: red; */
 `;
 
@@ -67,5 +71,52 @@ export const Image = styled.img`
   width: 300px;
   @media (max-width: 768px) {
     width: 200px;
+  }
+`;
+
+export const ContainerFormName = styled.div<Props>`
+  color: ${({ theme }) => theme.colors.textPrimary};
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-evenly;
+
+  span:hover {
+    cursor: pointer;
+  }
+
+  .sneakers-form-name {
+    border-bottom: ${(props) =>
+      props.formName==="sneakers" ? `2px solid ${props.theme.colors.primary}` : "none"};
+
+    color: ${(props) =>
+      props.formName==="sneakers"
+        ? ({ theme }) => theme.colors.primary
+        : ({ theme }) => theme.colors.textQuartenary};
+    font-size: ${(props) => (props.formName==="sneakers" ? "2.6rem" : "2rem")};
+    transition: all 0.5s ease;
+  }
+
+  .eletronics-form-name {
+    border-bottom: ${(props) =>
+      props.formName==="eletronics" ? `2px solid ${props.theme.colors.primary}` : "none"};
+
+    color: ${(props) =>
+      props.formName==="eletronics"
+        ? ({ theme }) => theme.colors.primary
+        : ({ theme }) => theme.colors.textQuartenary};
+    font-size: ${(props) => (props.formName==="eletronics" ? "2.6rem" : "2rem")};
+
+    transition: all 0.5s ease;
+  }
+
+  @media (max-width: 768px) {
+    text-align: center;
+    font-size: 1.9rem;
+
+    span {
+      font-size: 4rem;
+    }
   }
 `;

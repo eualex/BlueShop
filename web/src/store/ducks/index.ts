@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import productsData, { PropsState } from './ProductsData';
+import sneakers, { PropsState } from './sneakers';
 
 export interface RootState {
-  products: PropsState;
+  sneakers: PropsState;
 }
 
 export default combineReducers({
-  products: productsData,
+  sneakers,
 })
