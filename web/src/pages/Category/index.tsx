@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { RiArrowRightSLine } from "react-icons/ri";
 
-import { useHistory } from 'react-router-dom';
+import { getSneakers } from "../../store/ducks/sneakers";
+import { getEletronics } from "../../store/ducks/eletronics";
 
-import * as Styles from './styles';
+import * as Styles from "./styles";
 
-import { useTheme } from '../../contexts/theme';
-import { useCategory } from '../../contexts/category';
+import { useTheme } from "../../contexts/theme";
+import { useCategory } from "../../contexts/category";
+import Header from "../../components/Header";
 
 interface PropsCategory {
   name: string;
@@ -13,49 +18,91 @@ interface PropsCategory {
 }
 
 const ChooseCategory: React.FC = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const { theme } = useTheme();
   const { setCategory } = useCategory();
+  const [hiddenSneakers, setHiddenSneakers] = useState(true);
+  const [hiddenEletronics, setHiddenEletronics] = useState(true);
+  const [classContainerSneakers, setClassContainerSneakers] = useState("");
+  const [classContainerEletronics, setClassContainerEletronics] = useState("");
 
   const handleCategory = (category: PropsCategory) => {
     setCategory(category);
 
     history.push("main");
+  };
+
+  const load = useCallback(() => {
+    dispatch(getEletronics());
+    dispatch(getSneakers());
+  }, [dispatch]);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  const toggleContainerSneakers = () => {
+    classContainerSneakers === "arrow-sneakers" ? 
+    setClassContainerSneakers("")   :
+    setClassContainerSneakers("arrow-sneakers");
+    
+    setHiddenSneakers(!hiddenSneakers);
+  }
+
+  const toggleContainerEletronics = () => {
+    classContainerEletronics === "arrow-eletronics" ? 
+    setClassContainerEletronics("")   :
+    setClassContainerEletronics("arrow-eletronics");
+    
+    setHiddenEletronics(!hiddenEletronics);
   }
 
   return (
     <Styles.Container>
+      <Header />
+
+      <Styles.Title>
+        <h1>Choose a Category</h1>
+      </Styles.Title>
+
       <Styles.Wrapper>
-        <span>
-          <h1>Choose a Category</h1>
-        </span>
 
-        <Styles.ContainerDropdown>
-          <Styles.Dropdown>
+        <Styles.ContainerDropdown className={classContainerSneakers}>
+          <span onClick={toggleContainerSneakers}>
             <span>
-              <p>Eletronics</p>
-              <Styles.Icon color={theme.colors.textPrimary} size={25}/>
+              <span>Sneakers</span>
+              <RiArrowRightSLine size={35} color={theme.colors.textPrimary} />
             </span>
-            <ul>
-              <li><span onClick={() => handleCategory({ name: "eletronics", item: "smartphones" })}>Smartphones</span></li>
-              <li><span onClick={() => handleCategory({ name: "eletronics", item: "notebooks" })}>Notebooks</span></li>
-              <li><span onClick={() => handleCategory({ name: "eletronics", item: "all" })}>All</span></li>
-            </ul>
-          </Styles.Dropdown>
+          </span>
 
-          <Styles.Dropdown>
-            <span>
-              <p>Sneakers</p>
-              <Styles.Icon color={theme.colors.textPrimary} size={25}/>
-            </span>
-            <ul>
-              <li><span onClick={() => handleCategory({ name: "eletronics", item: "woman" })}>Woman</span></li>
-              <li><span onClick={() => handleCategory({ name: "eletronics", item: "man" })}>Man</span></li>
-              <li><span onClick={() => handleCategory({ name: "eletronics", item: "all" })}>All</span></li>
-            </ul>
-          </Styles.Dropdown>
+          <Styles.WrapperDropdown Hidden={hiddenSneakers}>
+            <div>
+              <span onClick={() => handleCategory({ name: "sneakers", item: "woman" })}>Woman</span>
+              <span onClick={() => handleCategory({ name: "sneakers", item: "man" })}>Man</span>
+              <span onClick={() => handleCategory({ name: "sneakers", item: "all" })}>All</span>
+            </div>
+          </Styles.WrapperDropdown>
         </Styles.ContainerDropdown>
+
+        <Styles.ContainerDropdown className={classContainerEletronics}>
+          <span onClick={toggleContainerEletronics}>
+            <span>
+              <span>Eletronics</span>
+              <RiArrowRightSLine size={35} color={theme.colors.textPrimary} />
+            </span>
+          </span>
+
+          <Styles.WrapperDropdown Hidden={hiddenEletronics}>
+            <div>
+              <span onClick={() => handleCategory({ name: "eletronics", item: "smartphone" })}>Smartphones</span>
+              <span onClick={() => handleCategory({ name: "eletronics", item: "notebook" })}>Notebooks</span>
+              <span onClick={() => handleCategory({ name: "eletronics", item: "all" })}>All</span>
+            </div>
+          </Styles.WrapperDropdown>
+        </Styles.ContainerDropdown>
+        
       </Styles.Wrapper>
     </Styles.Container>
   );

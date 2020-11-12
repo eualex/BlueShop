@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { Container, Header, Image, Footer, ButtonAddToCart } from './styles';
-
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { Container, Header, Image, Footer } from './styles';
 
 interface Props {
   img: string;
@@ -21,9 +19,9 @@ const Product: React.FC<Props> = ({ img, title, description, price }) => {
           <p>{description}</p>
         </span>
 
-        <ButtonAddToCart to="">
+        {/* <ButtonAddToCart to="">
           <AiOutlineShoppingCart color="#fff"/>
-        </ButtonAddToCart>
+        </ButtonAddToCart> */}
       </Header>
 
       <Image src={img} alt='product'/>

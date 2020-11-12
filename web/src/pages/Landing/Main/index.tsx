@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
+import { getEletronics } from "../../../store/ducks/eletronics";
 import { getSneakers } from "../../../store/ducks/sneakers";
 import { RootState } from "../../../store/ducks";
 
@@ -17,11 +18,18 @@ import * as Styles from "./styles";
 const Main: React.FC = () => {
   const dispatch = useDispatch();
 
-  const { sneakersData, loading, error } = useSelector((state: RootState) => state.sneakers);
+  const { sneakersData, sneakersError, sneakersLoading } = useSelector(
+    (state: RootState) => state.sneakers
+  );
+  const { eletronicsData, eletronicsError, eletronicsLoading } = useSelector(
+    (state: RootState) => state.eletronics
+  );
+
   const { open } = useOpen();
 
   const load = useCallback(() => {
     dispatch(getSneakers());
+    dispatch(getEletronics());
   }, [dispatch]);
 
   useEffect(() => {
@@ -33,21 +41,24 @@ const Main: React.FC = () => {
     <Styles.Container open={open}>
       <HeaderMain />
 
-      {loading ? (
+      {sneakersLoading && eletronicsLoading ? (
         <Styles.ContainerLoader>
-          <Loader width={100} height={100} type="ThreeDots"/>
+          <Loader width={100} height={100} type="ThreeDots" />
         </Styles.ContainerLoader>
-      ) : sneakersData.length !== 0 && !error ? (
+      ) : sneakersData.length !== 0 &&
+        !sneakersError &&
+        eletronicsData.length !== 0 &&
+        !eletronicsError ? (
         <Styles.ContainerMain>
           <hr />
           <h1>New Products</h1>
-
+          
           <div className="container-product">
             <BigProduct
-              image={sneakersData[0].images[0].url}
-              title={sneakersData[0].name}
-              price={sneakersData[0].price}
-              description={sneakersData[0].description}
+              image={eletronicsData[2].images[0].url}
+              title={eletronicsData[2].name}
+              price={eletronicsData[2].price}
+              description={eletronicsData[2].description}
             />
           </div>
 
@@ -77,7 +88,9 @@ const Main: React.FC = () => {
             </div>
           </Styles.ContainerNike>
         </Styles.ContainerMain>
-      ) : " "}
+      ) : (
+        " "
+      )}
     </Styles.Container>
   );
 };

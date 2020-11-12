@@ -100,7 +100,7 @@ export const Wrapper = styled.div<Props>`
     width: 80%;
     margin: 0 auto;
 
-    transition: max-height 1.8s ease;
+    transition: max-height 1.4s ease;
 
     div {
       padding: 0 20px 20px 0;
@@ -113,19 +113,19 @@ export const Wrapper = styled.div<Props>`
 
       select:nth-child(1) {
         transform: ${props => props.Hidden ? "translateX(-50%)" : "translateX(0)"};
-        transition: transform 0.3s linear;
+        transition: transform 0.7s linear;
 
         z-index: 1;
       }
 
       select:nth-child(2) {
         transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
-        transition: transform 0.3s linear;
+        transition: transform 0.7s linear;
       }
 
       select:nth-child(3) {
         transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
-        transition: transform 0.3s linear;
+        transition: transform 0.7s linear;
       }
 
       select:nth-child(4) {
@@ -135,7 +135,7 @@ export const Wrapper = styled.div<Props>`
 
       select:nth-child(5) {
         transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
-        transition: transform 0.9s linear;
+        transition: transform 0.7s linear;
       }
     }
   }

@@ -156,7 +156,7 @@ const FormSneakers: React.FC = () => {
         <Select
           onChange={(e) => setGenre(e.target.value)}
           title="Genre"
-          options={["Women", "Man", "All"]}
+          options={["Woman", "Man", "All"]}
           className="form-select"
         />
 

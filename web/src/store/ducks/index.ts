@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux';
 
-import sneakers, { PropsState } from './sneakers';
+import sneakers, { PropsStateSneakers } from './sneakers';
+import eletronics, { PropsStateEletronics } from './eletronics';
 
 export interface RootState {
-  sneakers: PropsState;
+  sneakers: PropsStateSneakers;
+  eletronics: PropsStateEletronics;
 }
 
 export default combineReducers({
   sneakers,
+  eletronics,
 })

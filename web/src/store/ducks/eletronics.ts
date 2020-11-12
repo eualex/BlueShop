@@ -13,15 +13,13 @@ export interface PropsEletronics {
   id: string;
   name: string;
   price: number;
+  item: string;
   description: string;
-  genre: string;
-  category: string;
   brand: string;
-  design?: string;
   images: PropsImages[];
 }
 
-export interface PropsState {
+export interface PropsStateEletronics {
   eletronicsLoading: boolean;
   eletronicsData: PropsEletronics[];
   eletronicsError: string;
@@ -46,7 +44,7 @@ export const getEletronics = () => {
   };
 };
 
-export const INICIAL_STATE: PropsState = {
+export const INICIAL_STATE: PropsStateEletronics = {
   eletronicsLoading: false,
   eletronicsData: [],
   eletronicsError: "",

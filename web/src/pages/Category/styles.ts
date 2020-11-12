@@ -1,13 +1,44 @@
 import styled from "styled-components";
 import { RiArrowRightSLine } from "react-icons/ri";
 
+interface Props {
+  Hidden: boolean;
+}
+
 export const Container = styled.div`
   width: 100vw;
-  height: 70vh;
+  height: 100vh;
+
+  flex-direction: column;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .arrow-sneakers {
+    span span svg {
+      margin-bottom: 4px;
+
+      transform: rotate(90deg);
+    }
+  }
+
+  .arrow-eletronics {
+    span span svg {
+      margin-bottom: 4px;
+
+      transform: rotate(90deg);
+    }
+  }
+`;
+
+export const Title = styled.span`
+  margin: 100px 0 60px 0;
+
+  h1 {
+    text-align: center;
+    color: ${({ theme }) => theme.colors.textPrimary};
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -18,128 +49,85 @@ export const Wrapper = styled.div`
 
   padding-top: 40px;
 
-  span {
-    h1 {
-      text-align: center;
-      color: ${({ theme }) => theme.colors.textPrimary};
-      /* opacity: 0.4;  */
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
 `;
 
 export const ContainerDropdown = styled.div`
-  padding-top: 50px;
+  background: ${({ theme }) => theme.colors.backgroundTerceary};
+  
+  margin-bottom: 80px;
 
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-evenly;
 
-  @media(max-width: 768px) {
+  width: 80%;
+  padding: 0;
+
+  span span span {
+    color: ${({ theme }) => theme.colors.textPrimary};
+    font-size: 2rem;
+  }
+
+  span span {
     display: flex;
-    flex-direction: column;
-
     justify-content: space-between;
     align-items: center;
 
-    height: 50%;
-  }
-`;
+    width: 70%;
+    margin: 0 auto;
 
-export const Dropdown = styled.div`
-  position: relative;
+    padding: 10px 0;
 
-  width: 300px;
-
-  -webkit-box-shadow: ${({ theme }) =>
-    theme.title === "dark" ? "none" : "2px 10px 47px -2px rgba(0, 0, 0, 0.33)"};
-  -moz-box-shadow: ${({ theme }) =>
-    theme.title === "dark" ? "none" : "2px 10px 47px -2px rgba(0, 0, 0, 0.33)"};
-  box-shadow: ${({ theme }) =>
-    theme.title === "dark" ? "none" : "2px 10px 47px -2px rgba(0, 0, 0, 0.33)"};
-
-  transition: all 0.4s ease;
-
-  span {
-    background-color: ${({ theme }) => theme.colors.backgroundTerceary};
-
-    height: 40px;
-    width: 300px;
-
-    /* border: 1px solid ${({ theme }) => theme.colors.textPrimary}; */
-
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    p {
-      color: ${({ theme }) => theme.colors.textPrimary};
+    h4 {
+      margin: 0;
     }
 
     svg {
+      display: block;
       transition: all 0.4s ease;
     }
   }
+`;
 
-  ul {
-    background-color: ${({ theme }) => theme.colors.backgroundTerceary};
+export const WrapperDropdown = styled.div<Props>`
+  max-height: ${(props) => (props.Hidden ? "0px" : "500px")};
 
-    position: absolute;
+  width: 80%;
+  margin: 0 auto;
 
-    list-style: none;
+  transition: max-height 1.1s ease;
 
-    display: none;
+  div {
+    visibility: ${(props) => (props.Hidden ? "hidden" : "visible")};
 
-    padding: 20px 40px;
+    overflow: hidden;
+    width: 100%;
 
-    transition: width 1s ease;
-    li {
-      span {
-        width: 100%;
-        /* text-decoration: none; */
-        color: ${({ theme }) => theme.colors.textPrimary};
+    transition: visibility 0.3s linear;
+    padding: 0 30px;
 
-        transition: all 0.4s ease;
-
-        &:hover {
-          color: ${({ theme }) => theme.colors.primary};
-        }
-      }
-    }
-  }
-
-  &:hover {
-    transform: scale(1.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: right;
 
     span {
-      svg {
-        transform: rotate(90deg);
-      }
-    }
+      font-size: 2.2rem;
+      color: ${({ theme }) => theme.colors.textPrimary};
+      padding: 10px 0;
 
-    ul {
-      width: 100%;
+      transition: all 0.3s ease;
 
-      display: flex;
-      flex-direction: column;
+      transform: ${props => props.Hidden ? "translateX(-100%)" : "translateX(0)"};
+        transition: transform 0.4s linear;
 
-      background-color: ${({ theme }) => theme.colors.backgroundTerceary};
-
-      -webkit-box-shadow: ${({ theme }) =>
-        theme.title === "dark"
-          ? "none"
-          : "-2px 10px 40px -9px rgba(0, 0, 0, 0.45)"};
-      -moz-box-shadow: ${({ theme }) =>
-        theme.title === "dark"
-          ? "none"
-          : "-2px 10px 40px -9px rgba(0, 0, 0, 0.45)"};
-      box-shadow: ${({ theme }) =>
-        theme.title === "dark"
-          ? "none"
-          : "-2px 10px 40px -9px rgba(0, 0, 0, 0.45)"};
-
-      @media(max-width: 768px) {
-        li {
-          padding: 5px;
-        }
+      &:hover {
+        cursor: pointer;
+        color: ${({ theme }) => theme.colors.primary};
       }
     }
   }

@@ -2,12 +2,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  /* max-width: 300px;
-  width: 100%;
-
-  max-height: 240px;
-  height: 100%; */
-  
   padding: 20px;
 
   display: flex;
@@ -16,7 +10,7 @@ export const Container = styled.div`
 
   border: 1px solid  rgba(89, 95, 110, 0.1);
 
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
 
   margin: 40px 0;
 
@@ -31,7 +25,7 @@ export const Container = styled.div`
     }
 
     img {
-      transform: rotate(10deg) scale(1.6);
+      transform: scale(1.6);
     }
   }
 `;
@@ -39,6 +33,7 @@ export const Container = styled.div`
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
+  /* height: 100%; */
 
   h4 {
     color: ${({ theme }) => theme.colors.textPrimary};

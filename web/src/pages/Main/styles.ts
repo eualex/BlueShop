@@ -76,3 +76,12 @@ export const ContainerProducts = styled.div`
     margin: 0 auto;
   }
 `;
+
+export const ContainerLoader = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`

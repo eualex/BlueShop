@@ -20,10 +20,10 @@ export interface PropsSneakers {
   images: PropsImages[];
 }
 
-export interface PropsState {
-  loading: boolean;
+export interface PropsStateSneakers {
+  sneakersLoading: boolean;
   sneakersData: PropsSneakers[];
-  error: string;
+  sneakersError: string;
 }
 
 export const { Types, Creators } = createActions({
@@ -45,15 +45,15 @@ export const getSneakers = () => {
   };
 };
 
-export const INICIAL_STATE: PropsState = {
-  loading: false,
+export const INICIAL_STATE: PropsStateSneakers = {
+  sneakersLoading: false,
   sneakersData: [],
-  error: "",
+  sneakersError: "",
 };
 
 const request = (state = INICIAL_STATE) => ({
   ...state,
-  loading: true,
+  sneakersLoading: true,
 });
 
 const success = (
@@ -61,9 +61,9 @@ const success = (
   { value_sneakers_success }: AnyAction
 ) => ({
   ...state,
-  loading: false,
+  sneakersLoading: false,
   sneakersData: value_sneakers_success,
-  error: "",
+  sneakersError: "",
 });
 
 const failure = (
@@ -71,9 +71,9 @@ const failure = (
   { value_sneakers_failure }: AnyAction
 ) => ({
   ...state,
-  loading: false,
+  sneakersLoading: false,
   sneakersData: [],
-  error: value_sneakers_failure,
+  sneakersError: value_sneakers_failure,
 });
 
 export default createReducer(INICIAL_STATE, {
