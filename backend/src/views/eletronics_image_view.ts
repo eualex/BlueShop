@@ -4,7 +4,7 @@ export default {
   render(image: EletronicImage) {
     return {
       id: image.id,
-      url: `http://localhost:3333/uploads/${image.path}`
+      url: `http://${process.env.HOSTNAME}:${process.env.PORT}/uploads/${image.path}`
     };
   },
 
