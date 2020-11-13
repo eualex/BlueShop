@@ -6,8 +6,8 @@ import store from "./store";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import Contexts from "./contexts";
 
-import SuccessMessage from './components/SuccessMessage';
-import ErrorMessage from './components/ErrorMessage';
+import SuccessMessage from "./components/SuccessMessage";
+import ErrorMessage from "./components/ErrorMessage";
 
 import Routes from "./routes";
 

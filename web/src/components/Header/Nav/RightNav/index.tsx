@@ -10,6 +10,7 @@ import dark from "../../../../styles/themes/dark";
 import light from "../../../../styles/themes/light";
 
 import { Link } from 'react-router-dom';
+import { useLogin } from "../../../../contexts/login";
 
 interface Props {
   open: boolean;
@@ -18,6 +19,7 @@ interface Props {
 const RightNav: React.FC<Props> = ({ open }) => {
   const { colors, title } = useContext(ThemeContext);
   const { theme, setTheme } = useTheme();
+  const { loginToken } = useLogin();
 
   const toggleTheme = useCallback(() => {
     setTheme(theme.title === 'light' ? dark : light);
@@ -41,8 +43,9 @@ const RightNav: React.FC<Props> = ({ open }) => {
         </li>
       </ul>
 
-      <span> 
-        <Link className="login" to="/login">Login</Link>
+      <span>
+        { console.log(!!loginToken) }
+        { !loginToken && <Link className="login" to="/login">Login</Link> }
         <Switch 
           onChange={toggleTheme}
           checked={title === 'dark'}

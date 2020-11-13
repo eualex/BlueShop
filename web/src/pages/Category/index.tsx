@@ -16,7 +16,7 @@ interface PropsCategory {
   name: string;
   item: string;
 }
-
+ 
 const ChooseCategory: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
