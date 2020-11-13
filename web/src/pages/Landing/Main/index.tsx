@@ -15,7 +15,7 @@ import { useOpen } from "../../../contexts/burguerMenu";
 
 import * as Styles from "./styles";
 
-const Main: React.FC = () => {
+const Main: React.FC = React.memo(() => {
   const dispatch = useDispatch();
 
   const { sneakersData, sneakersError, sneakersLoading } = useSelector(
@@ -93,6 +93,6 @@ const Main: React.FC = () => {
       )}
     </Styles.Container>
   );
-};
+});
 
 export default Main;

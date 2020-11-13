@@ -23,7 +23,7 @@ import {
   ImageContainer,
 } from "./styles";
 
-const FormEletronics: React.FC = () => {
+const FormEletronics: React.FC = React.memo(() => {
   const { colors } = useContext(ThemeContext);
   // const history = useHistory();
 
@@ -183,6 +183,6 @@ const FormEletronics: React.FC = () => {
       </ContainerForm>
     </>
   );
-};
+});
 
 export default FormEletronics;

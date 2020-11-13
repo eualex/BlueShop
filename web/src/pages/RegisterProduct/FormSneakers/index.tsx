@@ -23,7 +23,7 @@ import {
   ImageContainer,
 } from "./styles";
 
-const FormSneakers: React.FC = () => {
+const FormSneakers: React.FC = React.memo(() => {
   const { colors } = useContext(ThemeContext);
   // const history = useHistory();
 
@@ -193,6 +193,6 @@ const FormSneakers: React.FC = () => {
       </ContainerForm>
     </>
   );
-};
+});
 
 export default FormSneakers;

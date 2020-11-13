@@ -17,7 +17,7 @@ interface PropsCategory {
   item: string;
 }
  
-const ChooseCategory: React.FC = () => {
+const ChooseCategory: React.FC = React.memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -106,6 +106,6 @@ const ChooseCategory: React.FC = () => {
       </Styles.Wrapper>
     </Styles.Container>
   );
-};
+});
 
 export default ChooseCategory;

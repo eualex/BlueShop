@@ -44,7 +44,6 @@ const RightNav: React.FC<Props> = ({ open }) => {
       </ul>
 
       <span>
-        { console.log(!!loginToken) }
         { !loginToken && <Link className="login" to="/login">Login</Link> }
         <Switch 
           onChange={toggleTheme}
