@@ -25,7 +25,7 @@ export const Container = styled.div`
 `;
 
 export const ContainerFilter = styled.div`
-  background: ${({ theme }) => theme.colors.backgroundMain};
+  background: ${({ theme }) => theme.title ==="light" ? theme.colors.backgroundMain : theme.colors.backgroundTerceary};
 
   padding: 40px 40px 20px 20px;
 
@@ -102,29 +102,29 @@ export const Wrapper = styled.div<Props>`
 
 
       div:nth-child(1) {
-        transform: ${props => props.Hidden ? "translateX(-50%)" : "translateX(0)"};
+        transform: ${props => props.Hidden ? "translateX(-100%)" : "translateX(0)"};
         transition: transform 0.7s linear;
 
         z-index: 1;
       }
 
       div:nth-child(2) {
-        transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
+        transform: ${props => props.Hidden ? "translateX(-100%)" : "translateX(0)"};
         transition: transform 0.7s linear;
       }
 
       div:nth-child(3) {
-        transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
+        transform: ${props => props.Hidden ? "translateX(-100%)" : "translateX(0)"};
         transition: transform 0.7s linear;
       }
 
       div:nth-child(4) {
-        transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
+        transform: ${props => props.Hidden ? "translateX(-100%)" : "translateX(0)"};
         transition: transform 0.7s linear;
       }
 
       div:nth-child(5) {
-        transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
+        transform: ${props => props.Hidden ? "translateX(-100%)" : "translateX(0)"};
         transition: transform 0.7s linear;
       }
     }

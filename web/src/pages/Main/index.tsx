@@ -30,7 +30,8 @@ const Main: React.FC = () => {
   const filterData = useCallback(() => {
     switch (category.name) {
       case "eletronics":
-        setEletronicsFiltered(
+        if (category.item === "all") setEletronicsFiltered(eletronicsData);
+        else setEletronicsFiltered(
           eletronicsData.filter((e) => e.item === category.item)
         );
         break;
