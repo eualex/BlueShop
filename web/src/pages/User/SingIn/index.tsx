@@ -25,14 +25,17 @@ const SingIn: React.FC = () => {
 
     await api
       .post("/auth", { email, password })
-      .then((res) => history.push("/category"))
+      .then((res) => {
+        const { token } = res.data;
+        localStorage.setItem("authToken", token);
+        history.push("/category");
+      })
       .catch((err) => {
         setLoader(false);
         setOpenError(true);
         setMessageError(
           err.response?.data?.message || "Parece que correu um erro :("
         );
-
         console.log(err.response.data);
       });
   
