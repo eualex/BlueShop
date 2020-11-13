@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import * as Yup from 'yup';
+import jwt from "jsonwebtoken";
 
 import User from '../models/User';
 import user_view from '../views/user_view';
@@ -32,6 +33,12 @@ export default {
     const user = usersRepository.create(data);
     await usersRepository.save(user);
 
-    return res.status(201).json(user_view.render(user));
+    const id = await usersRepository.findOne({ where: { email } });
+
+    const token = jwt.sign({ id: user.id }, `${process.env.JWT_TOKEN}`, {
+      expiresIn: "25m",
+    });
+
+    return res.status(201).json(user_view.render(user, token));
   }
 }

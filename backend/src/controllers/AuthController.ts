@@ -35,7 +35,7 @@ export default {
     }
 
     const token = jwt.sign({ id: user.id }, `${process.env.JWT_TOKEN}`, {
-      expiresIn: "1d",
+      expiresIn: "25m",
     });
 
     return res.json(user_view.render(user, token));
