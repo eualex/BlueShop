@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Header, Image, Footer } from './styles';
+import * as Styles from './styles';
 
 interface Props {
   img: string;
@@ -11,9 +11,8 @@ interface Props {
 
 const Product: React.FC<Props> = ({ img, title, description, price }) => {
   return (
-    <Container>
-
-      <Header>
+    <Styles.Container>
+      <Styles.Header>
         <span>
           <h4>{title}</h4>
           <p>{description}</p>
@@ -22,11 +21,13 @@ const Product: React.FC<Props> = ({ img, title, description, price }) => {
         {/* <ButtonAddToCart to="">
           <AiOutlineShoppingCart color="#fff"/>
         </ButtonAddToCart> */}
-      </Header>
+      </Styles.Header>
 
-      <Image src={img} alt='product'/>
+      <Styles.ContainerImage>
+        <Styles.Image src={img} alt='product'/>
+      </Styles.ContainerImage>
 
-      <Footer>
+      <Styles.Footer>
         <span>
           <h6>Design</h6>
           <p>Unknown</p>
@@ -34,8 +35,8 @@ const Product: React.FC<Props> = ({ img, title, description, price }) => {
 
         <strong>${price}</strong>
 
-      </Footer>
-    </Container>
+      </Styles.Footer>
+    </Styles.Container>
   );
 };
 

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 20px;
+  /* height: 70%; */
 
   display: flex;
   flex-direction: column;
@@ -10,22 +11,19 @@ export const Container = styled.div`
 
   border: 1px solid  rgba(89, 95, 110, 0.1);
 
-  transition: all 0.2s ease;
+  transition: all 1s ease;
 
   margin: 40px 0;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.backgroundMain};
+    background-color: ${({ theme }) => theme.colors.backgroundTerceary};
+    cursor: pointer;
     a {
       display: flex;
       justify-content: center;
       align-items: center;
 
       z-index: 10;
-    }
-
-    img {
-      transform: scale(1.6);
     }
   }
 `;
@@ -46,14 +44,32 @@ export const Header = styled.header`
 
 `;
 
+export const ContainerImage = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Image = styled.img`
   width: 180px;
+  height: 180px;
 
   padding: 40px 0px;
 
   transition: all 0.5s ease;
 
   z-index: 5;
+
+  &:hover {
+    transform: scale(1.6);
+  }
+
+  @media(max-width: 980px) {
+    &:hover {
+      transform: none;
+    }
+  }
 `;
 
 export const Footer = styled.footer`

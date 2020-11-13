@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import { Container, ContainerFilter, Select, Wrapper } from "./styles";
-
+import * as Styles from "./styles";
 import { RiArrowRightSLine } from "react-icons/ri";
+import Select from "../../../components/Select";
 
-import { useTheme } from '../../../contexts/theme';
+import { useTheme } from "../../../contexts/theme";
 
 const Aside: React.FC = () => {
   const { theme } = useTheme();
@@ -13,17 +13,16 @@ const Aside: React.FC = () => {
   const [classContainerFilter, setClassContainerFilter] = useState("");
 
   const toggleFilter = () => {
-    
-    classContainerFilter === "show" ? 
-    setClassContainerFilter("")   :
-    setClassContainerFilter("show");
-    
+    classContainerFilter === "show"
+      ? setClassContainerFilter("")
+      : setClassContainerFilter("show");
+
     setHidden(!hidden);
-  }
+  };
 
   return (
-    <Container>
-      <ContainerFilter className={classContainerFilter}>  
+    <Styles.Container>
+      <Styles.ContainerFilter className={classContainerFilter}>
         <span onClick={toggleFilter}>
           <span>
             <h4>FILTER</h4>
@@ -31,31 +30,21 @@ const Aside: React.FC = () => {
           </span>
         </span>
 
-        <Wrapper Hidden={hidden}>
+        <Styles.Wrapper Hidden={hidden}>
           <div>
-            <Select >
-              <option value="Shoe Type">Shoe Type</option>
-            </Select>
+            <Select title="Shoe Type" options={["teste"]} customSize="small"/>
 
-            <Select>
-              <option value="Style">Style</option>
-            </Select>
+            <Select title="Style" options={["teste"]} customSize="small"/>
 
-            <Select>
-              <option value="Size">Size</option>
-            </Select>
+            <Select title="Size" options={["teste"]} customSize="small"/>
 
-            <Select>
-              <option value="Brand">Brand</option>
-            </Select>
+            <Select title="Brand" options={["teste"]} customSize="small"/>
 
-            <Select>
-              <option value="Price range">Price range</option>
-            </Select>
+            <Select title="Price range" options={["teste"]} customSize="small"/>
           </div>
-        </Wrapper>
-      </ContainerFilter>
-    </Container>
+        </Styles.Wrapper>
+      </Styles.ContainerFilter>
+    </Styles.Container>
   );
 };
 

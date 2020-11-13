@@ -8,7 +8,7 @@ export const Container = styled.div`
   height: 73vh;
   width: 25%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 968px) {
     width: 100%;
     padding-bottom: 30px;
     
@@ -46,7 +46,7 @@ export const ContainerFilter = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 968px) {
     width: 80%;
     margin: 0 auto;
     padding: 0;
@@ -75,26 +75,16 @@ export const ContainerFilter = styled.div`
   }
 `;
 
-export const Select = styled.select`
-  background: ${({ theme }) => theme.colors.background};
-  color: ${({ theme }) => theme.colors.textLogin};
-
-  width: 100%;
-  height: 40px;
-  padding: 0px 20px;
-
-  border: none;
-  border-radius: 3px;
-`;
-
 export const Wrapper = styled.div<Props>`
   width: 100%;
 
-  select {
-    margin: 10px;
+  div {
+    div {
+      margin: 10px 0px;
+    }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 968px) {
     max-height: ${props => props.Hidden ? "0px" : "500px"};
 
     width: 80%;
@@ -103,7 +93,7 @@ export const Wrapper = styled.div<Props>`
     transition: max-height 1.4s ease;
 
     div {
-      padding: 0 20px 20px 0;
+      padding: 5px;
       visibility: ${props => props.Hidden ? "hidden" : "visible"};
 
       overflow: hidden;
@@ -111,29 +101,29 @@ export const Wrapper = styled.div<Props>`
       transition: visibility 0.3s linear;
 
 
-      select:nth-child(1) {
+      div:nth-child(1) {
         transform: ${props => props.Hidden ? "translateX(-50%)" : "translateX(0)"};
         transition: transform 0.7s linear;
 
         z-index: 1;
       }
 
-      select:nth-child(2) {
+      div:nth-child(2) {
         transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
         transition: transform 0.7s linear;
       }
 
-      select:nth-child(3) {
+      div:nth-child(3) {
         transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
         transition: transform 0.7s linear;
       }
 
-      select:nth-child(4) {
+      div:nth-child(4) {
         transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
         transition: transform 0.7s linear;
       }
 
-      select:nth-child(5) {
+      div:nth-child(5) {
         transform: ${props => props.Hidden ? "translateX(-60%)" : "translateX(0)"};
         transition: transform 0.7s linear;
       }

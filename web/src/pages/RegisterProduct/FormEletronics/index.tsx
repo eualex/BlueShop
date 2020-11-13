@@ -11,7 +11,7 @@ import { useSuccessMessage } from "../../../contexts/success";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import Loader from "../../../components/Loader";
-import Select from "../Select";
+import Select from "../../../components/Select";
 import TextArea from "../TextArea";
 
 import {

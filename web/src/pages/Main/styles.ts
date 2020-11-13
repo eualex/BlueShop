@@ -10,7 +10,6 @@ export const Container = styled.div`
 `;
 
 export const ContainerInput = styled.div`
-
   height: 20%;
   width: 100%;
   max-width: 980px;
@@ -47,13 +46,13 @@ export const Input = styled.input`
 export const Wrapper = styled.div`
   height: 100%;
 
-  width: 100%;
+  width: 90%;
   max-width: 980px;
   margin: auto;
 
   display: flex;
 
-  @media(max-width: 768px) {
+  @media(max-width: 968px) {
     display: flex;
     flex-direction: column;
   }
@@ -63,16 +62,15 @@ export const ContainerProducts = styled.div`
   width: 80%;
   
   margin-left: 30px;
-  /* background: red;  */
   
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  /* grid */
   grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 0px;
 
-  @media(max-width: 768px) {
-    width: 80%;
+  @media(max-width: 968px) {
+    width: 90%;
+    max-width: 980px;
     margin: 0 auto;
   }
 `;
