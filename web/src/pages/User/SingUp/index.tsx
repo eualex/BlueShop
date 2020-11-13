@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import api from "../../../services/api";
-import { useErrorMessage } from "../../../contexts/error";
 import checkEmailIsValid from "../../../utils/checkEmail";
+import { useErrorMessage } from "../../../contexts/error";
+import { useSuccessMessage } from "../../../contexts/success";
+import { useLogin } from "../../../contexts/login";
+import { useOpen } from "../../../contexts/burguerMenu";
 
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
@@ -19,12 +22,15 @@ const SingUp: React.FC = () => {
   const history = useHistory();
 
   const { setOpenError, setMessageError } = useErrorMessage();
+  const { setLoginToken, setLoginData } = useLogin();
+  const { setMessageSuccess, setOpenSuccess } = useSuccessMessage();
+  const { setOpen } = useOpen();
 
   const [loader, setLoader] = useState(false);
 
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
  
   //registrando usuario na base, caso não haja erro de validação
   const handleRegister = async () => {
@@ -32,7 +38,15 @@ const SingUp: React.FC = () => {
 
     await api
       .post("/users", { name, email, password })
-      .then((res) => history.push("/category"))
+      .then((res) => {
+        const { token } = res.data
+        setLoginToken(token);
+        setLoginData({ email, name })
+        setOpenSuccess(true);
+        setMessageSuccess("Your session ends in 25 minutes. Enjoy 😊!");
+        setOpen(false);
+        history.push("/category");
+      })
       .catch((err) => {
         setLoader(false);
         setOpenError(true);

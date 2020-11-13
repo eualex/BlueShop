@@ -5,6 +5,7 @@ import CategoryProvider from "./category";
 import BurguerOpenProvider from "./burguerMenu";
 import MessageErrorProvider from "./error";
 import MessageSuccessProvider from "./success";
+import LoginProvider from "./login";
 
 const Contexts: React.FC = ({ children }) => {
   return (
@@ -12,7 +13,11 @@ const Contexts: React.FC = ({ children }) => {
       <CategoryProvider>
         <BurguerOpenProvider>
           <MessageErrorProvider>
-            <MessageSuccessProvider>{children}</MessageSuccessProvider>
+            <MessageSuccessProvider>
+              <LoginProvider>
+                {children}
+              </LoginProvider>
+            </MessageSuccessProvider>
           </MessageErrorProvider>
         </BurguerOpenProvider>
       </CategoryProvider>

@@ -39,7 +39,7 @@ export const ContainerNav = styled.div<Props>`
 
   /* Login */
   span {
-    width: 200px;
+    width: 150px;
 
     display: flex;
     align-items: center;
@@ -54,18 +54,6 @@ export const ContainerNav = styled.div<Props>`
         color: ${(props) => props.theme.colors.textPrimary};
         transition: 0.3s ease-in;
       }
-    }
-
-    .button-add-product {
-      background: ${(props) => props.theme.colors.primary};
-
-      width: 30px;
-      height: 30px;
-      border-radius: 30px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
   }
 
@@ -122,7 +110,7 @@ export const ContainerNav = styled.div<Props>`
       justify-content: space-between;
       height: 10%;
 
-      a {
+      .login {
         font-size: 3rem;
         color: ${(props) =>
           props.theme.title === "dark"

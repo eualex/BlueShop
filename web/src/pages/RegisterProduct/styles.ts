@@ -81,6 +81,7 @@ export const ContainerFormName = styled.div<Props>`
 
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 
   span:hover {
     cursor: pointer;
@@ -116,7 +117,7 @@ export const ContainerFormName = styled.div<Props>`
     font-size: 1.9rem;
 
     span {
-      font-size: 4rem;
+      font-size: 2rem;
     }
   }
 `;

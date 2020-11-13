@@ -3,6 +3,9 @@ import { useHistory } from "react-router-dom";
 
 import api from "../../../services/api";
 import { useErrorMessage } from "../../../contexts/error";
+import { useSuccessMessage } from "../../../contexts/success";
+import { useLogin } from "../../../contexts/login";
+import { useOpen } from "../../../contexts/burguerMenu";
 import checkEmailIsValid from "../../../utils/checkEmail";
 
 import Button from "../../../components/Button";
@@ -13,8 +16,11 @@ import { ContainerForm, ContainerSpiner } from "./styles";
 
 const SingIn: React.FC = () => {
   const history = useHistory();
-
+  
+  const { setLoginToken, setLoginData } = useLogin();
+  const { setMessageSuccess, setOpenSuccess } = useSuccessMessage();
   const { setOpenError, setMessageError } = useErrorMessage();
+  const { setOpen } = useOpen();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,8 +32,13 @@ const SingIn: React.FC = () => {
     await api
       .post("/auth", { email, password })
       .then((res) => {
-        const { token } = res.data;
-        localStorage.setItem("authToken", token);
+        const { token, name } = res.data;
+        // localStorage.setItem("authToken", token);
+        setLoginToken(token);
+        setLoginData({ email, name })
+        setOpenSuccess(true);
+        setOpen(false);
+        setMessageSuccess("Your session ends in 25 minutes. Enjoy 😊!")
         history.push("/category");
       })
       .catch((err) => {

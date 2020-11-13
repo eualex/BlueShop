@@ -7,8 +7,6 @@ import * as Styles from "./styles";
 
 import SingInImg from "../../img/register_product.svg";
 
-import ErrorMessage from "../../components/ErrorMessage";
-import SuccessMessage from "../../components/SuccessMessage";
 import FormSneakers from "./FormSneakers";
 import FormEletronics from "./FormEletronics";
 
@@ -21,8 +19,6 @@ const RegisterProduct: React.FC = () => {
 
   return (
     <Styles.Container>
-      <ErrorMessage />
-      <SuccessMessage />
       <Styles.Wrapper>
         <Styles.ContainerTop>
           <Styles.Image

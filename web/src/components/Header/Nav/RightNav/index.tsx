@@ -1,5 +1,4 @@
 import React, { useCallback, useContext } from "react";
-import { IoMdAdd } from 'react-icons/io'
 
 import { ThemeContext } from 'styled-components';
 
@@ -42,10 +41,7 @@ const RightNav: React.FC<Props> = ({ open }) => {
         </li>
       </ul>
 
-      <span>
-        <Link className="button-add-product" to="register-product">
-          <IoMdAdd color={colors.textPrimary}/>
-        </Link> 
+      <span> 
         <Link className="login" to="/login">Login</Link>
         <Switch 
           onChange={toggleTheme}

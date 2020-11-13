@@ -6,6 +6,9 @@ import store from "./store";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import Contexts from "./contexts";
 
+import SuccessMessage from './components/SuccessMessage';
+import ErrorMessage from './components/ErrorMessage';
+
 import Routes from "./routes";
 
 const App: React.FC = () => {
@@ -14,6 +17,8 @@ const App: React.FC = () => {
       <Provider store={store}>
         <Contexts>
           <GlobalStyle />
+          <SuccessMessage />
+          <ErrorMessage />
           <Routes />
         </Contexts>
       </Provider>

@@ -10,18 +10,20 @@ import ChooseCategory from "../pages/Category";
 import PrivateRoute from "./PrivateRoute";
 
 import { useCategory } from "../contexts/category";
+import { useLogin } from "../contexts/login";
 
 const Routes: React.FC = () => {
   const { category } = useCategory();
+  const { loginToken } = useLogin();
 
   const checkCategory = () => {
     return !!category.name;
   };
 
   const checkLogin = () => {
-    const token = localStorage.getItem("authToken");
-
-    return !!token;
+    console.log(!!loginToken);
+   
+    return !!loginToken;
   };
 
   return (
