@@ -9,18 +9,18 @@ export const CustomInput = styled.input`
   /* height: 100%; */
 
   padding: 13px;
-  border: 2px solid ${({ theme }) => theme.colors.textLogin};
+  border: 2px solid ${({ theme }) => theme.colors.textQuintenary};
   border-radius: 10px;
 
   color: ${({ theme }) => theme.colors.textPrimary};
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 
   font-size: 2rem;
 
   transition: all 0.2s ease-in-out;
 
   &::placeholder {
-    color: ${({ theme }) => theme.colors.textLogin};
+    color: ${({ theme }) => theme.colors.textQuintenary};
     font-size: 1.8rem;
   }
 

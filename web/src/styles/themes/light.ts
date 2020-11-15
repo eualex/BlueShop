@@ -4,20 +4,15 @@ export default {
   colors: {
     primary: "#3670ff",
 
-    background: "#f5f5f5",
+    backgroundPrimary: "#f5f5f5",
     backgroundSecondary: "#eee",
     backgroundTerceary: "#fff",
+    backgroundQuartenary: "#3670ff",
 
     textPrimary: "#333",
     textSecondary: "#565656",
     textTerceary: "#fff",
     textQuartenary: "#7e7e7e",
-
-    // Login
-    backgroundLogin: "#fff",
-    textLogin: "#595f6e",
-    inputLogin: "#000",
-
-    backgroundMain: "#3670ff"
+    textQuintenary: "#595f6e",
   },
 };

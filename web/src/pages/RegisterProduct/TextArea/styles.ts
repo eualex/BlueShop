@@ -8,8 +8,8 @@ export const ContainerTextArea = styled.div`
 
   textarea {
     width: 100%;
-    background: ${({ theme }) => theme.colors.background};
-    border: 1px solid ${({ theme }) => theme.colors.textLogin};
+    background: ${({ theme }) => theme.colors.backgroundPrimary};
+    border: 1px solid ${({ theme }) => theme.colors.textQuintenary};
     border-radius: 20px;
     outline: none;
     color: ${({ theme }) => theme.colors.textPrimary};

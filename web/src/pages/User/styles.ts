@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
   }
 
   @media (max-width: 768px) {
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 
     display: flex;
     flex-direction: column;
@@ -119,6 +119,11 @@ export const ContainerStateSing = styled.div<Props>`
   }
 
   span:nth-child(2) {
+    margin: 0 10px;
+    font-size: 2rem;
+  } 
+
+  span:nth-child(3) {
     border-bottom: ${(props) =>
       props.stateSing ? "none" : `2px solid ${props.theme.colors.primary}`};
 

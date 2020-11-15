@@ -38,7 +38,7 @@ export const Header = styled.header`
   }
 
   p {
-    color: ${({ theme }) => theme.colors.textLogin};
+    color: ${({ theme }) => theme.colors.textQuintenary};
     font-size: 1.2rem; 
   }
 
@@ -81,7 +81,7 @@ export const Footer = styled.footer`
   }
 
   p {
-    color: ${({ theme }) => theme.colors.textLogin};
+    color: ${({ theme }) => theme.colors.textQuintenary};
     font-size: 1.2rem; 
   }
 

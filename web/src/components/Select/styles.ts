@@ -10,8 +10,8 @@ export const ContainerSelect = styled.div<Props>`
   border: ${(props) =>
     props.customSize === "small"
       ? `2px solid ${props.theme.colors.textTerceary}`
-      : `2px solid ${props.theme.colors.textLogin}`};
-  /* border: 2px solid ${({ theme }) => theme.colors.textLogin}; */
+      : `2px solid ${props.theme.colors.textQuintenary}`};
+  /* border: 2px solid ${({ theme }) => theme.colors.textQuintenary}; */
   border-radius: ${(props) => (props.customSize === "small" ? "5px" : "10px")};
 
   display: flex;
@@ -50,7 +50,7 @@ export const Select = styled.select<Props>`
 
   option {
     color: ${({ theme }) => theme.colors.textPrimary};
-    background: ${({ theme }) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.backgroundPrimary};
     /* padding: 10px; */
   }
 

@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
 
-    background: ${props => props.theme.colors.background};
+    background: ${props => props.theme.colors.backgroundPrimary};
   }
 
   html {

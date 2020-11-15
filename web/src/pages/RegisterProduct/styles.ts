@@ -6,13 +6,10 @@ interface Props {
 
 export const Container = styled.div`
   width: 100vw;
-  /* height: 100vh; */
 
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* background-color: red; */
 `;
 
 export const Wrapper = styled.div`
@@ -27,10 +24,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 
-  /* @media (min-width: 768px) {
-    max-height: 580px;
-  } */
-
   background: ${({ theme }) => theme.colors.backgroundTerceary};
 
   -webkit-box-shadow: ${({ theme }) =>
@@ -41,7 +34,7 @@ export const Wrapper = styled.div`
     theme.title === "dark" ? "none" : "-1px 6px 33px -6px rgba(0, 0, 0, 0.15)"};
 
   @media (max-width: 768px) {
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 
     display: flex;
     flex-direction: column;

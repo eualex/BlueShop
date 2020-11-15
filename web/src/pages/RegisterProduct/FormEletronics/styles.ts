@@ -16,7 +16,7 @@ export const ContainerForm = styled.form`
   }
 
   @media (max-width: 768px) {
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.backgroundPrimary};
   }
 `;
 

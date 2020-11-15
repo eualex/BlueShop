@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import Aos from 'aos';
-import 'aos/dist/aos.css';
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 import {
   Container,
@@ -32,28 +32,22 @@ const Login: React.FC = () => {
       <Wrapper>
         <ContainerLeft>
           {singIn && <Image data-aos="fade-up" src={SingInImg} alt="Login" />}
-          {!singIn && <Image data-aos="fade-up" src={SingUpImg} alt="register" />}
+          {!singIn && (
+            <Image data-aos="fade-up" src={SingUpImg} alt="register" />
+          )}
 
           <h1>Join Blue</h1>
         </ContainerLeft>
 
         <ContainerRight>
           <ContainerStateSing stateSing={singIn}>
-            <span
-              onClick={() => setSingIn(true)}
-            >
-              Sing In
-            </span>{"  "}
-            or{"  "}
-            <span
-              onClick={() => setSingIn(false)}
-            >
-              Sing Up
-            </span>
+            <span onClick={() => setSingIn(true)}>Sing In</span>
+            <span>or</span>
+            <span onClick={() => setSingIn(false)}>Sing Up</span>
           </ContainerStateSing>
 
-          { singIn && <SingIn /> } 
-          { !singIn && <SingUp /> }
+          {singIn && <SingIn />}
+          {!singIn && <SingUp />}
         </ContainerRight>
       </Wrapper>
     </Container>
