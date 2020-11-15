@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 export const Container = styled.div`
   padding: 20px;
@@ -9,14 +9,17 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-around;
 
-  border: 1px solid  rgba(89, 95, 110, 0.1);
+  border: 1px solid rgba(89, 95, 110, 0.1);
 
   transition: all 1s ease;
 
   /* margin: 40px 0; */
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.backgroundTerceary};
+    background-color: ${({ theme }) =>
+      theme.title === "dark"
+        ? theme.colors.backgroundTerceary
+        : theme.colors.backgroundQuartenary};
     cursor: pointer;
     a {
       display: flex;
@@ -39,9 +42,8 @@ export const Header = styled.header`
 
   p {
     color: ${({ theme }) => theme.colors.textQuintenary};
-    font-size: 1.2rem; 
+    font-size: 1.2rem;
   }
-
 `;
 
 export const ContainerImage = styled.div`
@@ -65,7 +67,7 @@ export const Image = styled.img`
     transform: scale(1.6);
   }
 
-  @media(max-width: 980px) {
+  @media (max-width: 980px) {
     &:hover {
       transform: none;
     }
@@ -82,14 +84,13 @@ export const Footer = styled.footer`
 
   p {
     color: ${({ theme }) => theme.colors.textQuintenary};
-    font-size: 1.2rem; 
+    font-size: 1.2rem;
   }
 
   strong {
     color: ${({ theme }) => theme.colors.textPrimary};
     text-align: center;
   }
- 
 `;
 
 export const ButtonAddToCart = styled(Link)`
@@ -102,10 +103,9 @@ export const ButtonAddToCart = styled(Link)`
 
   display: none;
 
-  transition: all 0.3s ease; 
+  transition: all 0.3s ease;
 
   &:hover {
-    background-color: #5486F2;
+    background-color: #5486f2;
   }
-
 `;
