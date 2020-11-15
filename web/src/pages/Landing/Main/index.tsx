@@ -55,16 +55,17 @@ const Main: React.FC = React.memo(() => {
           
           <div className="container-product">
             <BigProduct
-              image={eletronicsData[2].images[0].url}
-              title={eletronicsData[2].name}
-              price={eletronicsData[2].price}
-              description={eletronicsData[2].description}
+              image={eletronicsData[0].images[0].url}
+              title={eletronicsData[0].name}
+              price={eletronicsData[0].price}
+              description={eletronicsData[0].description}
             />
           </div>
 
+          <hr />
+          
           <Styles.ContainerNike>
-            <hr />
-            <h1>Nike Session</h1>
+            <h1>The best's of the Blue</h1>
 
             <div className="container-product">
               <BigProduct

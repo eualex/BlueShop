@@ -9,6 +9,8 @@ interface PropsImages {
   url: string;
 }
 
+console.log(process.env.API);
+
 export interface PropsEletronics {
   id: string;
   name: string;
