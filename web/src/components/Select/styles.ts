@@ -7,8 +7,10 @@ interface Props {
 }
 
 export const ContainerSelect = styled.div<Props>`
-  border: ${(props) => (props.customSize === "small" ? "1px" : "2px")} solid
-    ${({ theme }) => theme.colors.textLogin};
+  border: ${(props) =>
+    props.customSize === "small"
+      ? `2px solid ${props.theme.colors.textTerceary}`
+      : `2px solid ${props.theme.colors.textLogin}`};
   /* border: 2px solid ${({ theme }) => theme.colors.textLogin}; */
   border-radius: ${(props) => (props.customSize === "small" ? "5px" : "10px")};
 
@@ -39,7 +41,11 @@ export const Select = styled.select<Props>`
   border-radius: 5px;
 
   background-color: transparent;
-  color: ${({ theme }) => theme.colors.textPrimary};
+  color: ${(props) =>
+    props.customSize === "small"
+    ? props.theme.colors.textTerceary
+    : props.theme.colors.textPrimary};
+  /* color: ${({ theme }) => theme.colors.textPrimary}; */
   font-size: ${(props) => (props.customSize === "big" ? "2rem" : "1.4rem")};
 
   option {

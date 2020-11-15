@@ -30,7 +30,7 @@ const Aside: React.FC = () => {
         <span onClick={toggleFilter}>
           <span>
             <h4>FILTER</h4>
-            <RiArrowRightSLine size={25} color={theme.colors.textPrimary} />
+            <RiArrowRightSLine size={25} color={theme.colors.textTerceary} />
           </span>
         </span>
         <Styles.Wrapper Hidden={hidden}>

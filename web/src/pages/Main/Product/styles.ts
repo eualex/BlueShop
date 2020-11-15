@@ -13,7 +13,7 @@ export const Container = styled.div`
 
   transition: all 1s ease;
 
-  margin: 40px 0;
+  /* margin: 40px 0; */
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.backgroundTerceary};

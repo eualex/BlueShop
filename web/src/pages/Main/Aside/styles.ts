@@ -25,10 +25,12 @@ export const Container = styled.div`
 export const ContainerFilter = styled.div`
   background: ${({ theme }) =>
     theme.title === "light"
-      ? theme.colors.backgroundMain
+      ? theme.colors.primary
       : theme.colors.backgroundTerceary};
 
   padding: 40px 40px 20px 20px;
+
+  border-radius: 5px;
 
   display: flex;
   flex-direction: column;
@@ -36,10 +38,11 @@ export const ContainerFilter = styled.div`
 
   span span {
     h4 {
-      color: ${({ theme }) => theme.colors.textPrimary};
+      color: ${({ theme }) => 
+        theme.title === "light"
+        ? theme.colors.textTerceary
+        : theme.colors.textPrimary};
       margin-bottom: 10px;
-
-      opacity: 0.7;
     }
 
     svg {
