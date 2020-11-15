@@ -5,7 +5,7 @@ import { useSuccessMessage } from '../../contexts/success';
 import { AiOutlineClose } from 'react-icons/ai';
 import { Container } from './styles';
 
-const ErrorMessage: React.FC = () => {
+const SuccessMessage: React.FC = () => {
   const { messageSuccess, openSuccess, setOpenSuccess } = useSuccessMessage();
 
   return (
@@ -18,4 +18,4 @@ const ErrorMessage: React.FC = () => {
   );
 };
 
-export default ErrorMessage;
+export default SuccessMessage;

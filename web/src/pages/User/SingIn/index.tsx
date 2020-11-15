@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import api from "../../../services/api";
 import { useErrorMessage } from "../../../contexts/error";
-import { useSuccessMessage } from "../../../contexts/success";
+import { useSessionUser } from "../../../contexts/sessionUser";
 import { useLogin } from "../../../contexts/login";
 import { useOpen } from "../../../contexts/burguerMenu";
 import checkEmailIsValid from "../../../utils/checkEmail";
@@ -18,7 +18,7 @@ const SingIn: React.FC = () => {
   const history = useHistory();
   
   const { setLoginToken, setLoginData } = useLogin();
-  const { setMessageSuccess, setOpenSuccess } = useSuccessMessage();
+  const { setOpenSession } = useSessionUser();
   const { setOpenError, setMessageError } = useErrorMessage();
   const { setOpen } = useOpen();
 
@@ -36,9 +36,8 @@ const SingIn: React.FC = () => {
         // localStorage.setItem("authToken", token);
         setLoginToken(token);
         setLoginData({ email, name })
-        setOpenSuccess(true);
+        setOpenSession(true);
         setOpen(false);
-        setMessageSuccess("Your session ends in 25 minutes. Enjoy 😊!")
         history.push("/category");
       })
       .catch((err) => {
