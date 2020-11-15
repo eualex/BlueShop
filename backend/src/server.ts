@@ -17,4 +17,4 @@ app.use(routes);
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 app.use(errorHandlers);
 
-app.listen(process.env.PORT, () => console.log(`App is runing on http://localhost:${process.env.PORT}`))
+app.listen(process.env.PORT, () => console.log(`App is runing on http://${process.env.HOSTNAME}:${process.env.PORT}`))
