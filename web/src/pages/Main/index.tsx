@@ -8,6 +8,7 @@ import { RootState } from "../../store/ducks";
 import Header from "../../components/Header";
 import Product from "./Product";
 import Aside from "./Aside";
+import ErrorsPage from "../../components/ErrorsPage";
 
 import { useCategory } from "../../contexts/category";
 
@@ -104,29 +105,41 @@ const Main: React.FC = () => {
         <Aside />
 
         <Styles.ContainerProducts>
-          {category.name === "eletronics" &&
-            eletronicsFiltered.length !== 0 &&
-            eletronicsFiltered.map((e) => (
-              <Product
-                key={e.id}
-                price={e.price}
-                img={e.images[0].url}
-                title={e.name}
-                description={""}
-              />
-            ))}
+          {category.name === "eletronics" && eletronicsFiltered.length !== 0
+            ? eletronicsFiltered.map((e) => (
+                <Product
+                  key={e.id}
+                  price={e.price}
+                  img={e.images[0].url}
+                  title={e.name}
+                  description={""}
+                />
+              ))
+            : category.name === "eletronics" && (
+                <ErrorsPage
+                  status=""
+                  message="Products not found"
+                  error={false}
+                />
+              )}
 
-          {category.name === "sneakers" &&
-            sneakersFiltered.length !== 0 &&
-            sneakersFiltered.map((s) => (
-              <Product
-                key={s.id}
-                price={s.price}
-                img={s.images[0].url}
-                title={s.name}
-                description={""}
-              />
-            ))}
+          {category.name === "sneakers" && sneakersFiltered.length !== 0
+            ? sneakersFiltered.map((s) => (
+                <Product
+                  key={s.id}
+                  price={s.price}
+                  img={s.images[0].url}
+                  title={s.name}
+                  description={""}
+                />
+              ))
+            : category.name === "sneakers" && (
+                <ErrorsPage
+                  status=""
+                  message="Products not found"
+                  error={false}
+                />
+              )}
         </Styles.ContainerProducts>
       </Styles.Wrapper>
     </Styles.Container>
