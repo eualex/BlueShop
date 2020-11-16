@@ -16,25 +16,17 @@ const SessionUser: React.FC = () => {
   const { loginData, loginToken, setLoginData, setLoginToken } = useLogin();
 
   const handleSession = useCallback(() => {
-    setTimeout(() => {
-      if (!!loginToken || loginData.name!=="" || loginData.email!=="") {
-        setLoginToken("");
-        setLoginData({ email: "", name: "" });
-        setMessageSession("Your session is over 😢. Sign in again!");
-        setOpenSession(true);
-      }
-    }, 10000 * 1);
-  }, [
-    setLoginData,
-    setLoginToken,
-    loginToken,
-    loginData,
-    setMessageSession,
-    setOpenSession,
-  ]);
+    setLoginToken("");
+    setLoginData({ email: "", name: "" });
+    setMessageSession("Your session is over 😢. Sign in again!");
+    setOpenSession(true);
+  }, [setLoginData, setLoginToken, setMessageSession, setOpenSession]);
 
   useEffect(() => {
-    if (!!loginToken || loginData.name!=="" || loginData.email!=="") handleSession();
+    if (!!loginToken && loginData.name !== "" && loginData.email !== "") {
+      setTimeout(() => handleSession(), 60000*25);
+    }
+    return () => {};
   }, [loginToken, handleSession, loginData]);
 
   return (

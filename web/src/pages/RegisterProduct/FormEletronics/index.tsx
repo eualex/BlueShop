@@ -7,6 +7,7 @@ import { ThemeContext } from "styled-components";
 import api from "../../../services/api";
 import { useErrorMessage } from "../../../contexts/error";
 import { useSuccessMessage } from "../../../contexts/success";
+import { useCategory } from "../../../contexts/category";
 
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
@@ -29,6 +30,7 @@ const FormEletronics: React.FC = React.memo(() => {
 
   const { setMessageSuccess, setOpenSuccess } = useSuccessMessage();
   const { setOpenError, setMessageError } = useErrorMessage();
+  const { setCategory } = useCategory();
 
   const [loader, setLoader] = useState(false);
 
@@ -92,6 +94,7 @@ const FormEletronics: React.FC = React.memo(() => {
       setLoader(false);
       setMessageSuccess("Product created with success 🙂");
       setOpenSuccess(true);
+      setCategory({ name: "", item: "" });
     } catch (err) {
       setLoader(false);
       setOpenError(true);
@@ -185,4 +188,4 @@ const FormEletronics: React.FC = React.memo(() => {
   );
 });
 
-export default FormEletronics;
+export default React.memo(FormEletronics);

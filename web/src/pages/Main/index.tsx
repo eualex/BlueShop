@@ -6,7 +6,6 @@ import { PropsEletronics } from "../../store/ducks/eletronics";
 import { RootState } from "../../store/ducks";
 
 import Header from "../../components/Header";
-// import Loader from "../../components/Loader";
 import Product from "./Product";
 import Aside from "./Aside";
 
@@ -47,17 +46,15 @@ const Main: React.FC = () => {
 
   useEffect(() => {
     filterData();
+    return () => {};
   }, [filterData]);
-
-  console.log(sneakersFiltered);
-  console.log(eletronicsFiltered);
 
   return (
     <Styles.Container>
       <Header />
 
       <Styles.ContainerInput>
-        <Styles.Input type="text" name="search" placeholder="Search..." />
+        <Styles.Input type="text" name="search" placeholder="Search..." />  
       </Styles.ContainerInput>
 
       <Styles.Wrapper>
@@ -93,4 +90,4 @@ const Main: React.FC = () => {
   );
 };
 
-export default Main;
+export default React.memo(Main);

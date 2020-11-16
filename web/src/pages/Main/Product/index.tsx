@@ -40,4 +40,4 @@ const Product: React.FC<Props> = ({ img, title, description, price }) => {
   );
 };
 
-export default Product;
+export default React.memo(Product);

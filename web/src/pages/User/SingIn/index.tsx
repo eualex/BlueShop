@@ -35,7 +35,7 @@ const SingIn: React.FC = () => {
         const { token, name } = res.data;
         // localStorage.setItem("authToken", token);
         setLoginToken(token);
-        setLoginData({ email, name })
+        setLoginData({ email, name });
         setOpenSession(true);
         setOpen(false);
         history.push("/category");

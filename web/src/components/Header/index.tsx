@@ -8,10 +8,10 @@ import Logo from './Logo';
 const Header: React.FC = () => {
   return (
     <Container>
-        <Logo /> 
-        <Nav />
+      <Logo /> 
+      <Nav />
     </Container>
   );
 };
 
-export default Header;
+export default React.memo(Header);

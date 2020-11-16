@@ -16,7 +16,7 @@ interface PropsCategory {
   name: string;
   item: string;
 }
- 
+
 const ChooseCategory: React.FC = React.memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -44,20 +44,20 @@ const ChooseCategory: React.FC = React.memo(() => {
   }, [load]);
 
   const toggleContainerSneakers = () => {
-    classContainerSneakers === "arrow-sneakers" ? 
-    setClassContainerSneakers("")   :
-    setClassContainerSneakers("arrow-sneakers");
-    
+    classContainerSneakers === "arrow-sneakers"
+      ? setClassContainerSneakers("")
+      : setClassContainerSneakers("arrow-sneakers");
+
     setHiddenSneakers(!hiddenSneakers);
-  }
+  };
 
   const toggleContainerEletronics = () => {
-    classContainerEletronics === "arrow-eletronics" ? 
-    setClassContainerEletronics("")   :
-    setClassContainerEletronics("arrow-eletronics");
-    
+    classContainerEletronics === "arrow-eletronics"
+      ? setClassContainerEletronics("")
+      : setClassContainerEletronics("arrow-eletronics");
+
     setHiddenEletronics(!hiddenEletronics);
-  }
+  };
 
   return (
     <Styles.Container>
@@ -68,7 +68,6 @@ const ChooseCategory: React.FC = React.memo(() => {
       </Styles.Title>
 
       <Styles.Wrapper>
-
         <Styles.ContainerDropdown className={classContainerSneakers}>
           <span onClick={toggleContainerSneakers}>
             <span>
@@ -79,9 +78,27 @@ const ChooseCategory: React.FC = React.memo(() => {
 
           <Styles.WrapperDropdown Hidden={hiddenSneakers}>
             <div>
-              <span onClick={() => handleCategory({ name: "sneakers", item: "woman" })}>Woman</span>
-              <span onClick={() => handleCategory({ name: "sneakers", item: "man" })}>Man</span>
-              <span onClick={() => handleCategory({ name: "sneakers", item: "all" })}>All</span>
+              <span
+                onClick={() =>
+                  handleCategory({ name: "sneakers", item: "woman" })
+                }
+              >
+                Woman
+              </span>
+              <span
+                onClick={() =>
+                  handleCategory({ name: "sneakers", item: "man" })
+                }
+              >
+                Man
+              </span>
+              <span
+                onClick={() =>
+                  handleCategory({ name: "sneakers", item: "all" })
+                }
+              >
+                All
+              </span>
             </div>
           </Styles.WrapperDropdown>
         </Styles.ContainerDropdown>
@@ -96,13 +113,30 @@ const ChooseCategory: React.FC = React.memo(() => {
 
           <Styles.WrapperDropdown Hidden={hiddenEletronics}>
             <div>
-              <span onClick={() => handleCategory({ name: "eletronics", item: "smartphone" })}>Smartphones</span>
-              <span onClick={() => handleCategory({ name: "eletronics", item: "notebook" })}>Notebooks</span>
-              <span onClick={() => handleCategory({ name: "eletronics", item: "all" })}>All</span>
+              <span
+                onClick={() =>
+                  handleCategory({ name: "eletronics", item: "smartphone" })
+                }
+              >
+                Smartphones
+              </span>
+              <span
+                onClick={() =>
+                  handleCategory({ name: "eletronics", item: "notebook" })
+                }
+              >
+                Notebooks
+              </span>
+              <span
+                onClick={() =>
+                  handleCategory({ name: "eletronics", item: "all" })
+                }
+              >
+                All
+              </span>
             </div>
           </Styles.WrapperDropdown>
         </Styles.ContainerDropdown>
-        
       </Styles.Wrapper>
     </Styles.Container>
   );

@@ -7,6 +7,7 @@ import { ThemeContext } from "styled-components";
 import api from "../../../services/api";
 import { useErrorMessage } from "../../../contexts/error";
 import { useSuccessMessage } from "../../../contexts/success";
+import { useCategory } from "../../../contexts/category";
 
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
@@ -25,10 +26,10 @@ import {
 
 const FormSneakers: React.FC = React.memo(() => {
   const { colors } = useContext(ThemeContext);
-  // const history = useHistory();
 
   const { setMessageSuccess, setOpenSuccess } = useSuccessMessage();
   const { setOpenError, setMessageError } = useErrorMessage();
+  const { setCategory } = useCategory();
 
   const [loader, setLoader] = useState(false);
 
@@ -95,6 +96,7 @@ const FormSneakers: React.FC = React.memo(() => {
       setLoader(false);
       setMessageSuccess("Product created with success 🙂");
       setOpenSuccess(true);
+      setCategory({ name: "", item: "" });
     } catch (err) {
       setLoader(false);
       setOpenError(true);
@@ -195,4 +197,4 @@ const FormSneakers: React.FC = React.memo(() => {
   );
 });
 
-export default FormSneakers;
+export default React.memo(FormSneakers);
