@@ -26,35 +26,78 @@ const Main: React.FC = () => {
     (state: RootState) => state.eletronics
   );
 
-  const filterData = useCallback(() => {
-    switch (category.name) {
-      case "eletronics":
-        if (category.item === "all") setEletronicsFiltered(eletronicsData);
-        else setEletronicsFiltered(
-          eletronicsData.filter((e) => e.item === category.item)
-        );
-        break;
-      case "sneakers":
-        if (category.item === "all") setSneakersFiltered(sneakersData);
-        else
-          setSneakersFiltered(
-            sneakersData.filter((e) => e.genre === category.item)
-          );
-        break;
-    }
-  }, [category, eletronicsData, sneakersData]);
+  const handleFilter = useCallback(
+    (search?: string) => {
+      switch (category.name) {
+        case "eletronics":
+          if (category.item === "all") {
+            !!search
+              ? setEletronicsFiltered(
+                  eletronicsData.filter(
+                    (e) => e.name.toLocaleLowerCase().indexOf(search) !== -1
+                  )
+                )
+              : setEletronicsFiltered(eletronicsData);
+          } else {
+            !!search
+              ? setEletronicsFiltered(
+                  eletronicsData.filter(
+                    (e) =>
+                      e.item === category.item &&
+                      e.name.toLocaleLowerCase().indexOf(search) !== -1
+                  )
+                )
+              : setEletronicsFiltered(
+                  eletronicsData.filter((e) => e.item === category.item)
+                );
+          }
+          break;
+        case "sneakers":
+          if (category.item === "all") {
+            !!search
+              ? setSneakersFiltered(
+                  sneakersData.filter(
+                    (e) => e.name.toLocaleLowerCase().indexOf(search) !== -1
+                  )
+                )
+              : setSneakersFiltered(sneakersData);
+          } else {
+            !!search
+              ? setSneakersFiltered(
+                  sneakersData.filter(
+                    (e) =>
+                      (e.genre === category.item || e.genre === "all") &&
+                      e.name.toLocaleLowerCase().indexOf(search) !== -1
+                  )
+                )
+              : setSneakersFiltered(
+                  sneakersData.filter(
+                    (e) => e.genre === category.item || e.genre === "all"
+                  )
+                );
+          }
+          break;
+      }
+    },
+    [category, eletronicsData, sneakersData]
+  );
 
   useEffect(() => {
-    filterData();
+    handleFilter();
     return () => {};
-  }, [filterData]);
+  }, [handleFilter]);
 
   return (
     <Styles.Container>
       <Header />
 
       <Styles.ContainerInput>
-        <Styles.Input type="text" name="search" placeholder="Search..." />  
+        <Styles.Input
+          type="text"
+          name="search"
+          placeholder="Search..."
+          onChange={(e) => handleFilter(e.target.value.toLocaleLowerCase())}
+        />
       </Styles.ContainerInput>
 
       <Styles.Wrapper>
