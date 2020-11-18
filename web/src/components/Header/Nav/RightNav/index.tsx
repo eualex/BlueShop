@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { FiShoppingCart } from "react-icons/fi";
 
 import Switch from "react-switch";
 import { ContainerNav } from "./styles";
@@ -31,13 +32,17 @@ const RightNav: React.FC<Props> = ({ open }) => {
     <ContainerNav open={open}>
       <ul>
         <li className="only-mobile">
-          <span onClick={() => { 
-            setOpen(false);
-            history.push("category");
-          }}>Categories</span>
+          <span
+            onClick={() => {
+              setOpen(false);
+              history.push("category");
+            }}
+          >
+            Categories
+          </span>
         </li>
         <li className="only-pc">
-          <span className="title">Eletronics</span >
+          <span className="title">Eletronics</span>
           <Dropdown
             className="dropdown"
             name="eletronics"
@@ -45,7 +50,7 @@ const RightNav: React.FC<Props> = ({ open }) => {
           />
         </li>
         <li className="only-pc">
-          <span className="title">Sneakers</span >
+          <span className="title">Sneakers</span>
           <Dropdown
             className="dropdown"
             name="sneakers"
@@ -61,10 +66,14 @@ const RightNav: React.FC<Props> = ({ open }) => {
       </ul>
 
       <span>
-        {!loginToken && (
+        {!loginToken ? (
           <Link className="login" to="/login">
             Sing In
           </Link>
+        ) : (
+          <div className="shop-car">
+            <FiShoppingCart size={25} color={theme.colors.textPrimary} />
+          </div>
         )}
         <Switch
           onChange={toggleTheme}
@@ -74,7 +83,9 @@ const RightNav: React.FC<Props> = ({ open }) => {
           height={open ? 20 : 10}
           width={open ? 50 : 40}
           handleDiameter={open ? 40 : 20}
-          offHandleColor={open ? theme.colors.textTerceary : theme.colors.primary}
+          offHandleColor={
+            open ? theme.colors.textTerceary : theme.colors.primary
+          }
           onHandleColor={theme.colors.textPrimary}
           onColor={theme.colors.primary}
           offColor={theme.colors.textQuartenary}

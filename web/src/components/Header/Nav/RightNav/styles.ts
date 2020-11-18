@@ -75,6 +75,21 @@ export const ContainerNav = styled.div<Props>`
         transition: 0.3s ease-in;
       }
     }
+
+    .shop-car {
+      width: 60px;
+      height: 50px;
+      border-radius: 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      &:hover {
+        background-color: ${({ theme }) =>  theme.colors.backgroundTerceary};
+        cursor: pointer;
+      }
+    }
   }
 
   @media (max-width: 968px) {
