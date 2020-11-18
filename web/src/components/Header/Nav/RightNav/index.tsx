@@ -1,65 +1,83 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback } from "react";
+import { Link, useHistory } from "react-router-dom";
 
-import { ThemeContext } from 'styled-components';
-
-import Switch from 'react-switch';
+import Switch from "react-switch";
 import { ContainerNav } from "./styles";
+import Dropdown from "./Dropdown";
 
-import { useTheme } from '../../../../contexts/theme';
+import { useTheme } from "../../../../contexts/theme";
 import dark from "../../../../styles/themes/dark";
 import light from "../../../../styles/themes/light";
 
-import { Link } from 'react-router-dom';
 import { useLogin } from "../../../../contexts/login";
+import { useOpen } from "../../../../contexts/burguerMenu";
 
 interface Props {
   open: boolean;
 }
 
 const RightNav: React.FC<Props> = ({ open }) => {
-  const { colors, title } = useContext(ThemeContext);
+  const history = useHistory();
+
+  const { setOpen } = useOpen();
   const { theme, setTheme } = useTheme();
   const { loginToken } = useLogin();
 
   const toggleTheme = useCallback(() => {
-    setTheme(theme.title === 'light' ? dark : light);
+    setTheme(theme.title === "light" ? dark : light);
   }, [theme, setTheme]);
-
 
   return (
     <ContainerNav open={open}>
       <ul>
-        <li>
-          <Link to="">Eletronics</Link>
+        <li className="only-mobile">
+          <span onClick={() => { 
+            setOpen(false);
+            history.push("category");
+          }}>Categories</span>
+        </li>
+        <li className="only-pc">
+          <span className="title">Eletronics</span >
+          <Dropdown
+            className="dropdown"
+            name="eletronics"
+            items={["Smartphone", "Notebook", "All"]}
+          />
+        </li>
+        <li className="only-pc">
+          <span className="title">Sneakers</span >
+          <Dropdown
+            className="dropdown"
+            name="sneakers"
+            items={["Woman", "Man", "All"]}
+          />
         </li>
         <li>
-          <Link to="">Sneakers</Link>
+          <span className="title">Delivery</span>
         </li>
         <li>
-          <Link to="">Delivery</Link>
-        </li>
-        <li>
-          <Link to="">Contact us</Link>
+          <span className="title">Contact us</span>
         </li>
       </ul>
 
       <span>
-        { !loginToken && <Link className="login" to="/login">Login</Link> }
-        <Switch 
+        {!loginToken && (
+          <Link className="login" to="/login">
+            Sing In
+          </Link>
+        )}
+        <Switch
           onChange={toggleTheme}
-          checked={title === 'dark'}
+          checked={theme.title === "dark"}
           checkedIcon={false}
           uncheckedIcon={false}
-
           height={open ? 20 : 10}
           width={open ? 50 : 40}
-
           handleDiameter={open ? 40 : 20}
-          offHandleColor={open ? colors.textTerceary : colors.primary}
-          onHandleColor={colors.textPrimary}
-
-          onColor={colors.primary}
-          offColor={colors.textQuartenary}
+          offHandleColor={open ? theme.colors.textTerceary : theme.colors.primary}
+          onHandleColor={theme.colors.textPrimary}
+          onColor={theme.colors.primary}
+          offColor={theme.colors.textQuartenary}
         />
       </span>
     </ContainerNav>

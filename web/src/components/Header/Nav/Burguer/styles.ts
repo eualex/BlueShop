@@ -9,6 +9,7 @@ export const ContainerBurguer = styled.div<Props>`
   height: 30px;
 
   display: none;
+  z-index: 1000;
 
   div {
     z-index: 20;

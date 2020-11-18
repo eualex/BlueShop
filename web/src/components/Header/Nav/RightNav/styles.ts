@@ -12,26 +12,46 @@ export const ContainerNav = styled.div<Props>`
   z-index: 15;
 
   width: 100%;
-  height: ${({ open }) => open ? '110vh' : '100%'};
+  height: ${({ open }) => (open ? "110vh" : "100%")};
 
   ul {
-    width: 45%;
+    width: 70%;
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
     list-style: none;
 
-    > li a {
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.2rem;
+    .only-mobile {
+      display: none;
+    }
 
-      color: ${(props) => props.theme.colors.textSecondary};
+    // dropdown
+    li {
+      position: relative;
+      z-index: 20;
 
       &:hover {
-        color: ${(props) => props.theme.colors.primary};
+        .dropdown {
+          display: block;
+        }
+      }
+    }
+
+    li .title {
+      width: 100%;
+      padding: 10px 20px;
+
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: ${(props) => props.theme.colors.textPrimary};
+      cursor: pointer;
+
+      &:hover {
+        background: ${({ theme }) => theme.colors.backgroundTerceary};
+        /* color: ${(props) => props.theme.colors.primary}; */
         transition: 0.3s ease-in;
       }
     }
@@ -48,10 +68,10 @@ export const ContainerNav = styled.div<Props>`
     .login {
       text-decoration: none;
       font-weight: bold;
-      color: ${(props) => props.theme.colors.primary};
+      color: ${(props) => props.theme.colors.textPrimary};
 
       &:hover {
-        color: ${(props) => props.theme.colors.textPrimary};
+        color: ${(props) => props.theme.colors.primary};
         transition: 0.3s ease-in;
       }
     }
@@ -90,7 +110,29 @@ export const ContainerNav = styled.div<Props>`
         margin-bottom: 35px;
       }
 
-      li a {
+      .only-pc {
+        display: none;
+      }
+
+      .only-mobile {
+        display: block;
+
+        span {
+          font-size: 3rem;
+          text-decoration: none;
+          font-weight: 500;
+          color: ${(props) =>
+            props.theme.title === "dark"
+              ? props.theme.colors.primary
+              : props.theme.colors.textTerceary};
+
+          &:hover {
+            color: ${(props) => props.theme.colors.textPrimary};
+          }
+        }
+      }
+
+      li .title {
         font-size: 3rem;
         color: ${(props) =>
           props.theme.title === "dark"
@@ -112,6 +154,7 @@ export const ContainerNav = styled.div<Props>`
 
       .login {
         font-size: 3rem;
+        font-weight: 500;
         color: ${(props) =>
           props.theme.title === "dark"
             ? props.theme.colors.primary
@@ -127,4 +170,3 @@ export const ContainerNav = styled.div<Props>`
     }
   }
 `;
-

@@ -6,6 +6,7 @@ import Login from "../pages/User";
 import Main from "../pages/Main";
 import RegisterProduct from "../pages/RegisterProduct";
 import ChooseCategory from "../pages/Category";
+import ErrorsPage from "../components/ErrorsPage";
 
 import PrivateRoute from "./PrivateRoute";
 
@@ -31,7 +32,6 @@ const Routes: React.FC = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
-        {/* <Route path="/main" component={Main} /> */}
         <Route path="/category" component={ChooseCategory} />
         <PrivateRoute
           path="/register-product"
@@ -45,6 +45,7 @@ const Routes: React.FC = () => {
           verify={checkCategory}
           redirect="/category"
         />
+        <Route component={ErrorsPage} />
       </Switch>
     </BrowserRouter>
   );
