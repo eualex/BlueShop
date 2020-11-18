@@ -7,6 +7,22 @@ export const Container = styled.div`
   hr {
     opacity: 0.2;
   }
+
+  .products-not-found {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      height: 100px;
+      color: ${({ theme }) => theme.colors.textPrimary};
+      font-weight: none;
+    }
+  }
 `;
 
 export const ContainerInput = styled.div`

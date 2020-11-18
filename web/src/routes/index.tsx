@@ -31,8 +31,8 @@ const Routes: React.FC = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
         <Route path="/category" component={ChooseCategory} />
+        <Route path="/login" component={Login} />
         <PrivateRoute
           path="/register-product"
           Component={RegisterProduct}

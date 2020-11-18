@@ -8,11 +8,11 @@ import { RootState } from "../../store/ducks";
 import Header from "../../components/Header";
 import Product from "./Product";
 import Aside from "./Aside";
-import ErrorsPage from "../../components/ErrorsPage";
 
 import { useCategory } from "../../contexts/category";
 
 import * as Styles from "./styles";
+import NotFound from "./NotFound";
 
 const Main: React.FC = () => {
   const { category } = useCategory();
@@ -92,56 +92,55 @@ const Main: React.FC = () => {
     <Styles.Container>
       <Header />
 
-      <Styles.ContainerInput>
-        <Styles.Input
-          type="text"
-          name="search"
-          placeholder="Search..."
-          onChange={(e) => handleFilter(e.target.value.toLocaleLowerCase())}
-        />
-      </Styles.ContainerInput>
+      {(eletronicsFiltered.length !== 0 || sneakersFiltered.length !== 0) && (
+        <>
+          <Styles.ContainerInput>
+            <Styles.Input
+              type="text"
+              name="search"
+              placeholder="Search..."
+              onChange={(e) => handleFilter(e.target.value.toLocaleLowerCase())}
+            />
+          </Styles.ContainerInput>
 
-      <Styles.Wrapper>
-        <Aside />
+          <Styles.Wrapper>
+            <Aside />
 
-        <Styles.ContainerProducts>
-          {category.name === "eletronics" && eletronicsFiltered.length !== 0
-            ? eletronicsFiltered.map((e) => (
-                <Product
-                  key={e.id}
-                  price={e.price}
-                  img={e.images[0].url}
-                  title={e.name}
-                  description={""}
-                />
-              ))
-            : category.name === "eletronics" && (
-                <ErrorsPage
-                  status=""
-                  message="Products not found"
-                  error={false}
-                />
-              )}
+            <Styles.ContainerProducts>
+              {category.name === "eletronics" &&
+                eletronicsFiltered.length !== 0 &&
+                eletronicsFiltered.map((e) => (
+                  <Product
+                    key={e.id}
+                    price={e.price}
+                    img={e.images[0].url}
+                    title={e.name}
+                    description={""}
+                  />
+                ))}
 
-          {category.name === "sneakers" && sneakersFiltered.length !== 0
-            ? sneakersFiltered.map((s) => (
-                <Product
-                  key={s.id}
-                  price={s.price}
-                  img={s.images[0].url}
-                  title={s.name}
-                  description={""}
-                />
-              ))
-            : category.name === "sneakers" && (
-                <ErrorsPage
-                  status=""
-                  message="Products not found"
-                  error={false}
-                />
-              )}
-        </Styles.ContainerProducts>
-      </Styles.Wrapper>
+              {category.name === "sneakers" &&
+                sneakersFiltered.length !== 0 &&
+                sneakersFiltered.map((s) => (
+                  <Product
+                    key={s.id}
+                    price={s.price}
+                    img={s.images[0].url}
+                    title={s.name}
+                    description={""}
+                  />
+                ))}
+            </Styles.ContainerProducts>
+          </Styles.Wrapper>
+        </>
+      )}
+
+      {eletronicsFiltered.length === 0 && category.name === "eletronics" && (
+        <NotFound className="products-not-found"/>
+      )}
+      {sneakersFiltered.length === 0 && category.name === "sneakers" && (
+        <NotFound className="products-not-found"/>
+      )}
     </Styles.Container>
   );
 };
