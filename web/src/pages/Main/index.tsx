@@ -31,6 +31,7 @@ const Main: React.FC = () => {
     (search?: string) => {
       switch (category.name) {
         case "eletronics":
+          setSneakersFiltered([]);
           if (category.item === "all") {
             !!search
               ? setEletronicsFiltered(
@@ -54,6 +55,7 @@ const Main: React.FC = () => {
           }
           break;
         case "sneakers":
+          setEletronicsFiltered([])
           if (category.item === "all") {
             !!search
               ? setSneakersFiltered(
@@ -91,17 +93,18 @@ const Main: React.FC = () => {
   return (
     <Styles.Container>
       <Header />
+      
+      <Styles.ContainerInput>
+        <Styles.Input
+          type="text"
+          name="search"
+          placeholder="Search..."
+          onChange={(e) => handleFilter(e.target.value.toLocaleLowerCase())}
+        />
+      </Styles.ContainerInput>
 
       {(eletronicsFiltered.length !== 0 || sneakersFiltered.length !== 0) && (
         <>
-          <Styles.ContainerInput>
-            <Styles.Input
-              type="text"
-              name="search"
-              placeholder="Search..."
-              onChange={(e) => handleFilter(e.target.value.toLocaleLowerCase())}
-            />
-          </Styles.ContainerInput>
 
           <Styles.Wrapper>
             <Aside />

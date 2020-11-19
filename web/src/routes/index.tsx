@@ -6,7 +6,7 @@ import Login from "../pages/User";
 import Main from "../pages/Main";
 import RegisterProduct from "../pages/RegisterProduct";
 import ChooseCategory from "../pages/Category";
-import ErrorsPage from "../components/ErrorsPage";
+import ErrorsPage from "../components/404";
 
 import PrivateRoute from "./PrivateRoute";
 

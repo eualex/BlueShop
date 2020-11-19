@@ -10,7 +10,7 @@ export const Container = styled.div`
 
   .products-not-found {
     width: 100%;
-    height: 100%;
+    height: 50%;
 
     display: flex;
     flex-direction: column;

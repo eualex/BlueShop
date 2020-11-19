@@ -14,6 +14,10 @@ export const ContainerNav = styled.div<Props>`
   width: 100%;
   height: ${({ open }) => (open ? "110vh" : "100%")};
 
+  .only-mobile {
+    display: none;
+  }
+
   ul {
     width: 70%;
 
@@ -22,10 +26,6 @@ export const ContainerNav = styled.div<Props>`
     justify-content: space-evenly;
 
     list-style: none;
-
-    .only-mobile {
-      display: none;
-    }
 
     // dropdown
     li {
@@ -76,7 +76,7 @@ export const ContainerNav = styled.div<Props>`
       }
     }
 
-    .shop-car {
+    #shop-car {
       width: 60px;
       height: 50px;
       border-radius: 10px;
@@ -84,9 +84,9 @@ export const ContainerNav = styled.div<Props>`
       display: flex;
       align-items: center;
       justify-content: center;
-      
+
       &:hover {
-        background-color: ${({ theme }) =>  theme.colors.backgroundTerceary};
+        background-color: ${({ theme }) => theme.colors.backgroundTerceary};
         cursor: pointer;
       }
     }
@@ -111,6 +111,31 @@ export const ContainerNav = styled.div<Props>`
     flex-direction: column;
     justify-content: space-around;
 
+    .only-pc {
+      display: none;
+    }
+
+    .only-mobile {
+      display: block;
+
+      span {
+        font-size: 3rem;
+        text-decoration: none;
+        font-weight: 500;
+        color: ${(props) =>
+          props.theme.title === "dark"
+            ? props.theme.colors.textPrimary
+            : props.theme.colors.textTerceary};
+
+        &:hover {
+          color: ${(props) =>
+            props.theme.title === "dark"
+              ? props.theme.colors.primary
+              : props.theme.colors.textTerceary};
+        }
+      }
+    }
+
     ul {
       display: flex;
       flex-flow: column nowrap;
@@ -125,37 +150,23 @@ export const ContainerNav = styled.div<Props>`
         margin-bottom: 35px;
       }
 
-      .only-pc {
-        display: none;
-      }
+      li .title {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        /* display: none; */
+        font-size: 3rem;
+        color: ${(props) =>
+          props.theme.title === "dark"
+          ? props.theme.colors.textPrimary
+          : props.theme.colors.textTerceary};
 
-      .only-mobile {
-        display: block;
-
-        span {
-          font-size: 3rem;
-          text-decoration: none;
-          font-weight: 500;
+        &:hover {
+          background: transparent;
           color: ${(props) =>
             props.theme.title === "dark"
               ? props.theme.colors.primary
               : props.theme.colors.textTerceary};
-
-          &:hover {
-            color: ${(props) => props.theme.colors.textPrimary};
-          }
-        }
-      }
-
-      li .title {
-        font-size: 3rem;
-        color: ${(props) =>
-          props.theme.title === "dark"
-            ? props.theme.colors.primary
-            : props.theme.colors.textTerceary};
-
-        &:hover {
-          color: ${(props) => props.theme.colors.textPrimary};
           transition: none;
         }
       }
@@ -165,21 +176,24 @@ export const ContainerNav = styled.div<Props>`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 10%;
+      height: 15%;
 
       .login {
         font-size: 3rem;
         font-weight: 500;
         color: ${(props) =>
           props.theme.title === "dark"
-            ? props.theme.colors.primary
+            ? props.theme.colors.textPrimary
             : props.theme.colors.textTerceary};
 
         margin-bottom: 13px;
 
         &:hover {
           transition: none;
-          color: ${(props) => props.theme.colors.textPrimary};
+          color: ${(props) =>
+            props.theme.title === "dark"
+              ? props.theme.colors.primary
+              : props.theme.colors.textPrimary};
         }
       }
     }

@@ -35,6 +35,16 @@ const RightNav: React.FC<Props> = ({ open }) => {
           <span
             onClick={() => {
               setOpen(false);
+              // history.push("category");
+            }}
+          >
+            Shop Car
+          </span>
+        </li>
+        <li className="only-mobile">
+          <span
+            onClick={() => {
+              setOpen(false);
               history.push("category");
             }}
           >
@@ -66,15 +76,16 @@ const RightNav: React.FC<Props> = ({ open }) => {
       </ul>
 
       <span>
-        {!loginToken ? (
+        <div className="only-pc">
+          <FiShoppingCart size={25} color={theme.colors.textPrimary} />
+        </div>
+
+        {!loginToken && (
           <Link className="login" to="/login">
             Sing In
           </Link>
-        ) : (
-          <div className="shop-car">
-            <FiShoppingCart size={25} color={theme.colors.textPrimary} />
-          </div>
         )}
+
         <Switch
           onChange={toggleTheme}
           checked={theme.title === "dark"}

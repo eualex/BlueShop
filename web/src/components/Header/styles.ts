@@ -14,4 +14,10 @@ export const Container = styled.div`
   justify-content: space-between;
 
   padding-top: 20px;
+
+  @media(max-width: 968px) {
+    height: 10vh;
+    
+
+  }
 `;

@@ -43,5 +43,7 @@ export const ContainerBurguer = styled.div<Props>`
     justify-content: space-around;
 
     margin-top: 5px;
+
+    position: fixed;
   }
 `;
