@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { PropsSneakers } from "../../store/ducks/sneakers";
 import { PropsEletronics } from "../../store/ducks/eletronics";
@@ -10,12 +11,15 @@ import Product from "./Product";
 import Aside from "./Aside";
 
 import { useCategory } from "../../contexts/category";
+import { useSearchProduct } from "../../contexts/product";
 
 import * as Styles from "./styles";
 import NotFound from "./NotFound";
 
 const Main: React.FC = () => {
+  const history = useHistory()
   const { category } = useCategory();
+  const { setSearchProduct } = useSearchProduct();
 
   const [eletronicsFiltered, setEletronicsFiltered] = useState<
     PropsEletronics[]
@@ -85,6 +89,11 @@ const Main: React.FC = () => {
     [category, eletronicsData, sneakersData]
   );
 
+  const handleProduct = (id: string) => {
+    setSearchProduct({ id, category: category.name });
+    history.push("product");
+  }
+
   useEffect(() => {
     handleFilter();
     return () => {};
@@ -114,6 +123,7 @@ const Main: React.FC = () => {
                 eletronicsFiltered.length !== 0 &&
                 eletronicsFiltered.map((e) => (
                   <Product
+                    onClick={() => handleProduct(e.id)}
                     key={e.id}
                     price={e.price}
                     img={e.images[0].url}
@@ -126,6 +136,7 @@ const Main: React.FC = () => {
                 sneakersFiltered.length !== 0 &&
                 sneakersFiltered.map((s) => (
                   <Product
+                    onClick={() => handleProduct(s.id)}
                     key={s.id}
                     price={s.price}
                     img={s.images[0].url}

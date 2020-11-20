@@ -14,6 +14,7 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   labelValue,
   onChange,
+  ...rest
 }: InputProps) => {
   const [focus, setFocus] = useState(false);
    
@@ -21,6 +22,7 @@ const Input: React.FC<InputProps> = ({
     <>
       {labelValue && <Label focus={focus} htmlFor={name}>{labelValue}:</Label>}
       <CustomInput
+        {...rest}
         onChange={onChange}
         placeholder={placeholder}
         type={type}

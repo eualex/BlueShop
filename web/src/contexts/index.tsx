@@ -7,6 +7,7 @@ import MessageErrorProvider from "./error";
 import MessageSuccessProvider from "./success";
 import MessageSessionUser from "./sessionUser";
 import LoginProvider from "./login";
+import SearchProduct from "./product";
 
 const Contexts: React.FC = ({ children }) => {
   return (
@@ -17,7 +18,9 @@ const Contexts: React.FC = ({ children }) => {
             <MessageSuccessProvider>
               <MessageSessionUser>
                 <LoginProvider>
-                  {children}
+                  <SearchProduct>
+                    {children}
+                  </SearchProduct>
                 </LoginProvider>
               </MessageSessionUser>
             </MessageSuccessProvider>

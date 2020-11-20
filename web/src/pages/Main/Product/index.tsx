@@ -2,16 +2,16 @@ import React from 'react';
 
 import * as Styles from './styles';
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLDivElement>{
   img: string;
   title: string;
   description: string;
   price: number;
 }
 
-const Product: React.FC<Props> = ({ img, title, description, price }) => {
+const Product: React.FC<Props> = ({ img, title, description, price, onClick }) => {
   return (
-    <Styles.Container>
+    <Styles.Container onClick={onClick}>
       <Styles.Header>
         <span>
           <h4>{title}</h4>

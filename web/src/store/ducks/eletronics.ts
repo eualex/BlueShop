@@ -9,7 +9,7 @@ interface PropsImages {
   url: string;
 }
 
-console.log(process.env.API);
+// console.log(process.env.API);
 
 export interface PropsEletronics {
   id: string;
@@ -41,7 +41,7 @@ export const getEletronics = () => {
       const res = await api.get("/eletronics");
       dispatch(Creators.fetchEletronicsSuccess(res.data))
     } catch (err) {
-      return console.log(err.response.data.message);
+      return console.log(err.response);
     }
   };
 };

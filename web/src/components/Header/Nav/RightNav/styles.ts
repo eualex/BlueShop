@@ -158,8 +158,8 @@ export const ContainerNav = styled.div<Props>`
         font-size: 3rem;
         color: ${(props) =>
           props.theme.title === "dark"
-          ? props.theme.colors.textPrimary
-          : props.theme.colors.textTerceary};
+            ? props.theme.colors.textPrimary
+            : props.theme.colors.textTerceary};
 
         &:hover {
           background: transparent;
