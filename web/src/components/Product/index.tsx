@@ -17,10 +17,6 @@ const Product: React.FC<Props> = ({ img, title, description, price, onClick }) =
           <h4>{title}</h4>
           <p>{description}</p>
         </span>
-
-        {/* <ButtonAddToCart to="">
-          <AiOutlineShoppingCart color="#fff"/>
-        </ButtonAddToCart> */}
       </Styles.Header>
 
       <Styles.ContainerImage>

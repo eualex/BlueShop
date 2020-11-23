@@ -38,7 +38,7 @@ const BigProduct: React.FC<BigProductProps> = ({
         <p>{description}</p>
         <span>
           <h3>${price}</h3>
-          <Button>Buy</Button>
+          <Button link="category">Buy</Button>
         </span>
       </div>
     </Container>

@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useContext, createContext } from "react";
 import usePersistedState from "../utils/usePersistedState";
 
 interface PropsSearchProduct {

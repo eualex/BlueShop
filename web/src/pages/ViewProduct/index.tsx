@@ -1,20 +1,25 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { AiOutlineStar } from "react-icons/ai";
-import { AiOutlineSearch } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+
+import { getEletronics } from "../../store/ducks/eletronics";
+import { getSneakers } from "../../store/ducks/sneakers";
 
 import api from "../../services/api";
 import { EletronicsProps, SneakersProps } from "../../utils/product";
 import { useSearchProduct } from "../../contexts/product";
-import { useTheme } from "../../contexts/theme";
+
+import * as Styles from "./styles";
 
 import Header from "../../components/Header";
-import * as Styles from "./styles";
-import sneakers from "../../store/ducks/sneakers";
-import Button from "../../components/Button";
+import Recommendations from "./Recommendations";
+import PrimaryInfo from "./PrimaryInfo";
+import Aside from "./Aside";
 
-const Product: React.FC = () => {
+const ViewProduct: React.FC = () => {
+  const dispatch = useDispatch();
+
   const { searchProduct } = useSearchProduct();
-  const { theme } = useTheme();
+
   const [eletronicProduct, setEletronicProduct] = useState<EletronicsProps>();
   const [sneakersProduct, setSneakersProduct] = useState<SneakersProps>();
 
@@ -29,13 +34,16 @@ const Product: React.FC = () => {
       switch (searchProduct.category) {
         case "eletronics":
           setEletronicProduct(response.data);
+          dispatch(getEletronics());
           break;
         case "sneakers":
-          console.log(response.data);
           setSneakersProduct(response.data);
+          dispatch(getSneakers());
+          break;
       }
     } catch {}
-  }, [searchProduct, setSneakersProduct]);
+
+  }, [dispatch, searchProduct.category, searchProduct.id]);
 
   useEffect(() => {
     load();
@@ -47,70 +55,22 @@ const Product: React.FC = () => {
 
       <Styles.Wrapper>
         <Styles.Top>
-          <Styles.ContainerImages>
-            <Styles.Image src={sneakersProduct?.images[0].url} alt="Product" />
-            <div className="images">
-              <Styles.SmallImage />
-              <Styles.SmallImage />
-              <Styles.SmallImage />
-              <Styles.SmallImage />
-            </div>
-          </Styles.ContainerImages>
-
-          <Styles.ContainerInfo>
-            <h1>{sneakersProduct?.name}</h1>
-            <Styles.ContainerFeedback>
-              <AiOutlineStar size={25} color={theme.colors.textPrimary} />
-              <AiOutlineStar size={25} color={theme.colors.textPrimary} />
-              <AiOutlineStar size={25} color={theme.colors.textPrimary} />
-              <AiOutlineStar size={25} color={theme.colors.textPrimary} />
-              <AiOutlineStar size={25} color={theme.colors.textPrimary} />
-            </Styles.ContainerFeedback>
-            <p>{sneakersProduct?.description}</p>
-          </Styles.ContainerInfo>
+          <PrimaryInfo
+            eletronicsProduct={eletronicProduct}
+            sneakersProduct={sneakersProduct}
+          />
+          <Aside
+            sneakersProduct={sneakersProduct}
+            eletronicsProduct={eletronicProduct}
+          />
         </Styles.Top>
-
-        <Styles.ContainerAside>
-          <div className="price">
-            <span>${sneakersProduct?.price}</span>
-          </div>
-
-          <hr />
-
-          <Styles.Freight>
-            <p>Calculate Freight</p>
-
-            <div className="search-code">
-              <input
-                max="9"
-                maxLength={9}
-                name="Zip Code"
-                type="number"
-                placeholder="Zip Code"
-                spellCheck="false"
-              />
-              <span>
-                <AiOutlineSearch size={20} color={theme.colors.textTerceary} />
-              </span>
-            </div>
-          </Styles.Freight>
-
-          <hr />
-
-          <Styles.AddToCart>
-            <Button>Add to Cart</Button>
-          </Styles.AddToCart>
-          <Styles.Buy>
-            <Button>Buy</Button>
-          </Styles.Buy>
-        </Styles.ContainerAside>
+        <Recommendations
+          eletronicsProduct={eletronicProduct}
+          sneakersProduct={sneakersProduct}
+        />
       </Styles.Wrapper>
-      <Styles.Bottom>
-        <Styles.AddComent></Styles.AddComent>
-        <Styles.Coments></Styles.Coments>
-      </Styles.Bottom>
     </Styles.Container>
   );
 };
 
-export default Product;
+export default ViewProduct;

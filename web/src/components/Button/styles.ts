@@ -7,7 +7,7 @@ export const ContainerButton = styled.button`
   color: ${(props) => props.theme.colors.textTerceary};
   border: none;
   background-color: ${(props) => props.theme.colors.primary};
-  margin: 30px 0px 0px;
+  margin-top: 30px;
   padding: 12px 30px;
   text-decoration: none;
   border-radius: 5px;
@@ -16,12 +16,12 @@ export const ContainerButton = styled.button`
   a {
     text-decoration: none;
     color: ${(props) => props.theme.colors.textTerceary};
+    width: 100%;
+    z-index: 20;
   }
 
   &:hover {
     background-color: ${(props) => props.theme.colors.primaryHover};
-    /* color: ${(props) => props.theme.colors.textPrimary}; */
-    /* border: 1px solid ${(props) => props.theme.colors.textPrimary}; */
     transition: 0.3s ease-in;
 
     cursor: pointer;

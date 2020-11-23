@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
-import { Link } from 'react-router-dom';
 import Button from '../../../components/Button';
 
 import * as Styles from './styles';
@@ -22,8 +21,8 @@ const HeaderMain: React.FC = () => {
           <h2>Sale up to 50% off</h2>
 
           <span>
-            <Button>
-              <Link to="login">Shop</Link>
+            <Button link="category">
+              Shop
             </Button>
           </span>
         </div>

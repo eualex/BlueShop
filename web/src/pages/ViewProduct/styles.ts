@@ -1,35 +1,61 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
-  height: 100%;
+  height: 100vh;
 `;
 
 export const Wrapper = styled.div`
-  height: 60vh;
+  /* height: 100 */
   width: 90%;
   max-width: 980px;
   margin: 0 auto;
 
-  margin-top: 70px;
-  /* padding: 20px; */
-
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 `;
 
 export const Top = styled.div`
-  width: 70%;
-  height: 100%;
-  padding: 20px;
-
-  background: ${({ theme }) => theme.colors.backgroundTerceary};
+  width: 100%;
+  height: 100vh;
 
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media(max-width: 968px) {
+    height: 100%;
+    background: transparent;
+    flex-direction: column;
+  }
+`;
+
+export const ContainerPrimaryInfo = styled.div`
+  background: ${({ theme }) => theme.colors.backgroundTerceary};
+  width: 70%;
+  height: 60%;
+  padding: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media(max-width: 968px) {
+    margin-top: 50px;
+  }
+
+  @media(max-width: 838px) {
+    width: 100%;
+    background: transparent;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const ContainerImages = styled.div`
-  width: 60%;
+  width: 40%;
   height: 80%;
 
   display: flex;
@@ -43,6 +69,16 @@ export const ContainerImages = styled.div`
 
     /* height: 240px */
   }
+
+  @media(max-width: 838px) {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    .images {
+      margin: 15px 0;
+    }
+  }
 `;
 
 export const ContainerFeedback = styled.div``;
@@ -50,6 +86,13 @@ export const ContainerFeedback = styled.div``;
 export const Image = styled.img`
   width: 300px;
   /* height: 200px;  */
+
+  /* @media(max-width: 838px) {
+    width: 250px;
+  } */
+  @media(max-width: 400px) {
+    width: 200px;
+  }
 `;
 
 export const SmallImage = styled.img`
@@ -63,7 +106,6 @@ export const SmallImage = styled.img`
   border-radius: 20px;
 
   border: 1px solid ${({ theme }) => theme.colors.textPrimary};
-
 `;
 
 export const ContainerInfo = styled.div`
@@ -74,7 +116,9 @@ export const ContainerInfo = styled.div`
   justify-content: space-evenly;
   align-items: right;
 
-  h1, p, h3{
+  h1,
+  p,
+  h3 {
     /* width: 30px; */
     color: ${({ theme }) => theme.colors.textPrimary};
   }
@@ -82,16 +126,25 @@ export const ContainerInfo = styled.div`
   p {
     font-size: 1.3rem;
   }
- 
+
+  @media(max-width: 838px) {
+    width: 100%;
+  }
 `;
 
 export const ContainerAside = styled.div`
-  width: 25%;
-  padding: 20px;
-
   background: ${({ theme }) => theme.colors.backgroundTerceary};
 
+  width: 25%;
+  height: 60%;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   .price {
+    width: 100%;
     margin-bottom: 20px;
     span {
       color: ${({ theme }) => theme.colors.textPrimary};
@@ -101,13 +154,19 @@ export const ContainerAside = styled.div`
   }
 
   hr {
+    width: 100%;
     opacity: 0.3;
   }
 
-  button {
-    width: 100%;
-  }
+  @media(max-width: 968px) {
+    margin-top: 20px;
+    width: 90%;
+    height: 100%;
 
+    border-radius: 20px;
+
+    margin-bottom: 70px;
+  }
 `;
 
 export const Freight = styled.div`
@@ -118,14 +177,13 @@ export const Freight = styled.div`
     font-size: 1.4rem;
   }
 
-
   .search-code {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     margin-top: 10px;
-    
+
     input {
       padding: 10px;
       width: 70%;
@@ -140,11 +198,11 @@ export const Freight = styled.div`
         -webkit-appearance: none;
       }
 
-      &::placeholder{
+      &::placeholder {
         font-size: 1.6rem;
       }
     }
-    
+
     span {
       width: 20%;
       height: 100%;
@@ -156,7 +214,7 @@ export const Freight = styled.div`
       padding: 6px;
 
       background-color: ${({ theme }) => theme.colors.primary};
-      
+
       cursor: pointer;
       border-radius: 10px;
 
@@ -170,13 +228,45 @@ export const Freight = styled.div`
 
 export const AddToCart = styled.div`
   width: 100%;
+
+  button {
+    width: 100%;
+  }
 `;
 
-export const Buy = styled.div``;
+export const Buy = styled.div`
+  width: 100%;
 
-export const Bottom = styled.div``;
+  button {
+    width: 100%;
+  }
+`;
 
-export const AddComent = styled.div``;
+export const Recommendations = styled.div`
+  h1 {
+    color: ${({ theme }) => theme.colors.textPrimary};
+    margin-bottom: 20px;
+  }
 
-export const Coments = styled.div``;
+  @media(max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      width: 100%;
+      text-align: center;
+    }
+  }
+`;
+
+export const ContainerProducts = styled.div`
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(220px, 1fr));
+  grid-gap: 0px;
+`;
 

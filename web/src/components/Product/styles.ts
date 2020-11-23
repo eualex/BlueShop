@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
   padding: 20px;
   /* height: 70%; */
+  max-width: 400px;
 
   display: flex;
   flex-direction: column;
@@ -90,22 +90,5 @@ export const Footer = styled.footer`
   strong {
     color: ${({ theme }) => theme.colors.textPrimary};
     text-align: center;
-  }
-`;
-
-export const ButtonAddToCart = styled(Link)`
-  width: 40px;
-  height: 40px;
-
-  border-radius: 15px;
-
-  background-color: ${({ theme }) => theme.colors.primary};
-
-  display: none;
-
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: #5486f2;
   }
 `;

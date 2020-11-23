@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 import * as Styles from "./styles";
 import { RiArrowRightSLine } from "react-icons/ri";
@@ -54,9 +53,7 @@ const Aside: React.FC = () => {
       
       {loginData.email==="alex@teste.com" && (
         <Styles.ContainerCreateProduct>
-          <Button>
-            <Link to="register-product">Add a Product</Link>
-          </Button>
+          <Button link="register-product" >Add a Product</Button>
         </Styles.ContainerCreateProduct>
       )}
 

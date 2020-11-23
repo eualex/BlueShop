@@ -7,7 +7,7 @@ import { PropsEletronics } from "../../store/ducks/eletronics";
 import { RootState } from "../../store/ducks";
 
 import Header from "../../components/Header";
-import Product from "./Product";
+import Product from "../../components/Product";
 import Aside from "./Aside";
 
 import { useCategory } from "../../contexts/category";
