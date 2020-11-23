@@ -13,6 +13,11 @@ export const ContainerButton = styled.button`
   border-radius: 5px;
   transition: all 150ms linear 0s;
 
+  a {
+    text-decoration: none;
+    color: ${(props) => props.theme.colors.textTerceary};
+  }
+
   &:hover {
     background-color: ${(props) => props.theme.colors.primaryHover};
     /* color: ${(props) => props.theme.colors.textPrimary}; */
@@ -20,14 +25,5 @@ export const ContainerButton = styled.button`
     transition: 0.3s ease-in;
 
     cursor: pointer;
-
-    a {
-      color: ${(props) => props.theme.colors.textPrimary};
-    }
-  }
-
-  a {
-    text-decoration: none;
-    color: ${(props) => props.theme.colors.textTerceary};
   }
 `;
