@@ -9,6 +9,7 @@ import SingInImg from "../../img/register_product.svg";
 
 import FormSneakers from "./FormSneakers";
 import FormEletronics from "./FormEletronics";
+import Header from "../../components/Header";
 
 const RegisterProduct: React.FC = () => {
   const [formName, setFormName] = useState("sneakers");
@@ -18,39 +19,42 @@ const RegisterProduct: React.FC = () => {
   }, []);
 
   return (
-    <Styles.Container>
-      <Styles.Wrapper>
-        <Styles.ContainerTop>
-          <Styles.Image
-            data-aos="fade-right"
-            src={SingInImg}
-            alt="Register Product"
-          />
-          <h1 data-aos="fade-left">Register a Product</h1>
+    <>
+      <Header />
+      <Styles.Container>
+        <Styles.Wrapper>
+          <Styles.ContainerTop>
+            <Styles.Image
+              data-aos="fade-right"
+              src={SingInImg}
+              alt="Register Product"
+            />
+            <h1 data-aos="fade-left">Register a Product</h1>
 
-          <Styles.ContainerFormName formName={formName}>
-            <span
-              className="sneakers-form-name"
-              onClick={() => setFormName("sneakers")}
-            >
-              Sneakers
-            </span>
-            <span>or</span>
-            <span
-              className="eletronics-form-name"
-              onClick={() => setFormName("eletronics")}
-            >
-              Eletronics
-            </span>
-          </Styles.ContainerFormName>
-        </Styles.ContainerTop>
+            <Styles.ContainerFormName formName={formName}>
+              <span
+                className="sneakers-form-name"
+                onClick={() => setFormName("sneakers")}
+              >
+                Sneakers
+              </span>
+              <span>or</span>
+              <span
+                className="eletronics-form-name"
+                onClick={() => setFormName("eletronics")}
+              >
+                Eletronics
+              </span>
+            </Styles.ContainerFormName>
+          </Styles.ContainerTop>
 
-        <Styles.ContainerBottom>
-          {formName === "sneakers" && <FormSneakers />}
-          {formName === "eletronics" && <FormEletronics />}
-        </Styles.ContainerBottom>
-      </Styles.Wrapper>
-    </Styles.Container>
+          <Styles.ContainerBottom>
+            {formName === "sneakers" && <FormSneakers />}
+            {formName === "eletronics" && <FormEletronics />}
+          </Styles.ContainerBottom>
+        </Styles.Wrapper>
+      </Styles.Container>
+    </>
   );
 };
 

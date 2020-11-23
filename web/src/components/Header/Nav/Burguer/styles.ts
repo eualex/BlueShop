@@ -44,6 +44,6 @@ export const ContainerBurguer = styled.div<Props>`
 
     margin-top: 5px;
 
-    position: fixed;
+    /* position: fixed; */
   }
 `;

@@ -7,6 +7,8 @@ interface Props {
 export const Container = styled.div`
   width: 100vw;
 
+  margin-top: 50px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +18,7 @@ export const Wrapper = styled.div`
   width: 100%;
   max-width: 780px;
 
-  border-radius: 30px;
+  border-radius: 10px;
 
   margin: 20px 0;
 

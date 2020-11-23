@@ -35,11 +35,8 @@ const Aside: React.FC = () => {
         <Styles.Wrapper Hidden={hidden}>
           <div>
             <Select title="Shoe Type" options={["teste"]} customSize="small" />
-
             <Select title="Style" options={["teste"]} customSize="small" />
-
             <Select title="Size" options={["teste"]} customSize="small" />
-
             <Select title="Brand" options={["teste"]} customSize="small" />
 
             <Select
@@ -50,13 +47,12 @@ const Aside: React.FC = () => {
           </div>
         </Styles.Wrapper>
       </Styles.ContainerFilter>
-      
-      {loginData.email==="alex@teste.com" && (
+
+      {loginData.email === "alex@teste.com" && (
         <Styles.ContainerCreateProduct>
-          <Button link="register-product" >Add a Product</Button>
+          <Button link="register-product">Add a Product</Button>
         </Styles.ContainerCreateProduct>
       )}
-
     </Styles.Container>
   );
 };
