@@ -10,7 +10,6 @@ import * as Styles from "./styles";
 
 import { useTheme } from "../../contexts/theme";
 import { useCategory } from "../../contexts/category";
-import Header from "../../components/Header";
 
 interface PropsCategory {
   name: string;
@@ -61,8 +60,6 @@ const ChooseCategory: React.FC = React.memo(() => {
 
   return (
     <Styles.Container>
-      <Header />
-
       <Styles.Title>
         <h1>Choose a Category</h1>
       </Styles.Title>

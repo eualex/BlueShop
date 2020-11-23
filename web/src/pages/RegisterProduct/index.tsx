@@ -9,7 +9,6 @@ import SingInImg from "../../img/register_product.svg";
 
 import FormSneakers from "./FormSneakers";
 import FormEletronics from "./FormEletronics";
-import Header from "../../components/Header";
 
 const RegisterProduct: React.FC = () => {
   const [formName, setFormName] = useState("sneakers");
@@ -20,7 +19,6 @@ const RegisterProduct: React.FC = () => {
 
   return (
     <>
-      <Header />
       <Styles.Container>
         <Styles.Wrapper>
           <Styles.ContainerTop>

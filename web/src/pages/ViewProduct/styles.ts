@@ -41,6 +41,18 @@ export const ContainerPrimaryInfo = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  position: relative;
+
+  .icon-edit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+    cursor: pointer;
+
+    margin: 10px 10px 0 0;
+  }
+
   @media(max-width: 968px) {
     margin-top: 50px;
   }

@@ -1,4 +1,7 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+import { FiEdit2 } from "react-icons/fi";
+
 import { AiOutlineStar } from "react-icons/ai";
 import { useTheme } from "../../contexts/theme";
 import { EletronicsProps, SneakersProps } from "../../utils/product";
@@ -15,11 +18,17 @@ const PrimaryInfo: React.FC<PropsPrimaryInfo> = ({
   sneakersProduct,
 }) => {
   const { theme } = useTheme();
+  const history = useHistory();
 
   return (
     <Styles.ContainerPrimaryInfo>
       <Styles.ContainerImages>
-        <Styles.Image src={sneakersProduct?.images[0].url || eletronicsProduct?.images[0].url} alt="Product" />
+        <Styles.Image
+          src={
+            sneakersProduct?.images[0].url || eletronicsProduct?.images[0].url
+          }
+          alt="Product"
+        />
         <div className="images">
           <Styles.SmallImage />
           <Styles.SmallImage />
@@ -39,6 +48,13 @@ const PrimaryInfo: React.FC<PropsPrimaryInfo> = ({
         </Styles.ContainerFeedback>
         <p>{sneakersProduct?.description || eletronicsProduct?.description}</p>
       </Styles.ContainerInfo>
+
+      <FiEdit2
+        className="icon-edit"
+        onClick={() => history.push("/edit-product")}
+        color={theme.colors.textPrimary}
+        size={25}
+      />
     </Styles.ContainerPrimaryInfo>
   );
 };

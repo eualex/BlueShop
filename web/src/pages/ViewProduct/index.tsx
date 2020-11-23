@@ -10,7 +10,6 @@ import { useSearchProduct } from "../../contexts/product";
 
 import * as Styles from "./styles";
 
-import Header from "../../components/Header";
 import Recommendations from "./Recommendations";
 import PrimaryInfo from "./PrimaryInfo";
 import Aside from "./Aside";
@@ -51,8 +50,6 @@ const ViewProduct: React.FC = () => {
 
   return (
     <Styles.Container>
-      <Header />
-
       <Styles.Wrapper>
         <Styles.Top>
           <PrimaryInfo

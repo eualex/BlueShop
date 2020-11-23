@@ -6,7 +6,6 @@ import { PropsSneakers } from "../../store/ducks/sneakers";
 import { PropsEletronics } from "../../store/ducks/eletronics";
 import { RootState } from "../../store/ducks";
 
-import Header from "../../components/Header";
 import Product from "../../components/Product";
 import Aside from "./Aside";
 
@@ -101,8 +100,6 @@ const Main: React.FC = () => {
 
   return (
     <Styles.Container>
-      <Header />
-      
       <Styles.ContainerInput>
         <Styles.Input
           type="text"
