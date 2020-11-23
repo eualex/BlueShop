@@ -16,10 +16,13 @@ routes.post('/users', UserController.store);
 routes.post('/auth', AuthController.authenticate);
 
 routes.post('/sneaker', upload.array('images'), SneakerController.store);
+routes.post('/sneaker/:id', SneakerController.update);
 routes.get('/sneakers', SneakerController.index);
+routes.get('/sneaker/:id', SneakerController.show);
 
 routes.post('/eletronic', upload.array('images'), EletronicController.store);
 routes.get('/eletronics', EletronicController.index);
+routes.get('/eletronic/:id', EletronicController.show);
 // routes.get('/products/:category', ProductController.show);
 
 export default routes;

@@ -16,6 +16,18 @@ export default {
     return res.json(eletronics_view.renderMany(products));
   },
 
+  async show(req: Request, res: Response) {
+    const eletronicsRepository = getRepository(Eletronics);
+    const { id } = req.params;
+
+    const product = await eletronicsRepository.findOneOrFail({
+      relations: ["images"],
+      where: { id }
+    });
+
+    return res.json(eletronics_view.render(product));
+  },
+
   async store(req: Request, res: Response) {
     const eletronicsRepository = getRepository(Eletronics);
     const requestImages = req.files as Express.Multer.File[];

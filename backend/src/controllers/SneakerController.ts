@@ -16,6 +16,18 @@ export default {
     return res.json(sneakers_view.renderMany(products));
   },
 
+  async show(req: Request, res: Response) {
+    const sneakersRespository = getRepository(Sneakers);
+    const { id } = req.params;
+
+    const product = await sneakersRespository.findOneOrFail({
+      relations: ["images"],
+      where: { id },
+    });
+
+    return res.json(sneakers_view.render(product));
+  },
+
   async store(req: Request, res: Response) {
     const sneakersRepository = getRepository(Sneakers);
     const requestImages = req.files as Express.Multer.File[];
@@ -24,14 +36,7 @@ export default {
       return { path: image.filename };
     });
 
-    const {
-      name,
-      price,
-      description,
-      genre,
-      brand,
-      design,
-    } = req.body;
+    const { name, price, description, genre, brand, design } = req.body;
 
     const data = {
       name,
@@ -63,5 +68,18 @@ export default {
     await sneakersRepository.save(product);
 
     return res.status(201).json(sneakers_view.render(product));
+  },
+
+  async update(req: Request, res: Response) {
+    const sneakersRespository = getRepository(Sneakers);
+    const { id } = req.params;
+
+    const resUpdate = await sneakersRespository.update(id, {
+      name: "Nike Storm",
+    });
+
+    return !!resUpdate.affected
+      ? res.status(200).json({ message: "Product updated with success :)" })
+      : res.status(500);
   },
 };
