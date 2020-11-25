@@ -53,7 +53,7 @@ const FormEletronic: React.FC = React.memo(() => {
 
     setLoader(true);
     try {
-      await api.post(`/eletronic/${searchProduct.id}`, data);
+      await api.put(`/eletronic/${searchProduct.id}`, data);
       setLoader(false);
       setMessageSuccess("Product updated with success 🙂");
       setOpenSuccess(true);

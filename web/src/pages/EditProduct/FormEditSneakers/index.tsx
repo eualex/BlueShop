@@ -56,7 +56,7 @@ const FormSneakers: React.FC = React.memo(() => {
 
     setLoader(true);
     try {
-      await api.post(`/sneaker/${searchProduct.id}`, data);
+      await api.put(`/sneaker/${searchProduct.id}`, data);
       setLoader(false);
       setMessageSuccess("Product updated with success 🙂");
       setOpenSuccess(true);
