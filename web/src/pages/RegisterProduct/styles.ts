@@ -15,8 +15,8 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 100%;
-  max-width: 780px;
+  width: 90%;
+  max-width: 980px;
 
   border-radius: 10px;
 
