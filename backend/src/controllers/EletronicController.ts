@@ -59,5 +59,36 @@ export default {
     await eletronicsRepository.save(product);
 
     return res.status(201).json(eletronics_view.render(product));
-  }
+  },
+
+  async update(req: Request, res: Response) {
+    const eletronicRespository = getRepository(Eletronics);
+    const { id } = req.params;
+    
+    const { name, price, description, brand, item } = req.body;
+    
+    const data = {
+      name,
+      price,
+      description,
+      item,
+      brand,
+    };
+
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      price: Yup.number().required(),
+      description: Yup.string().required(),
+      item: Yup.string().required(),
+      brand: Yup.string(),
+    });
+
+    await schema.validate(data, { abortEarly: false });
+
+    const resUpdate = await eletronicRespository.update(id, data);
+
+    return !!resUpdate.affected
+      ? res.status(200).json({ message: "Product updated with success :)" })
+      : res.status(500);
+  },
 }

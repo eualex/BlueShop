@@ -73,10 +73,30 @@ export default {
   async update(req: Request, res: Response) {
     const sneakersRespository = getRepository(Sneakers);
     const { id } = req.params;
+    
+    const { name, price, description, genre, brand, design } = req.body;
+    
+    const data = {
+      name,
+      price,
+      description,
+      genre,
+      brand,
+      design,
+    };
 
-    const resUpdate = await sneakersRespository.update(id, {
-      name: "Nike Storm",
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      price: Yup.number().required(),
+      description: Yup.string().required(),
+      genre: Yup.string().required(),
+      brand: Yup.string(),
+      design: Yup.string(),
     });
+
+    await schema.validate(data, { abortEarly: false });
+
+    const resUpdate = await sneakersRespository.update(id, data);
 
     return !!resUpdate.affected
       ? res.status(200).json({ message: "Product updated with success :)" })
