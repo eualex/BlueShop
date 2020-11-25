@@ -60,7 +60,6 @@ const FormSneakers: React.FC = React.memo(() => {
       setLoader(false);
       setMessageSuccess("Product updated with success 🙂");
       setOpenSuccess(true);
-      // setCategory({ name: "", item: "" });
     } catch (err) {
       setLoader(false);
       setOpenError(true);
