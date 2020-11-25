@@ -43,14 +43,22 @@ export const ContainerPrimaryInfo = styled.div`
 
   position: relative;
 
-  .icon-edit {
+  .icon-to-edit {
+    width: 40px;
+    height: 40px;
+    margin: 10px 10px 0 0;
+    border-radius: 10px;
+
     position: absolute;
     top: 0;
     right: 0;
-    
-    cursor: pointer;
 
-    margin: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: ${({ theme }) => theme.colors.primary};
+    cursor: pointer;
   }
 
   @media(max-width: 968px) {

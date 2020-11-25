@@ -27,6 +27,10 @@ export const CustomInput = styled.input`
   &:focus {
     border: 2px solid ${({ theme }) => theme.colors.primary};
   }
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 `;
 
 export const Label = styled.label<Props>`
@@ -35,5 +39,8 @@ export const Label = styled.label<Props>`
   transition: all 0.2s ease-in-out;
 
   font-size: 2rem;
-  color: ${props => props.focus ? ({ theme }) => theme.colors.primary : ({ theme }) => theme.colors.textPrimary };
+  color: ${(props) =>
+    props.focus
+      ? ({ theme }) => theme.colors.primary
+      : ({ theme }) => theme.colors.textPrimary};
 `;

@@ -13,7 +13,7 @@ import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import Loader from "../../../components/Loader";
 import Select from "../../../components/Select";
-import TextArea from "../TextArea";
+import TextArea from "../../../components/TextArea";
 
 import {
   ContainerForm,

@@ -1,10 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { RiArrowRightSLine } from "react-icons/ri";
-
-import { getSneakers } from "../../store/ducks/sneakers";
-import { getEletronics } from "../../store/ducks/eletronics";
 
 import * as Styles from "./styles";
 
@@ -17,7 +13,6 @@ interface PropsCategory {
 }
 
 const ChooseCategory: React.FC = React.memo(() => {
-  const dispatch = useDispatch();
   const history = useHistory();
 
   const { theme } = useTheme();
@@ -32,15 +27,6 @@ const ChooseCategory: React.FC = React.memo(() => {
 
     history.push("main");
   };
-
-  const load = useCallback(() => {
-    dispatch(getEletronics());
-    dispatch(getSneakers());
-  }, [dispatch]);
-
-  useEffect(() => {
-    load();
-  }, [load]);
 
   const toggleContainerSneakers = () => {
     classContainerSneakers === "arrow-sneakers"

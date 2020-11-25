@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 
 import * as Styles from "./styles";
 
-import SingInImg from "../../img/register_product.svg";
+import RegisterImg from "../../img/register_product.svg";
 
 import FormSneakers from "./FormSneakers";
 import FormEletronics from "./FormEletronics";
@@ -24,7 +24,7 @@ const RegisterProduct: React.FC = () => {
           <Styles.ContainerTop>
             <Styles.Image
               data-aos="fade-right"
-              src={SingInImg}
+              src={RegisterImg}
               alt="Register Product"
             />
             <h1 data-aos="fade-left">Register a Product</h1>

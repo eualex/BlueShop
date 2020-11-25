@@ -17,7 +17,6 @@ import SingUpImg from "../../img/register.svg";
 
 import SingUp from "./SingUp";
 import SingIn from "./SingIn";
-import ErrorMessage from "../../components/ErrorMessage";
 
 const Login: React.FC = () => {
   const [singIn, setSingIn] = useState(true);
@@ -28,7 +27,6 @@ const Login: React.FC = () => {
 
   return (
     <Container>
-      <ErrorMessage />
       <Wrapper>
         <ContainerLeft>
           {singIn && <Image data-aos="fade-up" src={SingInImg} alt="Login" />}

@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { getEletronics } from "../store/ducks/eletronics";
+import { getSneakers } from "../store/ducks/sneakers";
 
 import Header from "../components/Header";
 import Home from "../pages/Landing";
@@ -18,31 +22,28 @@ import { useLogin } from "../contexts/login";
 import { useSearchProduct } from "../contexts/product";
 
 const Routes: React.FC = () => {
+  const dispatch = useDispatch();
+
   const { category } = useCategory();
   const { loginToken } = useLogin();
   const { searchProduct } = useSearchProduct();
 
-  const checkCategory = () => {
-    return !!category.name;
-  };
+  const checkCategory = () => !!category.name;
 
-  const checkSearch = () => {
-    return !!searchProduct.category;
-  };
+  const checkSearch = () => !!searchProduct.category;
 
-  const checkProductToEdit = () => {
-    return !!searchProduct.id;
-  };
+  const checkProductToEdit = () => !!searchProduct.id;
 
-  const checkLogin = () => {
-    console.log(!!loginToken);
+  const checkLogin = () => !!loginToken;
 
-    return !!loginToken;
-  };
+  const checkIsLogin = () => !loginToken;
 
-  const checkIsLogin = () => {
-    return !loginToken;
-  };
+  const load = useCallback(() => {
+    dispatch(getEletronics());
+    dispatch(getSneakers());
+  }, [dispatch]);
+
+  useEffect(() => load(), [load]);
 
   return (
     <>

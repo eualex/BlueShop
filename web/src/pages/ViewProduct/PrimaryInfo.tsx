@@ -49,12 +49,12 @@ const PrimaryInfo: React.FC<PropsPrimaryInfo> = ({
         <p>{sneakersProduct?.description || eletronicsProduct?.description}</p>
       </Styles.ContainerInfo>
 
-      <FiEdit2
-        className="icon-edit"
+      <span
+        className="icon-to-edit"
         onClick={() => history.push("/edit-product")}
-        color={theme.colors.textPrimary}
-        size={25}
-      />
+      >
+        <FiEdit2 color={theme.colors.textPrimary} size={25} />
+      </span>
     </Styles.ContainerPrimaryInfo>
   );
 };
