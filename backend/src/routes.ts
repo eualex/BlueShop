@@ -21,13 +21,11 @@ routes.post("/auth", AuthController.authenticate);
 routes.get("/sneakers", SneakerController.index);
 routes.post("/sneaker", upload.array("images"), SneakerController.store);
 routes.put("/sneaker/:id", SneakerController.update);
-// routes.delete("/sneaker/:id", SneakerController.delete);
 routes.get("/sneaker/:id", SneakerController.show);
 
 routes.post("/eletronic", upload.array("images"), EletronicController.store);
 routes.put("/eletronic/:id", EletronicController.update);
 routes.get("/eletronics", EletronicController.index);
 routes.get("/eletronic/:id", EletronicController.show);
-// routes.get('/products/:category', ProductController.show);
 
 export default routes;
