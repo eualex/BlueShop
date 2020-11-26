@@ -59,7 +59,7 @@ export const ContainerNav = styled.div<Props>`
 
   /* Login */
   span {
-    width: 150px;
+    width: 190px;
 
     display: flex;
     align-items: center;

@@ -36,7 +36,7 @@ export const { Types, Creators } = createActions({
 export const getEletronics = () => {
   return async (dispatch: Dispatch<any>) => {
     dispatch(Creators.fetchEletronicsRequest());
-
+    
     try {
       const res = await api.get("/eletronics");
       dispatch(Creators.fetchEletronicsSuccess(res.data))

@@ -183,7 +183,7 @@ export const ContainerAside = styled.div`
     width: 90%;
     height: 100%;
 
-    border-radius: 20px;
+    border-radius: 10px;
 
     margin-bottom: 70px;
   }

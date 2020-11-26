@@ -1,17 +1,17 @@
 import React, { useCallback } from "react";
+import Switch from "react-switch";
 import { Link, useHistory } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 
-import Switch from "react-switch";
 import { ContainerNav } from "./styles";
 import Dropdown from "./Dropdown";
 
 import { useTheme } from "../../../../contexts/theme";
-import dark from "../../../../styles/themes/dark";
-import light from "../../../../styles/themes/light";
-
 import { useLogin } from "../../../../contexts/login";
 import { useOpen } from "../../../../contexts/burguerMenu";
+
+import dark from "../../../../styles/themes/dark";
+import light from "../../../../styles/themes/light";
 
 interface Props {
   open: boolean;

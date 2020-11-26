@@ -1,11 +1,8 @@
 import React, { FormEvent, useCallback, useEffect, useState } from "react";
-// import { FiX, FiPlus } from "react-icons/fi";
 
 import api from "../../../services/api";
 import { useErrorMessage } from "../../../contexts/error";
 import { useSuccessMessage } from "../../../contexts/success";
-// import { useCategory } from "../../../contexts/category";
-// import { useTheme } from "../../../contexts/theme";
 import { useSearchProduct } from "../../../contexts/product";
 
 import Button from "../../../components/Button";
@@ -17,11 +14,8 @@ import TextArea from "../../../components/TextArea";
 import * as Styles from "./styles";
 
 const FormSneakers: React.FC = React.memo(() => {
-  // const { theme } = useTheme();
-
   const { setMessageSuccess, setOpenSuccess } = useSuccessMessage();
   const { setOpenError, setMessageError } = useErrorMessage();
-  // const { setCategory } = useCategory();
   const { searchProduct } = useSearchProduct();
 
   const [loader, setLoader] = useState(false);
@@ -85,7 +79,9 @@ const FormSneakers: React.FC = React.memo(() => {
       setPreviewImages([
         ...response.data.images.map((i: { id: string; url: string }) => i.url),
       ]);
-    } catch {}
+    } catch(err) {
+      console.log(err.response?.data.message);
+    }
   }, [searchProduct]);
 
   useEffect(() => {
