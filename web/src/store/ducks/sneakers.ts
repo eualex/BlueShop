@@ -13,10 +13,9 @@ export interface PropsSneakers {
   name: string;
   price: number;
   description: string;
-  genre: string;
-  category: string;
+  Sgenre: string;
   brand: string;
-  design?: string;
+  Sdesign?: string;
   images: PropsImages[];
 }
 

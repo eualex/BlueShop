@@ -19,8 +19,19 @@ export interface SneakersProps {
   price: number;
   description: string;
   genre: string;
-  category: string;
   brand: string;
   design?: string;
   images: PropsImages[];
+}
+
+export interface RootProduct {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  brand: string;
+  images: PropsImages[];
+  Sdesign?: string;
+  Sgenre?: string;
+  Eitem?: string;
 }

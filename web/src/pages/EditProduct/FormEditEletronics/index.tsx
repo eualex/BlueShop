@@ -77,7 +77,7 @@ const FormEletronic: React.FC = React.memo(() => {
       setName(response.data.name);
       setPrice(response.data.price);
       setDescription(response.data.description);
-      setItem(response.data.item);
+      setItem(response.data.Eitem);
       setBrand(response.data.brand);
       setPreviewImages([
         ...response.data.images.map((i: { id: string; url: string }) => i.url),

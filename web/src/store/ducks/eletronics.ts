@@ -15,7 +15,7 @@ export interface PropsEletronics {
   id: string;
   name: string;
   price: number;
-  item: string;
+  Eitem: string;
   description: string;
   brand: string;
   images: PropsImages[];

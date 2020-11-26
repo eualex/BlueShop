@@ -73,9 +73,9 @@ const FormSneakers: React.FC = React.memo(() => {
       setName(response.data.name);
       setPrice(response.data.price);
       setDescription(response.data.description);
-      setGenre(response.data.genre);
+      setGenre(response.data.Sgenre);
       setBrand(response.data.brand);
-      setDesign(response.data?.design);
+      setDesign(response.data?.Sdesign);
       setPreviewImages([
         ...response.data.images.map((i: { id: string; url: string }) => i.url),
       ]);
