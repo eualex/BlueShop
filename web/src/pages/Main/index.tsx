@@ -1,17 +1,18 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { RootProduct } from "../../utils/product";
 import { RootState } from "../../store/ducks";
-import { useCategory } from "../../contexts/category";
-import { useSearchProduct } from "../../contexts/product";
 
 import Product from "../../components/Product";
 import Aside from "./Aside";
-import NotFound from "./NotFound";
+
+import { useCategory } from "../../contexts/category";
+import { useSearchProduct } from "../../contexts/product";
 
 import * as Styles from "./styles";
+import NotFound from "./NotFound";
+import { RootProduct } from "../../utils/product";
 
 const Main: React.FC = () => {
   const history = useHistory();
@@ -19,6 +20,8 @@ const Main: React.FC = () => {
   const { setSearchProduct } = useSearchProduct();
 
   const { sneakers, eletronics } = useSelector((state: RootState) => state);
+  const [notFound, setNotFound] = useState(false);
+  const [search, setSearch] = useState("");
 
   const handleProduct = useCallback(
     (id: string) => {
@@ -28,47 +31,56 @@ const Main: React.FC = () => {
     [category, history, setSearchProduct]
   );
 
-  const renderProducts = useCallback(
-    (data: RootProduct[]) =>
-      data.map((e) => (
+  const renderProducs = useCallback(
+    (data?: RootProduct[]) =>
+      data?.map((d) => (
         <Product
-          onClick={() => handleProduct(e.id)}
-          key={e.id}
-          price={e.price}
-          img={e.images[0].url}
-          title={e.name}
+          onClick={() => handleProduct(d.id)}
+          key={d.id}
+          price={d.price}
+          img={d.images[0].url}
+          title={d.name}
           description={""}
         />
       )),
     [handleProduct]
   );
 
-  const handleFilterProduct = useCallback(
-    (data: RootProduct[], search?: string) => {
-      if (category.item === "all") {
-        return renderProducts(data);
-      }
+  const checkDataForRender = useCallback(
+    (data: RootProduct[]) => {
+      const dataFilter = data.filter(
+        (d) =>
+          d.Eitem === category.item ||
+          d.Sgenre === category.item ||
+          d.Sgenre === "all"
+      );
+
+      if (category.item === "all" && !search) return data;
 
       if (search) {
-        return renderProducts(
-          data.filter(
-            (d) =>
-              ((d.Eitem === category.item && d.Eitem === "all") ||
-                (d.Sgenre === category.item && d.Sgenre === "all")) &&
-              d.name.toLowerCase().indexOf(search) !== -1
-          )
+        const dataFilteredBySearch = data.filter(
+          (df) => df.name.toLocaleLowerCase().indexOf(search) !== -1
         );
+
+        return dataFilteredBySearch?.length !== 0 ? dataFilteredBySearch : [];
       }
 
-      return renderProducts(
-        data.filter(
-          (d) =>
-            (d.Eitem === category.item && d.Eitem === "all") ||
-            (d.Sgenre === category.item && d.Sgenre === "all")
-        )
-      );
+      return dataFilter?.length !== 0 ? dataFilter : [];
     },
-    [category, renderProducts]
+    [category.item, search]
+  );
+
+  const handleFilterProduct = useCallback(
+    (data: RootProduct[]) => {
+      switch (category.name) {
+        case "eletronics":
+          return checkDataForRender(data);
+
+        case "sneakers":
+          return checkDataForRender(data);
+      }
+    },
+    [checkDataForRender, category]
   );
 
   return (
@@ -78,27 +90,20 @@ const Main: React.FC = () => {
           type="text"
           name="search"
           placeholder="Search..."
-          onChange={(e) =>
-            handleFilterProduct(
-              eletronics.eletronicsData,
-              e.target.value.toLocaleLowerCase()
-            )
-          }
+          onChange={(e) => setSearch(e.target.value)}
         />
       </Styles.ContainerInput>
+      <Styles.Wrapper>
+        <Aside />
 
-      <>
-        <Styles.Wrapper>
-          <Aside />
+        <Styles.ContainerProducts>
+          {category.name === "eletronics" &&
+            renderProducs(handleFilterProduct(eletronics.eletronicsData))}
 
-          <Styles.ContainerProducts>
-            {category.name === "eletronics" &&
-              handleFilterProduct(eletronics.eletronicsData)}
-            {category.name === "sneakers" &&
-              handleFilterProduct(sneakers.sneakersData)}
-          </Styles.ContainerProducts>
-        </Styles.Wrapper>
-      </>
+          {category.name === "sneakers" &&
+            renderProducs(handleFilterProduct(sneakers.sneakersData))}
+        </Styles.ContainerProducts>
+      </Styles.Wrapper>
     </Styles.Container>
   );
 };
