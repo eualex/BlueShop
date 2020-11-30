@@ -94,7 +94,7 @@ export const ContainerProducts = styled.div`
 
 export const ContainerLoader = styled.div`
   width: 100%;
-  height: 100%;
+  height: 50vh;
 
   display: flex;
   justify-content: center;

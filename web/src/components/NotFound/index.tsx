@@ -5,12 +5,18 @@ import { useTheme } from "../../contexts/theme";
 
 import { Container } from "./styles";
 
-const ErrorsPage: React.FC = () => {
+interface NotFoundProps {
+  title?: string;
+  className?: string;
+}
+
+const NotFound: React.FC<NotFoundProps> = ({ title, className }) => {
   const { theme } = useTheme();
   return (
     <Container>
-      <div className="not-found">
-        <h1>Page not found</h1>
+      <div className={className || "not-found"}>
+        <h1>{title || "Page"} not found</h1>
+        {console.log(title)}
 
         <HiEmojiSad size={100} color={theme.colors.textPrimary} />
       </div>
@@ -18,4 +24,4 @@ const ErrorsPage: React.FC = () => {
   );
 };
 
-export default ErrorsPage;
+export default NotFound;

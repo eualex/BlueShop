@@ -3,16 +3,16 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { RootState } from "../../store/ducks";
-
-import Product from "../../components/Product";
-import Aside from "./Aside";
+import { RootProduct } from "../../utils/product";
 
 import { useCategory } from "../../contexts/category";
 import { useSearchProduct } from "../../contexts/product";
 
 import * as Styles from "./styles";
-import NotFound from "./NotFound";
-import { RootProduct } from "../../utils/product";
+import Loader from "../../components/Loader";
+import Product from "../../components/Product";
+import NotFound from "../../components/NotFound";
+import Aside from "./Aside";
 
 const Main: React.FC = () => {
   const history = useHistory();
@@ -20,10 +20,9 @@ const Main: React.FC = () => {
   const { setSearchProduct } = useSearchProduct();
 
   const { sneakers, eletronics } = useSelector((state: RootState) => state);
-  const [notFound, setNotFound] = useState(false);
   const [search, setSearch] = useState("");
 
-  const handleProduct = useCallback(
+  const handleViewProduct = useCallback(
     (id: string) => {
       setSearchProduct({ id, category: category.name });
       history.push("product");
@@ -35,7 +34,7 @@ const Main: React.FC = () => {
     (data?: RootProduct[]) =>
       data?.map((d) => (
         <Product
-          onClick={() => handleProduct(d.id)}
+          onClick={() => handleViewProduct(d.id)}
           key={d.id}
           price={d.price}
           img={d.images[0].url}
@@ -43,7 +42,7 @@ const Main: React.FC = () => {
           description={""}
         />
       )),
-    [handleProduct]
+    [handleViewProduct]
   );
 
   const checkDataForRender = useCallback(
@@ -61,10 +60,8 @@ const Main: React.FC = () => {
         const dataFilteredBySearch = data.filter(
           (df) => df.name.toLocaleLowerCase().indexOf(search) !== -1
         );
-
         return dataFilteredBySearch?.length !== 0 ? dataFilteredBySearch : [];
       }
-
       return dataFilter?.length !== 0 ? dataFilter : [];
     },
     [category.item, search]
@@ -74,13 +71,30 @@ const Main: React.FC = () => {
     (data: RootProduct[]) => {
       switch (category.name) {
         case "eletronics":
-          return checkDataForRender(data);
-
+          return checkDataForRender(data).length !== 0 ? (
+            renderProducs(checkDataForRender(data))
+          ) : !eletronics.eletronicsLoading || !sneakers.sneakersLoading ? (
+            <NotFound className="products-not-found" title="Products" />
+          ) : (
+            ""
+          );
         case "sneakers":
-          return checkDataForRender(data);
+          return checkDataForRender(data).length !== 0 ? (
+            renderProducs(checkDataForRender(data))
+          ) : !eletronics.eletronicsLoading || !sneakers.sneakersLoading ? (
+            <NotFound className="products-not-found" title="Products" />
+          ) : (
+            ""
+          );
       }
     },
-    [checkDataForRender, category]
+    [
+      checkDataForRender,
+      category,
+      renderProducs,
+      eletronics.eletronicsLoading,
+      sneakers.sneakersLoading,
+    ]
   );
 
   return (
@@ -94,15 +108,23 @@ const Main: React.FC = () => {
         />
       </Styles.ContainerInput>
       <Styles.Wrapper>
-        <Aside />
+        {sneakers.sneakersLoading || eletronics.eletronicsLoading ? (
+          <Styles.ContainerLoader>
+            <Loader height={100} width={100} type="ThreeDots" />
+          </Styles.ContainerLoader>
+        ) : (
+          <>
+            <Aside />
 
-        <Styles.ContainerProducts>
-          {category.name === "eletronics" &&
-            renderProducs(handleFilterProduct(eletronics.eletronicsData))}
+            <Styles.ContainerProducts>
+              {category.name === "eletronics" &&
+                handleFilterProduct(eletronics.eletronicsData)}
 
-          {category.name === "sneakers" &&
-            renderProducs(handleFilterProduct(sneakers.sneakersData))}
-        </Styles.ContainerProducts>
+              {category.name === "sneakers" &&
+                handleFilterProduct(sneakers.sneakersData)}
+            </Styles.ContainerProducts>
+          </>
+        )}
       </Styles.Wrapper>
     </Styles.Container>
   );

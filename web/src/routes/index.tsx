@@ -12,7 +12,7 @@ import ViewProduct from "../pages/ViewProduct";
 import Main from "../pages/Main";
 import RegisterProduct from "../pages/RegisterProduct";
 import ChooseCategory from "../pages/Category";
-import ErrorsPage from "../pages/404";
+import ErrorsPage from "../components/NotFound";
 import EditProduct from "../pages/EditProduct";
 
 import PrivateRoute from "./PrivateRoute";
