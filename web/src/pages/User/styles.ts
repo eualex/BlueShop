@@ -11,8 +11,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  overflow: hidden;
 `;
 
 export const Wrapper = styled.div`
@@ -22,7 +20,6 @@ export const Wrapper = styled.div`
   box-shadow: -1px 6px 33px -6px rgba(0, 0, 0, 0.15);
 
   height: 100%;
-
   width: 100%;
   max-width: 980px;
 
@@ -44,7 +41,7 @@ export const Wrapper = styled.div`
     box-shadow: none;
 
     width: 100vw;
-    height: 100vh;
+    height: 100%;
   }
 `;
 
@@ -66,7 +63,7 @@ export const ContainerLeft = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 60%;
+    height: 40%;
   }
 `;
 
@@ -83,9 +80,10 @@ export const ContainerRight = styled.div`
 
   @media (max-width: 768px) {
     padding: 0px 30px;
+    margin-top: 20px;
 
     width: 100%;
-    height: 100%;
+    height: 60%;
   }
 `;
 

@@ -27,11 +27,10 @@ const SingUp: React.FC = () => {
   const { setOpen } = useOpen();
 
   const [loader, setLoader] = useState(false);
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- 
+
   //registrando usuario na base, caso não haja erro de validação
   const handleRegister = async () => {
     setLoader(true);
@@ -39,9 +38,9 @@ const SingUp: React.FC = () => {
     await api
       .post("/users", { name, email, password })
       .then((res) => {
-        const { token } = res.data
+        const { token } = res.data;
         setLoginToken(token);
-        setLoginData({ email, name })
+        setLoginData({ email, name });
         setOpenSession(true);
         setOpen(false);
         history.push("/category");
@@ -58,9 +57,7 @@ const SingUp: React.FC = () => {
     if (!name || !password || !email) {
       setOpenError(true);
       setMessageError("It seems that you stopped writing some data 🤔");
-    }
-
-    else if (checkEmailIsValid(email)) {
+    } else if (checkEmailIsValid(email)) {
       handleRegister();
     } else {
       setOpenError(true);
@@ -81,13 +78,16 @@ const SingUp: React.FC = () => {
           name="email"
           type="text"
           placeholder="E-mail"
-          onChange={(e) => setEmail(e.target.value)} 
+          onChange={(e) => setEmail(e.target.value)}
         />
         <Input
           name="password"
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") checkData();
+          }}
         />
       </ContainerForm>
 

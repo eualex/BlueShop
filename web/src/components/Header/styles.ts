@@ -17,7 +17,8 @@ export const Container = styled.div`
 
   @media(max-width: 968px) {
     height: 10vh;
-    
-
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
   }
 `;
