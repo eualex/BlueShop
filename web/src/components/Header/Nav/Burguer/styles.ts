@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 interface Props {
   open: boolean;
@@ -11,10 +11,12 @@ export const ContainerBurguer = styled.div<Props>`
   display: none;
   z-index: 100;
 
+  position: ${({ open }) => (open ? "fixed" : "none")};
   div {
     z-index: 20;
 
-    background-color: ${ ({ open, theme }) => open ? theme.colors.textTerceary : theme.colors.primary };
+    background-color: ${({ open, theme }) =>
+      open ? theme.colors.textTerceary : theme.colors.primary};
 
     width: 30px;
     height: 3px;
@@ -25,15 +27,15 @@ export const ContainerBurguer = styled.div<Props>`
     border-radius: 10px;
 
     &:nth-child(1) {
-      transform: ${ ({ open }) => open ? 'rotate(45deg)' : 'rotate(0)' };
+      transform: ${({ open }) => (open ? "rotate(45deg)" : "rotate(0)")};
     }
-    
+
     &:nth-child(2) {
-      opacity: ${ ({ open }) => open ? 0 : 1 };
-      transform: ${ ({ open }) => open ? 'translateX(100%)' : 'translateX(0)' };
+      opacity: ${({ open }) => (open ? 0 : 1)};
+      transform: ${({ open }) => (open ? "translateX(100%)" : "translateX(0)")};
     }
     &:nth-child(3) {
-      transform: ${ ({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
+      transform: ${({ open }) => (open ? "rotate(-45deg)" : "rotate(0)")};
     }
   }
 

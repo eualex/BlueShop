@@ -81,9 +81,12 @@ const RightNav: React.FC<Props> = ({ open }) => {
         </div>
 
         {!loginToken && (
-          <Link className="login" to="/login">
-            Sing In
-          </Link>
+          <span className="login" onClick={() => {
+            setOpen(false);
+            history.push('/login');
+          }}>
+            Log In
+          </span>
         )}
 
         <Switch
