@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import api from "../../../services/api";
 import { useErrorMessage } from "../../../contexts/error";
 import { useSessionUser } from "../../../contexts/sessionUser";
-import { useLogin } from "../../../contexts/login";
+import { useLogin } from "../../../contexts/user";
 import { useOpen } from "../../../contexts/burguerMenu";
 import checkEmailIsValid from "../../../utils/checkEmail";
 
@@ -17,7 +17,7 @@ import { ContainerForm, ContainerSpiner } from "./styles";
 const SingIn: React.FC = () => {
   const history = useHistory();
   
-  const { setLoginToken, setLoginData } = useLogin();
+  const { setLoginToken, setUserData } = useLogin();
   const { setOpenSession } = useSessionUser();
   const { setOpenError, setMessageError } = useErrorMessage();
   const { setOpen } = useOpen();
@@ -35,7 +35,7 @@ const SingIn: React.FC = () => {
         const { token, name } = res.data;
         // localStorage.setItem("authToken", token);
         setLoginToken(token);
-        setLoginData({ email, name });
+        setUserData({ email, name });
         setOpenSession(true);
         setOpen(false);
         history.push("/category");

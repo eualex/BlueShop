@@ -5,7 +5,7 @@ import api from "../../../services/api";
 import checkEmailIsValid from "../../../utils/checkEmail";
 import { useErrorMessage } from "../../../contexts/error";
 import { useSessionUser } from "../../../contexts/sessionUser";
-import { useLogin } from "../../../contexts/login";
+import { useLogin } from "../../../contexts/user";
 import { useOpen } from "../../../contexts/burguerMenu";
 
 import Button from "../../../components/Button";
@@ -22,7 +22,7 @@ const SingUp: React.FC = () => {
   const history = useHistory();
 
   const { setOpenError, setMessageError } = useErrorMessage();
-  const { setLoginToken, setLoginData } = useLogin();
+  const { setLoginToken, setUserData } = useLogin();
   const { setOpenSession } = useSessionUser();
   const { setOpen } = useOpen();
 
@@ -40,7 +40,7 @@ const SingUp: React.FC = () => {
       .then((res) => {
         const { token } = res.data;
         setLoginToken(token);
-        setLoginData({ email, name });
+        setUserData({ email, name });
         setOpenSession(true);
         setOpen(false);
         history.push("/category");

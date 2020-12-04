@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 
 import { useSessionUser } from "../../contexts/sessionUser";
-import { useLogin } from "../../contexts/login";
+import { useLogin } from "../../contexts/user";
 
 import { AiOutlineClose } from "react-icons/ai";
 import { Container } from "./styles";
@@ -13,21 +13,21 @@ const SessionUser: React.FC = () => {
     messageSession,
     setMessageSession,
   } = useSessionUser();
-  const { loginData, loginToken, setLoginData, setLoginToken } = useLogin();
+  const { userData, loginToken, setUserData, setLoginToken } = useLogin();
 
   const handleSession = useCallback(() => {
     setLoginToken("");
-    setLoginData({ email: "", name: "" });
+    setUserData({ email: "", name: "" });
     setMessageSession("Your session is over 😢. Sign in again!");
     setOpenSession(true);
-  }, [setLoginData, setLoginToken, setMessageSession, setOpenSession]);
+  }, [setUserData, setLoginToken, setMessageSession, setOpenSession]);
 
   useEffect(() => {
-    if (!!loginToken && loginData.name !== "" && loginData.email !== "") {
+    if (!!loginToken && userData.name !== "" && userData.email !== "") {
       setTimeout(() => handleSession(), 60000*25);
     }
     return () => {};
-  }, [loginToken, handleSession, loginData]);
+  }, [loginToken, handleSession, userData]);
 
   return (
     <Container open={openSession}>

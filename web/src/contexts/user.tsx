@@ -7,18 +7,18 @@ interface PropsLogin {
 }
 
 interface LoginPropsContext {
-  loginData: PropsLogin,
-  setLoginData: React.Dispatch<React.SetStateAction<PropsLogin>>;
+  userData: PropsLogin,
+  setUserData: React.Dispatch<React.SetStateAction<PropsLogin>>;
   loginToken: string;
   setLoginToken: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const DEFAULT_VALUE = {
-  loginData: {
+  userData: {
     name: "",
     email: ""
   },
-  setLoginData: () => {},
+  setUserData: () => {},
   loginToken: "",
   setLoginToken: () => {},
 };
@@ -30,10 +30,10 @@ const LoginProvider: React.FC = ({ children }) => {
     "authToken",
     DEFAULT_VALUE.loginToken
   );
-  const [loginData, setLoginData] = usePersistedState("userData", DEFAULT_VALUE.loginData);
+  const [userData, setUserData] = usePersistedState("userData", DEFAULT_VALUE.userData);
 
   return (
-    <LoginContext.Provider value={{ loginToken, setLoginToken, loginData, setLoginData }}>
+    <LoginContext.Provider value={{ loginToken, setLoginToken, userData, setUserData }}>
       {children}
     </LoginContext.Provider>
   );
@@ -45,6 +45,6 @@ export const useLogin = () => {
   const context = useContext(LoginContext);
   if (!context) throw new Error("useLogin must be used within a LoginProvider");
 
-  const { loginToken, setLoginToken, loginData, setLoginData } = context;
-  return { loginToken, setLoginToken, loginData, setLoginData };
+  const { loginToken, setLoginToken, userData, setUserData } = context;
+  return { loginToken, setLoginToken, userData, setUserData };
 };
