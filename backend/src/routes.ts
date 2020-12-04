@@ -15,8 +15,9 @@ const upload = multer({
   limits: UploadConfig.limits,
 });
 
-routes.post("/users", UserController.store);
 routes.post("/auth", AuthController.authenticate);
+routes.post("/users", UserController.store);
+routes.get("/user", authMiddleware, UserController.index);
 
 routes.get("/sneakers", SneakerController.index);
 routes.post("/sneaker", upload.array("images"), SneakerController.store);

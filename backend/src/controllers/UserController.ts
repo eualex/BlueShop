@@ -40,5 +40,14 @@ export default {
     });
 
     return res.status(201).json(user_view.render(user, token));
+  },
+
+  async index(req: Request, res: Response) {
+    const userRepository = getRepository(User);
+    const id = req.userId;
+
+    const user = await userRepository.findOneOrFail({ where: { id } })
+
+    return res.json(user_view.render(user));
   }
 }
