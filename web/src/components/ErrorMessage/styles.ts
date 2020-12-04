@@ -22,7 +22,7 @@ export const Container = styled.div<Props>`
   top: 0;
   right: 0;
 
-  z-index: 20;
+  z-index: 1000;
 
   display: flex;
   justify-content : center;
@@ -42,11 +42,9 @@ export const Container = styled.div<Props>`
   }
 
   @media(max-width: 768px) {
-    margin: 30px;
+    margin: 0;
+    width: 100%;
 
-    position: fixed;
-    right: auto;
-    
     span svg {
       width: 25px;
       height: 25px;

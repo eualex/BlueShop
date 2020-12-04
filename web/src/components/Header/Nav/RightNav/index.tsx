@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import Switch from "react-switch";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 
 import { ContainerNav } from "./styles";

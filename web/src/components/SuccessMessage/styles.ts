@@ -42,7 +42,8 @@ export const Container = styled.div<Props>`
   }
 
   @media(max-width: 768px) {
-    margin: 30px;    
+    margin: 0;
+    width: 100%;  
     span svg {
       width: 25px;
       height: 25px;
