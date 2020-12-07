@@ -33,11 +33,11 @@ const SessionProvider: React.FC = ({ children }) => {
 
 export default SessionProvider;
 
-export const useSessionUser = () => {
+export const useSession = () => {
   const context = useContext(SessionContext);
 
   if (!context)
-    throw new Error("useSessionUser must be used within a SessionProvider!");
+    throw new Error("useSession must be used within a SessionProvider!");
 
   const {
     messageSession,

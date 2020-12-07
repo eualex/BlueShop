@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import api from "../../../services/api";
+import { handleLogin } from "../../../services/authentication";
 import { useErrorMessage } from "../../../contexts/error";
-import { useSessionUser } from "../../../contexts/sessionUser";
+import { useSession } from "../../../contexts/session";
 import { useLogin } from "../../../contexts/user";
 import { useOpen } from "../../../contexts/burguerMenu";
 import checkEmailIsValid from "../../../utils/checkEmail";
@@ -16,82 +16,86 @@ import { ContainerForm, ContainerSpiner } from "./styles";
 
 const SingIn: React.FC = () => {
   const history = useHistory();
-  
-  const { setLoginToken, setUserData } = useLogin();
-  const { setOpenSession } = useSessionUser();
+
   const { setOpenError, setMessageError } = useErrorMessage();
+  const { setOpenSession } = useSession();
+  const { setLoginToken } = useLogin();
   const { setOpen } = useOpen();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [loader, setLoader] = useState(false);
 
-  const handlerLogin = async () => {
+  const handlerSubmit = async () => {
     setLoader(true);
 
-    await api
-      .post("/auth", { email, password })
-      .then((res) => {
-        const { token, name } = res.data;
-        // localStorage.setItem("authToken", token);
-        setLoginToken(token);
-        setUserData({ email, name });
-        setOpenSession(true);
-        setOpen(false);
-        history.push("/category");
-      })
-      .catch((err) => {
-        setLoader(false);
-        setOpenError(true);
-        setMessageError(
-          err.response?.data?.message || "Parece que correu um erro :("
-        );
-        console.log(err.response.data);
-      });
-  
+    try {
+      const user = await handleLogin(credentials);
+
+      setLoginToken(user.token);
+      setOpenSession(true);
+      setOpen(false);
+      history.push("/category");
+    } catch (err) {
+      setLoader(false);
+      setOpenError(true);
+      setMessageError(
+        err.response?.data?.message || "Parece que correu um erro :("
+      );
+      console.log(err)
+    }
   };
 
   //checando se os dados do input são vazios ou válidos
-  const checkData = () => {
-    if (password === "" || email === "") {
+  const checkData = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (credentials.password === "" || credentials.email === "") {
       setOpenError(true);
       setMessageError("It seems that you stopped writing some data 🤔");
-    }
-
-    else if (checkEmailIsValid(email)) {
-      handlerLogin();
+    } else if (checkEmailIsValid(credentials.email)) {
+      handlerSubmit();
     } else {
-      // console.log(email)
       setOpenError(true);
       setMessageError("Invalid Email 😥");
     }
   };
 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    setCredentials({
+      ...credentials,
+      [name]: value,
+    });
+  };
+
   return (
     <>
-      <ContainerForm >
+      <ContainerForm onSubmit={checkData}>
         <Input
           name="email"
           type="text"
           placeholder="E-mail"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleInputChange}
           className="email"
+          value={credentials.email}
         />
         <Input
           name="password"
           type="password"
           placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handleInputChange}
+          value={credentials.password}
         />
-      </ContainerForm>
 
-      {loader ? (
-        <ContainerSpiner>
-          <Loader />
-        </ContainerSpiner>
-      ) : (
-        <Button onClick={checkData}>Sing In</Button>
-      )}
+        {loader ? (
+          <ContainerSpiner>
+            <Loader />
+          </ContainerSpiner>
+        ) : (
+          <Button type="submit">Sing In</Button>
+        )}
+      </ContainerForm>
     </>
   );
 };
