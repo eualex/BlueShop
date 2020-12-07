@@ -20,13 +20,13 @@ routes.post("/users", UserController.store);
 routes.get("/user", authMiddleware, UserController.index);
 
 routes.get("/sneakers", SneakerController.index);
-routes.post("/sneaker", upload.array("images"), SneakerController.store);
-routes.put("/sneaker/:id", SneakerController.update);
 routes.get("/sneaker/:id", SneakerController.show);
+routes.post("/sneaker", authMiddleware, upload.array("images"), SneakerController.store);
+routes.put("/sneaker/:id", authMiddleware, SneakerController.update);
 
-routes.post("/eletronic", upload.array("images"), EletronicController.store);
-routes.put("/eletronic/:id", EletronicController.update);
 routes.get("/eletronics", EletronicController.index);
 routes.get("/eletronic/:id", EletronicController.show);
+routes.post("/eletronic", authMiddleware, upload.array("images"), EletronicController.store);
+routes.put("/eletronic/:id", authMiddleware, EletronicController.update);
 
 export default routes;

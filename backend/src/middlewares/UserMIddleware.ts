@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
-interface TokenPayload {
+declare interface TokenPayloadProps {
   id: string;
   iat: number;
   exp: number;
@@ -19,7 +19,7 @@ export default ( req: Request, res: Response, next: NextFunction ) => {
   try {
     const data = jwt.verify(token as string, `${process.env.JWT_TOKEN}`)
 
-    const { id } = data as TokenPayload;
+    const { id } = data as TokenPayloadProps;
 
     req.userId = id;
 
