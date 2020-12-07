@@ -9,6 +9,7 @@ import user_view from '../views/user_view';
 export default {
   async store(req: Request, res: Response) {
     const usersRepository = getRepository(User);
+    const { NAME_ADM, EMAIL_ADM, PASSWORD_ADM, TOKEN } = process.env;
 
     const { name, email, password } = req.body;
 
@@ -33,9 +34,19 @@ export default {
     const user = usersRepository.create(data);
     await usersRepository.save(user);
 
-    const id = await usersRepository.findOne({ where: { email } });
+    if (
+      user.name === NAME_ADM &&
+      user.email === EMAIL_ADM &&
+      user.password === PASSWORD_ADM
+    ) {
+      const token_adm = jwt.sign({ admin: true, id: user.id }, `${TOKEN}`, {
+        expiresIn: "25m"
+      })
 
-    const token = jwt.sign({ id: user.id }, `${process.env.JWT_TOKEN}`, {
+      return res.status(201).json(user_view.render(user, token_adm));
+    }
+
+    const token = jwt.sign({ admin: false, id: user.id }, `${TOKEN}`, {
       expiresIn: "25m",
     });
 
@@ -44,10 +55,15 @@ export default {
 
   async index(req: Request, res: Response) {
     const userRepository = getRepository(User);
-    const id = req.userId;
+    const { id, admin } = req.userPermission;
 
     const user = await userRepository.findOneOrFail({ where: { id } })
 
+    if (admin) {
+      return res.json(user_view.render(user, undefined, admin));
+    }
+    
     return res.json(user_view.render(user));
+
   }
 }

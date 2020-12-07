@@ -1,5 +1,8 @@
 declare namespace Express {
   export interface Request {
-    userId: string;
+    userPermission: {
+      admin: boolean;
+      id: string;
+    };
   }
 }
