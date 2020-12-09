@@ -57,7 +57,7 @@ const FormSneakers: React.FC = React.memo(() => {
     } catch (err) {
       setLoader(false);
       setOpenError(true);
-      setMessageError(err.response?.data?.message || "Unknown error :(");
+      setMessageError(err.response.data || "Unknown error :(");
     }
   };
 

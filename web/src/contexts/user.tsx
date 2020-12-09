@@ -16,11 +16,12 @@ const LoginContext = createContext<LoginPropsContext>(DEFAULT_VALUE);
 
 const LoginProvider: React.FC = ({ children }) => {
   const [loginToken, setLoginToken] = usePersistedState(
-    "authToken",
+    "token",
     DEFAULT_VALUE.loginToken
   );
 
-  api.defaults.headers.authenticate = `Bearer ${loginToken}`
+  api.defaults.headers.authorization = `Bearer ${loginToken}`
+  console.log(api.defaults.headers.authorization)
 
   return (
     <LoginContext.Provider value={{ loginToken, setLoginToken }}>
