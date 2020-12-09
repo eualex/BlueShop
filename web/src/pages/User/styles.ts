@@ -1,8 +1,18 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 interface Props {
   stateSing: boolean;
 }
+
+const lowBorder = keyframes`
+  from {
+    margin: 0 40px;
+    opacity: 0;
+  } to {
+    margin: 0;
+    opacity: 0.8;
+  }
+`;
 
 export const Container = styled.div`
   width: 100vw;
@@ -84,6 +94,9 @@ export const ContainerRight = styled.div`
 
     width: 100%;
     height: 60%;
+
+    display: flex;
+    align-items: center;
   }
 `;
 
@@ -99,14 +112,18 @@ export const ContainerForm = styled.form`
 
 export const ContainerStateSing = styled.div<Props>`
   color: ${({ theme }) => theme.colors.textPrimary};
+  width: 60%;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 
   span:hover {
     cursor: pointer;
   }
 
   span:nth-child(1) {
-    border-bottom: ${(props) =>
-      props.stateSing ? `2px solid ${props.theme.colors.primary}` : "none"};
+    overflow: hidden;
 
     color: ${(props) =>
       props.stateSing
@@ -114,31 +131,60 @@ export const ContainerStateSing = styled.div<Props>`
         : ({ theme }) => theme.colors.textQuartenary};
     font-size: ${(props) => (props.stateSing ? "2.6rem" : "2rem")};
     transition: all 0.5s ease;
+
+    .login-bottom {
+      height: 2px;
+      display: ${(props) => (props.stateSing ? "block" : "none")};
+      background-color: ${(props) =>
+        props.stateSing ? props.theme.colors.primary : "none"};
+
+      animation: ${lowBorder} 0.4s linear;
+    }
   }
 
   span:nth-child(2) {
     margin: 0 10px;
     font-size: 2rem;
-  } 
+  }
 
   span:nth-child(3) {
-    border-bottom: ${(props) =>
-      props.stateSing ? "none" : `2px solid ${props.theme.colors.primary}`};
+    overflow: hidden;
 
     color: ${(props) =>
       props.stateSing
         ? ({ theme }) => theme.colors.textQuartenary
         : ({ theme }) => theme.colors.primary};
-    font-size: ${(props) => (props.stateSing ? "2rem" : "2.6rem")};
+    font-size: ${(props) => (props.stateSing ? "2rem" : "2.4rem")};
+    transition: all 0.5s ease;
+
+    .register-bottom {
+      height: 2px;
+      display: ${(props) => (props.stateSing ? "none" : "block")};
+      background-color: ${(props) =>
+        props.stateSing ? "none" : props.theme.colors.primary};
+
+      animation: ${lowBorder} 0.4s linear;
+    }
+  }
+
+  @media (max-width: 895px) {
+    width: 80%;
   }
 
   @media (max-width: 768px) {
     text-align: center;
     font-size: 1.9rem;
 
+    align-items: center;
+    width: 50%;
+
     span {
       font-size: 4rem;
     }
+  }
+
+  @media (max-width: 385px) {
+    width: 80%;
   }
 `;
 

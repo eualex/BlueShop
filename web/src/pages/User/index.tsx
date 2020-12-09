@@ -39,9 +39,13 @@ const Login: React.FC = () => {
 
         <ContainerRight>
           <ContainerStateSing stateSing={singIn}>
-            <span onClick={() => setSingIn(true)}>Log In</span>
+            <span onClick={() => setSingIn(true)}>
+              Log In <span className="login-bottom" />
+            </span>
             <span>or</span>
-            <span onClick={() => setSingIn(false)}>Register</span>
+            <span onClick={() => setSingIn(false)}>
+              Register <span className="register-bottom" />
+            </span>
           </ContainerStateSing>
 
           {singIn && <SingIn />}
