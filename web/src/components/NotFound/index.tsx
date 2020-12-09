@@ -16,7 +16,6 @@ const NotFound: React.FC<NotFoundProps> = ({ title, className }) => {
     <Container>
       <div className={className || "not-found"}>
         <h1>{title || "Page"} not found</h1>
-        {console.log(title)}
 
         <HiEmojiSad size={100} color={theme.colors.textPrimary} />
       </div>

@@ -15,8 +15,8 @@ import {
 import SingInImg from "../../img/login01.svg";
 import SingUpImg from "../../img/register.svg";
 
-import SingUp from "./SingUp";
-import SingIn from "./SingIn";
+import SingUp from "./Register";
+import SingIn from "./Login";
 
 const Login: React.FC = () => {
   const [singIn, setSingIn] = useState(true);

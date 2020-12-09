@@ -20,8 +20,7 @@ const LoginProvider: React.FC = ({ children }) => {
     DEFAULT_VALUE.loginToken
   );
 
-  api.defaults.headers.authorization = `Bearer ${loginToken}`
-  console.log(api.defaults.headers.authorization)
+  api.defaults.headers.authorization = `Bearer ${loginToken}`;
 
   return (
     <LoginContext.Provider value={{ loginToken, setLoginToken }}>

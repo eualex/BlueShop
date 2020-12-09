@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { handleLogin } from "../../../services/authentication";
+import checkEmailIsValid from "../../../utils/checkEmail";
+import { handlerRegister } from "../../../services/user";
 import { useErrorMessage } from "../../../contexts/error";
 import { useSession } from "../../../contexts/session";
 import { useLogin } from "../../../contexts/user";
 import { useOpen } from "../../../contexts/burguerMenu";
-import checkEmailIsValid from "../../../utils/checkEmail";
 
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import Loader from "../../../components/Loader";
 
-import { ContainerForm, ContainerSpiner } from "./styles";
+import * as Styles from "./styles";
 
-const SingIn: React.FC = () => {
+const SingUp: React.FC = () => {
   const history = useHistory();
 
   const { setOpenError, setMessageError } = useErrorMessage();
@@ -22,15 +22,19 @@ const SingIn: React.FC = () => {
   const { setLoginToken } = useLogin();
   const { setOpen } = useOpen();
 
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [loader, setLoader] = useState(false);
+  const [credentials, setCredentials] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
-  const handlerSubmit = async () => {
+  //registrando usuario na base, caso não haja erro de validação
+  const handleSubmit = async () => {
     setLoader(true);
 
     try {
-      const user = await handleLogin(credentials);
-
+      const user = await handlerRegister(credentials);
       setLoginToken(user.token);
       setOpenSession(true);
       setOpen(false);
@@ -38,22 +42,19 @@ const SingIn: React.FC = () => {
     } catch (err) {
       setLoader(false);
       setOpenError(true);
-      setMessageError(
-        err.response?.data?.message || "Parece que correu um erro :("
-      );
-      console.log(err)
+      setMessageError(err.response.data.message);
     }
   };
 
   //checando se os dados do input são vazios ou válidos
-  const checkData = (event: React.FormEvent) => {
-    event.preventDefault();
+  const checkData = (event?: React.FormEvent) => {
+    event?.preventDefault();
 
-    if (credentials.password === "" || credentials.email === "") {
+    if (!credentials.name || !credentials.password || !credentials.email) {
       setOpenError(true);
       setMessageError("It seems that you stopped writing some data 🤔");
     } else if (checkEmailIsValid(credentials.email)) {
-      handlerSubmit();
+      handleSubmit();
     } else {
       setOpenError(true);
       setMessageError("Invalid Email 😥");
@@ -71,33 +72,45 @@ const SingIn: React.FC = () => {
 
   return (
     <>
-      <ContainerForm onSubmit={checkData}>
+      <Styles.ContainerForm onSubmit={checkData}>
+        <Input
+          name="name"
+          type="text"
+          placeholder="Name"
+          onChange={handleInputChange}
+        />
         <Input
           name="email"
           type="text"
           placeholder="E-mail"
           onChange={handleInputChange}
-          className="email"
-          value={credentials.email}
         />
         <Input
           name="password"
           type="password"
           placeholder="Password"
           onChange={handleInputChange}
-          value={credentials.password}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") checkData();
+          }}
         />
+        <Styles.ContainerTermOfService>
+          <input type="checkbox" name="terms of service" />
+          <label>
+            I agree all statements in <strong>terms of service</strong>
+          </label>
+        </Styles.ContainerTermOfService>
 
         {loader ? (
-          <ContainerSpiner>
-            <Loader />
-          </ContainerSpiner>
+          <Styles.ContainerLoader>
+            <Loader width={40} height={40} />
+          </Styles.ContainerLoader>
         ) : (
-          <Button type="submit">Sing In</Button>
+          <Button type="submit">Sing Up</Button>
         )}
-      </ContainerForm>
+      </Styles.ContainerForm>
     </>
   );
 };
 
-export default SingIn;
+export default SingUp;
