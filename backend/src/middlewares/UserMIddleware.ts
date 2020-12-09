@@ -14,7 +14,7 @@ export default ( req: Request, res: Response, next: NextFunction ) => {
   if (!authorization) {
     res.status(401).json({ message: 'Authentication required :(' });
   }
-
+  
   const token = authorization?.replace('Bearer', '').trim();
 
   try {
@@ -29,7 +29,6 @@ export default ( req: Request, res: Response, next: NextFunction ) => {
 
     return next();
   } catch {
-    console.log("opa")
     res.sendStatus(401);
   }
 }
