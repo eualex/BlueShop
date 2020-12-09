@@ -1,18 +1,22 @@
-import React, { useState } from "react";
-
-import * as Styles from "./styles";
+import React, { useCallback, useEffect, useState } from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
-import Select from "../../../components/Select";
-import Button from "../../../components/Button";
 
+import { handleGetUser } from "../../../services/user";
 import { useTheme } from "../../../contexts/theme";
 import { useLogin } from "../../../contexts/user";
 
+import Select from "../../../components/Select";
+import Button from "../../../components/Button";
+
+import * as Styles from "./styles";
+
 const Aside: React.FC = () => {
   const { theme } = useTheme();
-  const { userData } = useLogin();
+  const { loginToken } = useLogin();
 
   const [hidden, setHidden] = useState(true);
+  const [admin, setAdmin] = useState(false);
+  const [mount, setMount] = useState(false);
   const [classContainerFilter, setClassContainerFilter] = useState("");
 
   const toggleFilter = () => {
@@ -22,6 +26,25 @@ const Aside: React.FC = () => {
 
     setHidden(!hidden);
   };
+
+  const isAdmin = useCallback(async () => {
+    if (loginToken) {
+      try {
+        if (mount) {
+          const user = await handleGetUser();
+          setAdmin(user.admin);
+        }
+      } catch (err) {
+        setAdmin(false);
+      }
+    } else setAdmin(false);
+  }, [loginToken, mount]);
+
+  useEffect(() => {
+    setMount(true);
+    isAdmin();
+    return () => setMount(false);
+  }, [isAdmin]);
 
   return (
     <Styles.Container>
@@ -48,7 +71,7 @@ const Aside: React.FC = () => {
         </Styles.Wrapper>
       </Styles.ContainerFilter>
 
-      {userData.email === "alex@teste.com" && (
+      {admin && (
         <Styles.ContainerCreateProduct>
           <Button link="register-product">Add a Product</Button>
         </Styles.ContainerCreateProduct>

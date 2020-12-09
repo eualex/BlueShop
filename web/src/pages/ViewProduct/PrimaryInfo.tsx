@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { AiOutlineStar } from "react-icons/ai";
 import { FiEdit2 } from "react-icons/fi";
 
-import { AiOutlineStar } from "react-icons/ai";
+import { handleGetUser } from "../../services/user";
+
 import { useTheme } from "../../contexts/theme";
+import { useLogin } from "../../contexts/user";
 import { EletronicsProps, SneakersProps } from "../../utils/product";
 
 import * as Styles from "./styles";
@@ -17,8 +20,31 @@ const PrimaryInfo: React.FC<PropsPrimaryInfo> = ({
   eletronicsProduct,
   sneakersProduct,
 }) => {
-  const { theme } = useTheme();
   const history = useHistory();
+  const { theme } = useTheme();
+  const { loginToken } = useLogin();
+
+  const [mount, setMount] = useState(false);
+  const [admin, setAdmin] = useState(false);
+
+  const isAdmin = useCallback(async () => {
+    if (loginToken) {
+      try {
+        if (mount) {
+          const user = await handleGetUser();
+          setAdmin(user.admin);
+        }
+      } catch (err) {
+        setAdmin(false);
+      }
+    } else setAdmin(false);
+  }, [loginToken, mount]);
+
+  useEffect(() => {
+    setMount(true);
+    isAdmin();
+    return () => setMount(false);
+  }, [isAdmin]);
 
   return (
     <Styles.ContainerPrimaryInfo>
@@ -49,12 +75,14 @@ const PrimaryInfo: React.FC<PropsPrimaryInfo> = ({
         <p>{sneakersProduct?.description || eletronicsProduct?.description}</p>
       </Styles.ContainerInfo>
 
-      <span
-        className="icon-to-edit"
-        onClick={() => history.push("/edit-product")}
-      >
-        <FiEdit2 color={theme.colors.textPrimary} size={25} />
-      </span>
+      {admin && (
+        <span
+          className="icon-to-edit"
+          onClick={() => history.push("/edit-product")}
+        >
+          <FiEdit2 color={theme.colors.textPrimary} size={25} />
+        </span>
+      )}
     </Styles.ContainerPrimaryInfo>
   );
 };

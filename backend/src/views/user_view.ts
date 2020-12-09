@@ -1,13 +1,12 @@
 import User from '../models/User';
 
 export default {
-  render(user: User, token?: string) {
+  render(user: User, token?: string, admin?: boolean) {
     return {
-      // id: user.id,
       name: user.name,
       email: user.email,
-
-      token
+      token,
+      admin
     }
   }
 }

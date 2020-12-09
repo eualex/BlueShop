@@ -15,8 +15,8 @@ import {
 import SingInImg from "../../img/login01.svg";
 import SingUpImg from "../../img/register.svg";
 
-import SingUp from "./SingUp";
-import SingIn from "./SingIn";
+import SingUp from "./Register";
+import SingIn from "./Login";
 
 const Login: React.FC = () => {
   const [singIn, setSingIn] = useState(true);
@@ -39,9 +39,13 @@ const Login: React.FC = () => {
 
         <ContainerRight>
           <ContainerStateSing stateSing={singIn}>
-            <span onClick={() => setSingIn(true)}>Log In</span>
+            <span onClick={() => setSingIn(true)}>
+              Log In <span className="login-bottom" />
+            </span>
             <span>or</span>
-            <span onClick={() => setSingIn(false)}>Register</span>
+            <span onClick={() => setSingIn(false)}>
+              Register <span className="register-bottom" />
+            </span>
           </ContainerStateSing>
 
           {singIn && <SingIn />}

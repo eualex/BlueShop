@@ -7,7 +7,8 @@ import SneakerController from "./controllers/SneakerController";
 import EletronicController from "./controllers/EletronicController";
 
 import UploadConfig from "./config/upload";
-import authMiddleware from "./middlewares/UserMIddleware";
+import checkauthMiddleware from "./middlewares/UserMIddleware";
+import requireAdmin from "./middlewares/RequiresAdmin";
 
 const routes = Router();
 const upload = multer({
@@ -17,16 +18,16 @@ const upload = multer({
 
 routes.post("/auth", AuthController.authenticate);
 routes.post("/users", UserController.store);
-routes.get("/user", authMiddleware, UserController.index);
+routes.get("/user", checkauthMiddleware, UserController.index); 
 
 routes.get("/sneakers", SneakerController.index);
-routes.post("/sneaker", upload.array("images"), SneakerController.store);
-routes.put("/sneaker/:id", SneakerController.update);
 routes.get("/sneaker/:id", SneakerController.show);
+routes.post("/sneaker", requireAdmin, upload.array("images"), SneakerController.store);
+routes.put("/sneaker/:id", requireAdmin, SneakerController.update);
 
-routes.post("/eletronic", upload.array("images"), EletronicController.store);
-routes.put("/eletronic/:id", EletronicController.update);
 routes.get("/eletronics", EletronicController.index);
 routes.get("/eletronic/:id", EletronicController.show);
+routes.post("/eletronic", requireAdmin, upload.array("images"), EletronicController.store);
+routes.put("/eletronic/:id", requireAdmin, EletronicController.update);
 
 export default routes;

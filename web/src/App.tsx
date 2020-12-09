@@ -8,7 +8,7 @@ import Contexts from "./contexts";
 
 import SuccessMessage from "./components/SuccessMessage";
 import ErrorMessage from "./components/ErrorMessage";
-import SessionUser from "./components/SessionUser";
+import Session from "./components/SessionUser";
 
 import Routes from "./routes";
 
@@ -20,7 +20,7 @@ const App: React.FC = () => {
           <GlobalStyle />
           <SuccessMessage />
           <ErrorMessage />
-          <SessionUser />
+          <Session />
           <Routes />
         </Contexts>
       </Provider>

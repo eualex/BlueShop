@@ -14,21 +14,22 @@ export default ( req: Request, res: Response, next: NextFunction ) => {
   if (!authorization) {
     res.status(401).json({ message: 'Authentication required :(' });
   }
-  
+
   const token = authorization?.replace('Bearer', '').trim();
 
   try {
+    jwt.verify(token as string, `${process.env.TOKEN}`);
+
     const data = jwt.verify(token as string, `${process.env.TOKEN}`)
 
-    const { admin, id } = data as TokenPayloadProps;
+    const { admin } = data as TokenPayloadProps;
 
-    req.userPermission = {
-      admin,
-      id
-    };
-
-    return next();
+    if(admin) {
+      return next();
+    } else {
+      return res.sendStatus(401).json({ message: 'You are not an admin :(' });
+    }
   } catch {
-    res.sendStatus(401);
+    return res.sendStatus(401).json({ message: 'You are not an admin :(' });
   }
 }

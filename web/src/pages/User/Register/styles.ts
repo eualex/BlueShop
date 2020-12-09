@@ -5,18 +5,18 @@ export const ContainerForm = styled.form`
   flex-direction: column;
   justify-content: space-around;
 
-  height: 40%;
+  height: 65%;
   /* width: 80%; */
 
   margin: 20px 0px;
 
   @media (max-width: 768px) {
-    min-height: 160px;
+    min-height: 280px;
     background-color: ${({ theme }) => theme.colors.backgroundPrimary};
   }
 `;
 
-export const ConteinerTermOfService = styled.div`
+export const ContainerTermOfService = styled.div`
   color: ${({ theme }) => theme.colors.textPrimary};
 
   label {

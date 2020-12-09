@@ -81,10 +81,10 @@ const Main: React.FC = React.memo(() => {
 
             <div className="container-product">
               <BigProduct
-                image={sneakersData[1].images[0].url}
-                title={sneakersData[1].name}
-                price={sneakersData[1].price}
-                description={sneakersData[1].description}
+                image={sneakersData[0].images[0].url}
+                title={sneakersData[0].name}
+                price={sneakersData[0].price}
+                description={sneakersData[0].description}
               />
             </div>
           </Styles.ContainerNike>

@@ -5,7 +5,7 @@ export const ContainerForm = styled.form`
   flex-direction: column;
   justify-content: space-evenly;
 
-  height: 40%;
+  height: 60%;
   width: 100%;
 
   margin-top: 20px;
