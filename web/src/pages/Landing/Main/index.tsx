@@ -5,6 +5,7 @@ import "aos/dist/aos.css";
 
 import { getEletronics } from "../../../store/ducks/eletronics";
 import { getSneakers } from "../../../store/ducks/sneakers";
+import { getProducts } from "../../../store/ducks/products";
 import { RootState } from "../../../store/ducks";
 
 import BigProduct from "../BigProduct";
@@ -18,6 +19,10 @@ import * as Styles from "./styles";
 const Main: React.FC = React.memo(() => {
   const dispatch = useDispatch();
 
+  const { ProductsData, ProductsError, ProductsLoading } = useSelector(
+    (state: RootState) => state.products
+  );
+
   const { sneakersData, sneakersError, sneakersLoading } = useSelector(
     (state: RootState) => state.sneakers
   );
@@ -28,8 +33,7 @@ const Main: React.FC = React.memo(() => {
   const { open } = useOpen();
 
   const load = useCallback(() => {
-    dispatch(getSneakers());
-    dispatch(getEletronics());
+    dispatch(getProducts());
   }, [dispatch]);
 
   useEffect(() => {
@@ -40,39 +44,38 @@ const Main: React.FC = React.memo(() => {
   return (
     <Styles.Container open={open}>
       <HeaderMain />
+      {console.log(ProductsData)}
 
-      {sneakersLoading && eletronicsLoading ? (
+      {ProductsLoading ? (
         <Styles.ContainerLoader>
           <Loader width={100} height={100} type="ThreeDots" />
         </Styles.ContainerLoader>
-      ) : sneakersData.length !== 0 &&
-        !sneakersError &&
-        eletronicsData.length !== 0 &&
-        !eletronicsError ? (
+      ) : ProductsData.length !== 0 &&
+         (
         <Styles.ContainerMain>
           <hr />
           <h1>New Products</h1>
-          
+
           <div className="container-product">
             <BigProduct
-              image={eletronicsData[0].images[0].url}
-              title={eletronicsData[0].name}
-              price={eletronicsData[0].price}
-              description={eletronicsData[0].description}
+              image={ProductsData[0].images[0].url}
+              title={ProductsData[0].name}
+              price={Number(ProductsData[0].price)}
+              description={ProductsData[0].description}
             />
           </div>
 
           <hr />
-          
+
           <Styles.ContainerNike>
             <h1>The best's of the Blue</h1>
 
             <div className="container-product">
               <BigProduct
-                image={sneakersData[0].images[0].url}
-                title={sneakersData[0].name}
-                price={sneakersData[0].price}
-                description={sneakersData[0].description}
+                image={ProductsData[0].images[0].url}
+                title={ProductsData[0].name}
+                price={Number(ProductsData[0].price)}
+                description={ProductsData[0].description}
                 reverse="row-reverse"
               />
             </div>
@@ -81,17 +84,15 @@ const Main: React.FC = React.memo(() => {
 
             <div className="container-product">
               <BigProduct
-                image={sneakersData[0].images[0].url}
-                title={sneakersData[0].name}
-                price={sneakersData[0].price}
-                description={sneakersData[0].description}
+                image={ProductsData[0].images[0].url}
+                title={ProductsData[0].name}
+                price={Number(ProductsData[0].price)}
+                description={ProductsData[0].description}
               />
             </div>
           </Styles.ContainerNike>
         </Styles.ContainerMain>
-      ) : (
-        " "
-      )}
+      )} 
     </Styles.Container>
   );
 });

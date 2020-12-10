@@ -22,9 +22,9 @@ export const getSneakers = () => {
 
     try {
       const sneakers = await handleGetSneakers();
-      dispatch(Creators.fetchSneakersSuccess(sneakers))
+      // dispatch(Creators.fetchSneakersSuccess(sneakers))
     } catch (err) {
-      return console.log(err.response.data.message);
+      return console.log(err.response);
     }
   };
 };

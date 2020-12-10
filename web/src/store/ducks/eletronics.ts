@@ -23,7 +23,7 @@ export const getEletronics = () => {
     
     try {
       const products = await handleGetEletronics();
-      dispatch(Creators.fetchEletronicsSuccess(products));
+      // dispatch(Creators.fetchEletronicsSuccess(products));
     } catch (err) {
       return console.log(err.response);
     }
