@@ -1,27 +1,12 @@
 import { createActions, createReducer } from "reduxsauce";
 import { AnyAction, Dispatch } from "redux";
  
-import api from "../../services/api";
-
-interface PropsImages {
-  id: string;
-  url: string;
-}
-
-export interface PropsSneakers {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  Sgenre: string;
-  brand: string;
-  Sdesign?: string;
-  images: PropsImages[];
-}
+import { handleGetSneakers } from "../../services/sneakers";
+import { RootProduct } from '../../utils/product';
 
 export interface PropsStateSneakers {
   sneakersLoading: boolean;
-  sneakersData: PropsSneakers[];
+  sneakersData: RootProduct[];
   sneakersError: string;
 }
 
@@ -36,8 +21,8 @@ export const getSneakers = () => {
     dispatch(Creators.fetchSneakersRequest());
 
     try {
-      const res = await api.get("/sneakers");
-      dispatch(Creators.fetchSneakersSuccess(res.data))
+      const sneakers = await handleGetSneakers();
+      dispatch(Creators.fetchSneakersSuccess(sneakers))
     } catch (err) {
       return console.log(err.response.data.message);
     }

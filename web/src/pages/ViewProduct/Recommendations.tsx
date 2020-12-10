@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { EletronicsProps, SneakersProps } from "../../utils/product";
+import { RootProduct } from "../../utils/product";
 import { RootState } from "../../store/ducks";
 import { useCategory } from "../../contexts/category";
 import { useSearchProduct } from "../../contexts/product";
@@ -12,8 +12,8 @@ import * as Styles from "./styles";
 import Product from "../../components/Product";
 
 interface PropsRecommendations {
-  sneakersProduct?: SneakersProps;
-  eletronicsProduct?: EletronicsProps;
+  sneakersProduct?: RootProduct;
+  eletronicsProduct?: RootProduct;
 }
 
 const Recommendations: React.FC<PropsRecommendations> = ({

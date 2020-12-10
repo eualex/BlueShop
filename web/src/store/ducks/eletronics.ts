@@ -2,28 +2,12 @@ import { createActions, createReducer } from 'reduxsauce';
 
 import { AnyAction, Dispatch } from "redux";
 
-import api from "../../services/api";
-
-interface PropsImages {
-  id: string;
-  url: string;
-}
-
-// console.log(process.env.API);
-
-export interface PropsEletronics {
-  id: string;
-  name: string;
-  price: number;
-  Eitem: string;
-  description: string;
-  brand: string;
-  images: PropsImages[];
-}
+import { handleGetEletronics } from "../../services/eletronics";
+import { RootProduct } from '../../utils/product';
 
 export interface PropsStateEletronics {
   eletronicsLoading: boolean;
-  eletronicsData: PropsEletronics[];
+  eletronicsData: RootProduct[];
   eletronicsError: string;
 }
 
@@ -38,8 +22,8 @@ export const getEletronics = () => {
     dispatch(Creators.fetchEletronicsRequest());
     
     try {
-      const res = await api.get("/eletronics");
-      dispatch(Creators.fetchEletronicsSuccess(res.data))
+      const products = await handleGetEletronics();
+      dispatch(Creators.fetchEletronicsSuccess(products));
     } catch (err) {
       return console.log(err.response);
     }

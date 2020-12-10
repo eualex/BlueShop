@@ -2,13 +2,13 @@ import React from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import Button from "../../components/Button";
 import { useTheme } from "../../contexts/theme";
-import { EletronicsProps, SneakersProps } from "../../utils/product";
+import { RootProduct } from "../../utils/product";
 
 import * as Styles from "./styles";
 
 interface PropsAside {
-  sneakersProduct?: SneakersProps;
-  eletronicsProduct?: EletronicsProps;
+  sneakersProduct?: RootProduct;
+  eletronicsProduct?: RootProduct;
 }
 
 const Aside: React.FC<PropsAside> = ({

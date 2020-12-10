@@ -73,6 +73,7 @@ export const ContainerNav = styled.div<Props>`
       &:hover {
         color: ${(props) => props.theme.colors.primary};
         transition: 0.3s ease-in;
+        cursor: pointer;
       }
     }
 

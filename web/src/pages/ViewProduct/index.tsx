@@ -5,7 +5,7 @@ import { getEletronics } from "../../store/ducks/eletronics";
 import { getSneakers } from "../../store/ducks/sneakers";
 
 import api from "../../services/api";
-import { EletronicsProps, SneakersProps } from "../../utils/product";
+import { RootProduct  } from "../../utils/product";
 import { useSearchProduct } from "../../contexts/product";
 
 import * as Styles from "./styles";
@@ -19,8 +19,8 @@ const ViewProduct: React.FC = () => {
 
   const { searchProduct } = useSearchProduct();
 
-  const [eletronicProduct, setEletronicProduct] = useState<EletronicsProps>();
-  const [sneakersProduct, setSneakersProduct] = useState<SneakersProps>();
+  const [eletronicProduct, setEletronicProduct] = useState<RootProduct>();
+  const [sneakersProduct, setSneakersProduct] = useState<RootProduct>();
 
   const load = useCallback(async () => {
     const category = searchProduct.category.split("");

@@ -7,13 +7,13 @@ import { handleGetUser } from "../../services/user";
 
 import { useTheme } from "../../contexts/theme";
 import { useLogin } from "../../contexts/user";
-import { EletronicsProps, SneakersProps } from "../../utils/product";
+import { RootProduct } from "../../utils/product";
 
 import * as Styles from "./styles";
 
 interface PropsPrimaryInfo {
-  sneakersProduct?: SneakersProps;
-  eletronicsProduct?: EletronicsProps;
+  sneakersProduct?: RootProduct;
+  eletronicsProduct?: RootProduct;
 }
 
 const PrimaryInfo: React.FC<PropsPrimaryInfo> = ({
