@@ -24,12 +24,14 @@ export default ( req: Request, res: Response, next: NextFunction ) => {
 
     const { admin } = data as TokenPayloadProps;
 
+    console.log(admin)
+
     if(admin) {
       return next();
     } else {
-      return res.sendStatus(401).json({ message: 'You are not an admin :(' });
+      return res.sendStatus(403).json({ message: 'You are not an admin :(' });
     }
   } catch {
-    return res.sendStatus(401).json({ message: 'You are not an admin :(' });
+    return res.sendStatus(400).json({ message: 'Invalid token :(' });
   }
 }

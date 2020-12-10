@@ -1,7 +1,7 @@
 import { PrimaryGeneratedColumn, Column, Entity, OneToMany, JoinColumn } from 'typeorm';
-import EletronicImage from './EletronicsImages';
+import ProductImage from './ProductImages';
 
-@Entity('eletronics')
+@Entity('products')
 export default class Eletronics {
 
   @PrimaryGeneratedColumn('uuid')
@@ -15,16 +15,25 @@ export default class Eletronics {
 
   @Column()
   description: string;
-
-  @Column()
-  item: string;
-
+  
   @Column()
   brand: string;
 
-  @OneToMany(() => EletronicImage, image => image.eletronic, {
+  @Column()
+  category: string;
+
+  @Column()
+  genre: string;
+
+  @Column()
+  type: string;
+  
+  @Column()
+  deleted: boolean;
+  
+  @OneToMany(() => ProductImage, image => image.product, {
     cascade: ['insert', 'update']
   })
-  @JoinColumn({ name: 'eletronic_id' })
-  images: EletronicImage[];
+  @JoinColumn({ name: 'product_id' })
+  images: ProductImage[];
 }

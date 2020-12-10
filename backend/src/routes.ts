@@ -5,6 +5,7 @@ import UserController from "./controllers/UserController";
 import AuthController from "./controllers/AuthController";
 import SneakerController from "./controllers/SneakerController";
 import EletronicController from "./controllers/EletronicController";
+import ProductController from "./controllers/ProductController";
 
 import UploadConfig from "./config/upload";
 import checkauthMiddleware from "./middlewares/UserMIddleware";
@@ -29,5 +30,11 @@ routes.get("/eletronics", EletronicController.index);
 routes.get("/eletronic/:id", EletronicController.show);
 routes.post("/eletronic", requireAdmin, upload.array("images"), EletronicController.store);
 routes.put("/eletronic/:id", requireAdmin, EletronicController.update);
+
+routes.get("/products", ProductController.index);
+routes.get("/product/:category", ProductController.show);
+routes.post("/product", upload.array("images"), ProductController.store);
+routes.put("/product/:id", requireAdmin, ProductController.update);
+routes.delete("/product/:id", requireAdmin, ProductController.delete);
 
 export default routes;

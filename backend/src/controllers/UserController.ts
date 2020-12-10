@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import * as Yup from 'yup';
 import jwt from "jsonwebtoken";
+import bcrypt from 'bcryptjs';
 
 import User from '../models/User';
 import user_view from '../views/user_view';
@@ -37,7 +38,7 @@ export default {
     if (
       user.name === NAME_ADM &&
       user.email === EMAIL_ADM &&
-      user.password === PASSWORD_ADM
+      await bcrypt.compare(PASSWORD_ADM as string, user.password)
     ) {
       const token_adm = jwt.sign({ admin: true, id: user.id }, `${TOKEN}`, {
         expiresIn: "25m"
