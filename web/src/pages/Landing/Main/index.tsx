@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-import { getEletronics } from "../../../store/ducks/eletronics";
-import { getSneakers } from "../../../store/ducks/sneakers";
 import { getProducts } from "../../../store/ducks/products";
 import { RootState } from "../../../store/ducks";
 
@@ -21,13 +19,6 @@ const Main: React.FC = React.memo(() => {
 
   const { ProductsData, ProductsError, ProductsLoading } = useSelector(
     (state: RootState) => state.products
-  );
-
-  const { sneakersData, sneakersError, sneakersLoading } = useSelector(
-    (state: RootState) => state.sneakers
-  );
-  const { eletronicsData, eletronicsError, eletronicsLoading } = useSelector(
-    (state: RootState) => state.eletronics
   );
 
   const { open } = useOpen();
@@ -58,10 +49,10 @@ const Main: React.FC = React.memo(() => {
 
           <div className="container-product">
             <BigProduct
-              image={ProductsData[0].images[0].url}
-              title={ProductsData[0].name}
-              price={Number(ProductsData[0].price)}
-              description={ProductsData[0].description}
+              image={ProductsData[2].images[0].url}
+              title={ProductsData[2].name}
+              price={Number(ProductsData[2].price)}
+              description={ProductsData[2].description}
             />
           </div>
 
@@ -84,10 +75,10 @@ const Main: React.FC = React.memo(() => {
 
             <div className="container-product">
               <BigProduct
-                image={ProductsData[0].images[0].url}
-                title={ProductsData[0].name}
-                price={Number(ProductsData[0].price)}
-                description={ProductsData[0].description}
+                image={ProductsData[1].images[0].url}
+                title={ProductsData[1].name}
+                price={Number(ProductsData[1].price)}
+                description={ProductsData[1].description}
               />
             </div>
           </Styles.ContainerNike>

@@ -135,15 +135,7 @@ export default {
     const productsRepository = getRepository(Products);
     const { id } = req.params;
 
-    const { deleted } = req.body;
-
-    const schema = Yup.object().shape({
-      deleted: Yup.boolean().required(),
-    });
-
-    await schema.validate({ deleted });
-
-    const resUpdateDeleted = await productsRepository.update(id, { deleted });
+    const resUpdateDeleted = await productsRepository.update(id, { deleted: true });
 
     return !!resUpdateDeleted
       ? res.json({ message: "Product deleted with success :)" })

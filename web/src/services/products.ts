@@ -4,12 +4,12 @@ import { ProductProps } from '../utils/product';
 
 export const handleGetSpecificProduct = (category: string) => 
   api.get<ProductProps[]>(`/products/${category}`)
-  .then(res => res.data);
+  .then(res => res.data.filter(p => p.deleted !== true));
 
 
 export const handleGetProducts = () => 
   api.get<ProductProps[]>('/products')
-  .then(res => res.data);
+  .then(res => res.data.filter(p => p.deleted !== true));
 
 export const handleCreateProduct = (data: ProductProps) => 
   api.post('/product', data)

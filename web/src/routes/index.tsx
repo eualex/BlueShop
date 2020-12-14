@@ -82,7 +82,7 @@ const Routes: React.FC = () => {
             verify={checkProductToEdit}
             redirect="/category"
           />
-          <Route component={ErrorsPage} />
+          <Route component={Home} />
         </Switch>
       </BrowserRouter>
     </>

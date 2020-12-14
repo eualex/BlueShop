@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HiEmojiSad } from 'react-icons/hi'
+import { useHistory } from "react-router-dom";
 
 import { useTheme } from "../../contexts/theme";
 
@@ -12,6 +13,11 @@ interface NotFoundProps {
 
 const NotFound: React.FC<NotFoundProps> = ({ title, className }) => {
   const { theme } = useTheme();
+  const history = useHistory();
+
+  useEffect(() => {
+    setTimeout(() => history.push('/'), 2000)
+  })
   return (
     <Container>
       <div className={className || "not-found"}>
